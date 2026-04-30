@@ -1,10 +1,10 @@
-# 🤖 Claude Superskills v1.22.0
+# 🤖 Claude Superskills v1.23.0
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
-![Version](https://img.shields.io/badge/version-1.22.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.23.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Skills](https://img.shields.io/badge/skills-55-brightgreen.svg)
+![Skills](https://img.shields.io/badge/skills-56-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platforms-8-orange.svg)
 
 ## 🚀 Quick Install
@@ -160,7 +160,7 @@ Important:
 
 ---
 
-### Once installed — all 55 skills under the `claude-superskills:` namespace
+### Once installed — all 56 skills under the `claude-superskills:` namespace
 
 ```
 /claude-superskills:skill-creator
@@ -179,7 +179,7 @@ Important:
 
 ## ✨ Features
 
-- **55 Universal Skills** - Work on all platforms
+- **56 Universal Skills** - Work on all platforms
 - **Zero-Config Install** - Run once, works everywhere
 - **Curated Bundles** - Install exactly what you need
 - **Smart Search** - Find skills by keyword
@@ -457,14 +457,14 @@ MIT - See [LICENSE](./LICENSE) for details.
 
 **Built with ❤️ by [Eric Andrade](https://github.com/ericgandrade)**
 
-*Version 1.22.0 | April 2026*
+*Version 1.23.0 | April 2026*
 
 ## 🎁 Get Started
 
 Choose a bundle that fits your workflow:
 
 - **[Essential](docs/bundles/bundles.md#-essential-bundle)** - skill-creator, prompt-engineer
-- **[Content](docs/bundles/bundles.md#-content-creation-bundle)** - youtube-summarizer, audio-transcriber, docling-converter, document-converter, pptx-translator, storytelling-expert
+- **[Content](docs/bundles/bundles.md#-content-creation-bundle)** - youtube-summarizer, audio-transcriber, docling-converter, document-converter, pptx-translator, ava-pptx, storytelling-expert
 - **[Planning](docs/bundles/bundles.md#-planning--execution-bundle)** - brainstorming, writing-plans, executing-plans, mckinsey-strategist
 - **[Product](docs/bundles/bundles.md#-product--strategy-bundle)** - abx-strategy, ai-native-product, product-strategy, and more
 - **[Career](docs/bundles/bundles.md#-career--professional-growth-bundle)** - resume-ats-optimizer, interview-prep, salary-negotiation, and more

@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.23.0] - 2026-04-07
+
+### Added
+
+- **ava-pptx skill**: generates and re-brands PowerPoint presentations using the official Ava visual identity. Supports create-from-scratch mode (pptxgenjs) and rebrand-existing mode. Enforces Avanade orange palette, Segoe UI typography, wave decoration, and logo placement on every slide.
+
 ## [1.22.0] - 2026-04-03
 
 ### Added

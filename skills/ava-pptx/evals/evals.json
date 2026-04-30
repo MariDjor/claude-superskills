@@ -1,0 +1,77 @@
+{
+  "skill_name": "ava-pptx",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Create a 10-slide pitch deck for a digital transformation proposal targeting a retail client. The deck should follow our branded template.",
+      "expected_output": "Generates a 10-slide .pptx using pptxgenjs with Ava brand palette, Segoe UI typography, wave decorations, logo on every slide, cover and closing gradient slides, and varied content layouts.",
+      "assertions": [
+        {"text": "Installs pptxgenjs if not present before generating slides", "weight": 1},
+        {"text": "Uses exactly the Ava Orange color #FF5800 (or #F25830) as the primary color — not a generic blue or custom color", "weight": 3},
+        {"text": "Applies Segoe UI font family for all text elements", "weight": 3},
+        {"text": "Includes logo (logo_white.png or logo_color.png from scripts/) on every slide", "weight": 2},
+        {"text": "Opens with a gradient COVER slide and closes with a CLOSING gradient slide", "weight": 2},
+        {"text": "Includes wave decoration on content slides", "weight": 2},
+        {"text": "Uses varied layout types (not the same layout repeated for every slide)", "weight": 2},
+        {"text": "Adds copyright footer and page numbers to every slide", "weight": 1},
+        {"text": "Runs visual QA with sub-agent before declaring output complete", "weight": 2}
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "Build a quarterly business review presentation, 8 slides, for our leadership team. Mark it as Confidential.",
+      "expected_output": "Generates an 8-slide QBR deck with Ava branding, confidentiality watermark appended to footer, agenda slide, content slides, and closing slide.",
+      "assertions": [
+        {"text": "Generates exactly 8 slides (or prompts user to confirm count)", "weight": 1},
+        {"text": "Appends '< Confidential >' to the copyright footer string on every slide", "weight": 3},
+        {"text": "Includes an AGENDA or CONTENTS slide with orange numbered grid layout", "weight": 2},
+        {"text": "Applies the official Ava palette exclusively — no improvised colors", "weight": 3},
+        {"text": "Uses SECTION DIVIDER slides to separate major topics", "weight": 2},
+        {"text": "Applies Segoe UI font with correct weights per hierarchy level", "weight": 2},
+        {"text": "Saves output file to ~/Desktop/Marketing/ or current directory with .pptx extension", "weight": 1}
+      ]
+    },
+    {
+      "id": 3,
+      "prompt": "Prepare a 6-slide sales deck for a cloud migration offering. Use a bold executive style with large stats and minimal text.",
+      "expected_output": "Generates a 6-slide deck emphasizing stat callouts, bold numbers, minimal body text, and premium executive visual treatment using the Ava gradient and typography system.",
+      "assertions": [
+        {"text": "Uses NUMBERED POINTS or large stat callout layouts for data-heavy slides", "weight": 3},
+        {"text": "Keeps body text minimal — no dense bullet walls", "weight": 2},
+        {"text": "Uses the orange-to-purple gradient on at least the cover and closing slides", "weight": 2},
+        {"text": "Segoe UI Bold is used for large numbers and key headlines", "weight": 2},
+        {"text": "Every slide has logo, tagline, footer, and page number", "weight": 2},
+        {"text": "Visual QA sub-agent inspects for text overflow, low contrast, or missing elements", "weight": 2},
+        {"text": "Output file is deliverable without manual edits", "weight": 2}
+      ]
+    },
+    {
+      "id": 4,
+      "prompt": "I need an internal all-hands presentation about our H1 strategy, 12 slides. No confidentiality marking needed.",
+      "expected_output": "Generates a 12-slide all-hands deck with Ava branding, cover, agenda, content sections, and closing. No confidentiality marker in footer.",
+      "assertions": [
+        {"text": "Does NOT add confidentiality markers since user did not request them", "weight": 3},
+        {"text": "Generates 12 slides with distinct layout types across the deck", "weight": 2},
+        {"text": "Uses white-background TEXT CONTENT layout for body-heavy slides", "weight": 2},
+        {"text": "Applies wave decoration in lower third on white-background slides", "weight": 2},
+        {"text": "Uses dark-background gradient slides for cover, section dividers, and closing", "weight": 2},
+        {"text": "Reads brand-guidelines.md before generating to validate layout coordinates", "weight": 1},
+        {"text": "Passes quality checklist before delivery (Segoe UI, correct orange, logo present)", "weight": 2}
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Create a 5-slide executive briefing about AI adoption in financial services. Highly Confidential.",
+      "expected_output": "Generates a concise 5-slide exec briefing with premium visual treatment, '< Highly Confidential >' in footer, TWO-COLUMN or stat callout layouts, and minimal text.",
+      "assertions": [
+        {"text": "Appends '< Highly Confidential >' (not just Confidential) to footer on every slide", "weight": 3},
+        {"text": "Generates exactly 5 slides — does not pad with unnecessary slides", "weight": 2},
+        {"text": "Uses executive-appropriate layouts: TWO-COLUMN, NUMBERED POINTS, or FULL-BLEED IMAGE", "weight": 2},
+        {"text": "Applies Ava brand palette exclusively — orange, greys, and white only", "weight": 3},
+        {"text": "Wave decoration and logo present on all content slides", "weight": 2},
+        {"text": "Visual QA sub-agent confirms no text overflow or missing elements", "weight": 2},
+        {"text": "Output file path is provided to the user at the end", "weight": 1}
+      ]
+    }
+  ]
+}
