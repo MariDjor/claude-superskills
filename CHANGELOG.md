@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.25.0] - 2026-04-30
+
+### Added
+
+- **ava-web skill**: Generate Avanade-branded websites, landing pages, and web components. Supports 4 stacks (HTML+CSS, HTML+Tailwind, React+Tailwind, Next.js+Tailwind) and 5 page types (Landing, Service, About, Case Study, Contact). Includes 12 reusable components with HTML, Tailwind, and React variants. Uses the same Ava brand system as `ava-pptx` — orange gradient `#FF5800→#B43C14→#870032`, Segoe UI, wave SVG decorators, and "Do what matters" tagline. Includes WCAG accessibility guidance (orange as text rules). References: `web-brand-guidelines.md`, `components.md`, `tailwind-config.md`.
+
+---
+
 ## [1.24.0] - 2026-04-30
 
 ### Added

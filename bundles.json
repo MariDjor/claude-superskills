@@ -73,7 +73,8 @@
         "storytelling-expert",
         "webpage-reader",
         "mermaid-diagram",
-        "excalidraw-diagram"
+        "excalidraw-diagram",
+        "ava-web"
       ],
       "use_cases": [
         "Summarizing YouTube videos",
@@ -180,7 +181,8 @@
         "brand",
         "ui-styling",
         "slides",
-        "banner-design"
+        "banner-design",
+        "ava-web"
       ],
       "use_cases": [
         "Complete AI assistance",
@@ -304,7 +306,8 @@
         "brand",
         "ui-styling",
         "slides",
-        "banner-design"
+        "banner-design",
+        "ava-web"
       ],
       "use_cases": [
         "Designing web and mobile UIs with stack-specific best practices",

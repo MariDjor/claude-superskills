@@ -1,10 +1,10 @@
-# 🤖 Claude Superskills v1.24.0
+# 🤖 Claude Superskills v1.25.0
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
-![Version](https://img.shields.io/badge/version-1.24.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.25.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Skills](https://img.shields.io/badge/skills-63-brightgreen.svg)
+![Skills](https://img.shields.io/badge/skills-64-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platforms-8-orange.svg)
 
 ## 🚀 Quick Install
@@ -160,7 +160,7 @@ Important:
 
 ---
 
-### Once installed — all 63 skills under the `claude-superskills:` namespace
+### Once installed — all 64 skills under the `claude-superskills:` namespace
 
 ```
 /claude-superskills:skill-creator
@@ -179,7 +179,7 @@ Important:
 
 ## ✨ Features
 
-- **63 Universal Skills** - Work on all platforms
+- **64 Universal Skills** - Work on all platforms
 - **Zero-Config Install** - Run once, works everywhere
 - **Curated Bundles** - Install exactly what you need
 - **Smart Search** - Find skills by keyword
@@ -296,6 +296,7 @@ Important:
 | **ui-styling** | v1.0.0 | UI styling with shadcn/ui, Tailwind CSS, responsive layouts, accessible components, dark mode, canvas-based visual designs, and consistent cross-platform styling |
 | **slides** | v1.0.0 | Strategic HTML presentations with Chart.js data visualizations, design tokens, responsive layouts, copywriting formulas (AIDA, PAS), and contextual slide strategies |
 | **banner-design** | v1.0.0 | Design banners in any of 22 styles (minimalist, gradient, glassmorphism, neon, retro, etc.) for social media, advertising, web heroes, and print across all major platforms |
+| **ava-web** | v1.0.0 | Generate Avanade-branded websites, landing pages, and web components in HTML, Tailwind, React, or Next.js with orange gradient hero, wave SVG dividers, and official Ava design tokens |
 
 ## 🎯 Curated Bundles
 
@@ -475,7 +476,7 @@ MIT - See [LICENSE](./LICENSE) for details.
 Choose a bundle that fits your workflow:
 
 - **[Essential](docs/bundles/bundles.md#-essential-bundle)** - skill-creator, prompt-engineer
-- **[Content](docs/bundles/bundles.md#-content-creation-bundle)** - youtube-summarizer, audio-transcriber, docling-converter, document-converter, pptx-translator, ava-pptx, storytelling-expert
+- **[Content](docs/bundles/bundles.md#-content-creation-bundle)** - youtube-summarizer, audio-transcriber, docling-converter, document-converter, pptx-translator, ava-pptx, ava-web, storytelling-expert
 - **[Planning](docs/bundles/bundles.md#-planning--execution-bundle)** - brainstorming, writing-plans, executing-plans, mckinsey-strategist
 - **[Product](docs/bundles/bundles.md#-product--strategy-bundle)** - abx-strategy, ai-native-product, product-strategy, and more
 - **[Career](docs/bundles/bundles.md#-career--professional-growth-bundle)** - resume-ats-optimizer, interview-prep, salary-negotiation, and more

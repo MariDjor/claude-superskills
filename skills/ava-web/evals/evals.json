@@ -1,0 +1,109 @@
+{
+  "skill": "ava-web",
+  "version": "1.0.0",
+  "evals": [
+    {
+      "id": "eval-001",
+      "name": "Landing page for AI consulting service",
+      "input": "Create an Avanade-branded landing page for an AI consulting service using React + Tailwind. Include a gradient hero with the headline 'We make AI work for you.', a 3-column features grid, a stats bar with 3 metrics, a CTA section, and a footer with 'Do what matters'.",
+      "expected_behaviors": [
+        "Reads references/web-brand-guidelines.md before generating code",
+        "Produces React components (.jsx files)",
+        "Hero uses gradient: linear-gradient(135deg, #FF5800 0%, #B43C14 55%, #870032 100%)",
+        "Includes wave SVG divider between hero and features section",
+        "Feature cards have orange top border (#FF5800)",
+        "Stats numbers are orange (#FF5800) and at least 48px / font-size text-5xl",
+        "CTA section uses orange/gradient background",
+        "Footer is dark (#333) with 'Do what matters' tagline",
+        "No orange used as body paragraph text",
+        "Font family is Segoe UI stack"
+      ],
+      "must_not": [
+        "Use #FF5800 as body text color",
+        "Use Arial or Calibri fonts",
+        "Use blue or green as primary/accent colors",
+        "Use hardcoded paths without explanation"
+      ]
+    },
+    {
+      "id": "eval-002",
+      "name": "Hero section React component with wave",
+      "input": "Build me a React hero component with the Avanade orange gradient background, a wave SVG at the bottom, and the tagline 'Do what matters' as eyebrow text. The headline should be 'Accelerate your digital transformation.'",
+      "expected_behaviors": [
+        "Reads references/web-brand-guidelines.md",
+        "React component with JSX syntax",
+        "Gradient: from-[#FF5800] via-[#B43C14] to-[#870032] or equivalent CSS",
+        "Wave SVG uses linearGradient with stops #FF5800, #DC4600, #B43C14",
+        "Tagline 'Do what matters' appears as small eyebrow above headline",
+        "Headline text is white",
+        "Includes at least one CTA button (white bg + orange text or orange bg + white text)",
+        "Wave is positioned at bottom of hero section"
+      ],
+      "must_not": [
+        "Skip the wave SVG decoration",
+        "Use inline background color without gradient",
+        "Use class instead of className"
+      ]
+    },
+    {
+      "id": "eval-003",
+      "name": "Case study page in HTML + Tailwind",
+      "input": "Create a complete case study page in HTML + Tailwind for a fictional client called Contoso. Include: compact hero, a 3-col challenge/solution/result section, a stats bar (40% cost reduction, 3x faster delivery, 99.9% uptime), a pull quote, a CTA section, and footer.",
+      "expected_behaviors": [
+        "Single HTML file with <script src='https://cdn.tailwindcss.com'> or full Tailwind config",
+        "Hero is more compact (min-h less than full viewport)",
+        "Challenge/Solution/Result in a 3-column grid with orange accents",
+        "Stats use orange numbers (#FF5800) and bold font",
+        "Pull quote has orange left border and #FFF0E8 background",
+        "CTA section has gradient background",
+        "Footer is dark (#333333) with white text",
+        "Orange appears only in headings, borders, stats numbers, buttons — not body text"
+      ],
+      "must_not": [
+        "Use orange for paragraph text",
+        "Produce invalid HTML",
+        "Skip the stats bar"
+      ]
+    },
+    {
+      "id": "eval-004",
+      "name": "Tailwind config with Ava tokens",
+      "input": "Give me the Tailwind config for Avanade brand tokens so I can use classes like bg-ava-orange, text-ava-gray-dark, bg-ava-hero (gradient) etc.",
+      "expected_behaviors": [
+        "Reads references/tailwind-config.md",
+        "Provides complete tailwind.config.js",
+        "Includes colors.ava object with all brand colors",
+        "Includes backgroundImage with ava-hero gradient",
+        "Includes fontFamily.ava with Segoe UI stack",
+        "Includes boxShadow.ava-card and ava-hover",
+        "Explains how to use the classes in examples"
+      ],
+      "must_not": [
+        "Provide only partial color tokens",
+        "Omit the gradient definitions",
+        "Use incorrect hex values"
+      ]
+    },
+    {
+      "id": "eval-005",
+      "name": "Next.js App Router branded page",
+      "input": "Create a Next.js (App Router) about page with Avanade brand. Files needed: app/about/page.tsx, components/AvaNav.tsx, components/AvaHero.tsx, components/AvaStats.tsx, components/AvaFooter.tsx, tailwind.config.ts",
+      "expected_behaviors": [
+        "Reads references/web-brand-guidelines.md and references/tailwind-config.md",
+        "Produces TypeScript (.tsx) components",
+        "AvaNav has logo left, links center-right, CTA button orange",
+        "AvaHero uses gradient background with wave decoration",
+        "AvaStats shows orange numbers with gray labels",
+        "AvaFooter is dark with 'Do what matters' tagline",
+        "page.tsx imports and composes all components",
+        "tailwind.config.ts extends with ava-* tokens",
+        "Uses className (not class)"
+      ],
+      "must_not": [
+        "Use Pages Router structure (no _app.tsx, no pages/)",
+        "Use JavaScript (.jsx) instead of TypeScript (.tsx)",
+        "Omit the tailwind.config.ts"
+      ]
+    }
+  ]
+}
