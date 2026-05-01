@@ -5,7 +5,7 @@
     "email": "egandrade@gmail.com"
   },
   "metadata": {
-    "description": "56 universal AI skills for Claude Code — planning, orchestration, product strategy, career workflows, research, content processing, Obsidian knowledge management, and document conversion"
+    "description": "63 universal AI skills for Claude Code — planning, orchestration, product strategy, career workflows, research, content processing, UI/UX design, Obsidian knowledge management, and document conversion"
   },
   "plugins": [
     {
@@ -14,7 +14,7 @@
         "source": "github",
         "repo": "ericgandrade/claude-superskills"
       },
-      "description": "56 universal AI skills for Claude Code — planning, orchestration, product strategy, career workflows, research, content processing, Obsidian knowledge management, and document conversion",
+      "description": "63 universal AI skills for Claude Code — planning, orchestration, product strategy, career workflows, research, content processing, UI/UX design, Obsidian knowledge management, and document conversion",
       "author": {
         "name": "Eric Andrade"
       },
@@ -30,7 +30,9 @@
         "orchestration",
         "content",
         "strategy",
-        "prompt-engineering"
+        "prompt-engineering",
+        "ui-ux",
+        "design"
       ],
       "category": "productivity",
       "tags": [
@@ -38,7 +40,8 @@
         "research",
         "planning",
         "content",
-        "orchestration"
+        "orchestration",
+        "design"
       ]
     }
   ]

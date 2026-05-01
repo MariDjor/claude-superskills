@@ -6,6 +6,20 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.24.0] - 2026-04-30
+
+### Added
+
+- **ui-ux-pro-max skill**: comprehensive design intelligence skill with 50+ UI styles, 161 color palettes, 57 font pairings, UX guidelines, searchable CSV databases, and stack-specific best practices for React, Next.js, Vue, Svelte, Angular, Astro, Flutter, SwiftUI, React Native, and HTML/Tailwind. Includes Python search scripts and 30 data files. Absorbed from `nextlevelbuilder/ui-ux-pro-max-skill` (MIT).
+- **design skill**: full design suite supporting logo generation (55 styles, Gemini AI), corporate identity programs (50 deliverables + CIP mockups), HTML presentations (Chart.js), banner design (22 styles), icon design (15 styles SVG), and social photo generation.
+- **design-system skill**: create and maintain design systems with three-layer token architecture (primitive, semantic, component tokens), CSS variables, spacing/typography scales, and brand-compliant presentation slides.
+- **brand skill**: brand identity guidance covering brand voice definition, visual identity standards, messaging frameworks, asset management, brand consistency reviews, color palette management, and typography specifications.
+- **ui-styling skill**: UI styling with shadcn/ui components (Radix UI + Tailwind), utility-first CSS, responsive layouts, accessible components, dark mode, and canvas-based visual designs.
+- **slides skill**: strategic HTML presentations with Chart.js data visualizations, design tokens, responsive layouts, copywriting formulas (AIDA, PAS, etc.), and contextual slide strategies for pitches, reports, and education.
+- **banner-design skill**: design banners in 22 art direction styles (minimalist, gradient, glassmorphism, neon, retro, geometric, etc.) for Facebook, Twitter/X, LinkedIn, YouTube, Instagram, Google Display, web heroes, and print.
+- **ui-ux bundle**: new curated bundle containing all 7 UI/UX skills.
+- **all bundle**: extended with all 7 new UI/UX skills (56 → 63 total).
+
 ## [1.23.0] - 2026-04-07
 
 ### Added

@@ -173,7 +173,14 @@
         "obsidian-frontmatter",
         "obsidian-automation",
         "obsidian-note-builder",
-        "obsidian-canvas"
+        "obsidian-canvas",
+        "ui-ux-pro-max",
+        "design",
+        "design-system",
+        "brand",
+        "ui-styling",
+        "slides",
+        "banner-design"
       ],
       "use_cases": [
         "Complete AI assistance",
@@ -286,6 +293,27 @@
         "Building visual workspaces with Canvas"
       ],
       "target": "Obsidian users, knowledge workers, researchers"
+    },
+    "ui-ux": {
+      "name": "UI/UX Design",
+      "description": "Comprehensive UI/UX design intelligence: styles, color palettes, font pairings, design systems, brand identity, component styling, presentations, and banner design.",
+      "skills": [
+        "ui-ux-pro-max",
+        "design",
+        "design-system",
+        "brand",
+        "ui-styling",
+        "slides",
+        "banner-design"
+      ],
+      "use_cases": [
+        "Designing web and mobile UIs with stack-specific best practices",
+        "Creating brand identities, logos, and corporate identity programs",
+        "Building and maintaining design systems with token architecture",
+        "Generating HTML presentations with Chart.js visualizations",
+        "Designing social media banners in 22 art direction styles"
+      ],
+      "target": "Designers, front-end developers, product teams, marketers"
     }
   }
 }

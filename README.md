@@ -1,10 +1,10 @@
-# 🤖 Claude Superskills v1.23.0
+# 🤖 Claude Superskills v1.24.0
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
-![Version](https://img.shields.io/badge/version-1.23.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.24.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Skills](https://img.shields.io/badge/skills-56-brightgreen.svg)
+![Skills](https://img.shields.io/badge/skills-63-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platforms-8-orange.svg)
 
 ## 🚀 Quick Install
@@ -160,7 +160,7 @@ Important:
 
 ---
 
-### Once installed — all 56 skills under the `claude-superskills:` namespace
+### Once installed — all 63 skills under the `claude-superskills:` namespace
 
 ```
 /claude-superskills:skill-creator
@@ -179,7 +179,7 @@ Important:
 
 ## ✨ Features
 
-- **56 Universal Skills** - Work on all platforms
+- **63 Universal Skills** - Work on all platforms
 - **Zero-Config Install** - Run once, works everywhere
 - **Curated Bundles** - Install exactly what you need
 - **Smart Search** - Find skills by keyword
@@ -285,6 +285,17 @@ Important:
 | **obsidian-automation** | v1.0.0 | Automate Obsidian vault tasks using the CLI, shell scripts, and Local REST API — batch note creation, bulk updates, and vault maintenance |
 | **obsidian-note-builder** | v1.0.0 | Build complete, knowledge-graph-ready Obsidian notes from raw content with entity extraction, auto-wikilinks, and Zettelkasten atomicity |
 | **obsidian-canvas** | v1.0.0 | Create freeform visual workspaces using Obsidian Canvas — hub-and-spoke, Kanban, and dashboard layouts as ready-to-save `.canvas` files |
+
+### 🎨 UI/UX Design
+| Skill | Version | Purpose |
+|-------|---------|---------|
+| **ui-ux-pro-max** | v1.0.0 | Comprehensive design intelligence: 50+ styles, 161 color palettes, 57 font pairings, UX guidelines, and stack-specific best practices across React, Next.js, Vue, Svelte, Angular, Astro, Flutter, SwiftUI, and more |
+| **design** | v1.0.0 | Full design suite: logo generation (55 styles, Gemini AI), corporate identity (50 deliverables), HTML presentations, banner design (22 styles), icon design (15 styles SVG), social photo generation |
+| **design-system** | v1.0.0 | Create and maintain design systems with three-layer token architecture (primitive, semantic, component), CSS variables, spacing/typography scales, and component specifications |
+| **brand** | v1.0.0 | Brand identity guidance: brand voice, visual identity standards, messaging frameworks, asset management, consistency reviews, color palette management, and typography specifications |
+| **ui-styling** | v1.0.0 | UI styling with shadcn/ui, Tailwind CSS, responsive layouts, accessible components, dark mode, canvas-based visual designs, and consistent cross-platform styling |
+| **slides** | v1.0.0 | Strategic HTML presentations with Chart.js data visualizations, design tokens, responsive layouts, copywriting formulas (AIDA, PAS), and contextual slide strategies |
+| **banner-design** | v1.0.0 | Design banners in any of 22 styles (minimalist, gradient, glassmorphism, neon, retro, etc.) for social media, advertising, web heroes, and print across all major platforms |
 
 ## 🎯 Curated Bundles
 

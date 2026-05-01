@@ -1,7 +1,7 @@
 {
   "name": "claude-superskills",
-  "version": "1.23.0",
-  "description": "55 universal AI skills for Claude Code — skill creation, deep research, strategic planning, product management, content processing, Obsidian knowledge management, and orchestration workflows",
+  "version": "1.24.0",
+  "description": "63 universal AI skills for Claude Code — skill creation, deep research, strategic planning, product management, content processing, UI/UX design, Obsidian knowledge management, and orchestration workflows",
   "author": {
     "name": "Eric Andrade",
     "url": "https://github.com/ericgandrade"
@@ -18,6 +18,8 @@
     "orchestration",
     "content",
     "strategy",
-    "prompt-engineering"
+    "prompt-engineering",
+    "ui-ux",
+    "design"
   ]
 }

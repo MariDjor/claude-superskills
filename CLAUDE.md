@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **claude-superskills** is a reusable AI skills library for **8 AI platforms**: GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI. Skills are Markdown-based workflow specifications (`SKILL.md`) that teach AI agents how to perform specific tasks.
 
-- **npm package**: `claude-superskills` (v1.23.0) — `npx claude-superskills` — **56 skills**
+- **npm package**: `claude-superskills` (v1.24.0) — `npx claude-superskills` — **63 skills**
 - **Claude Code plugin**: `claude --plugin-dir ./claude-superskills` — native plugin, no npm needed
 - **GitHub**: `https://github.com/ericgandrade/claude-superskills`
 - **Old package** `cli-ai-skills` is deprecated, redirects to this one
@@ -126,6 +126,14 @@ claude-superskills/
 │   ├── obsidian-automation/
 │   ├── obsidian-note-builder/
 │   └── obsidian-canvas/
+│
+├── ui-ux-pro-max/
+├── design/
+├── design-system/
+├── brand/
+├── ui-styling/
+├── slides/
+└── banner-design/
 │
 ├── cli-installer/             # NPM package (claude-superskills)
 │   ├── bin/cli.js            # Main CLI entry point (commands, flags, install flow)
@@ -272,7 +280,7 @@ npx claude-superskills
 /plugin install claude-superskills@claude-superskills
     → clones repo → copies to ~/.claude/plugins/cache/claude-superskills/
     → auto-discovers skills/ directory
-    → registers all 56 skills as /claude-superskills:<skill-name>
+    → registers all 63 skills as /claude-superskills:<skill-name>
 
 # NOTE: The shell command `claude plugin install ...` is currently unstable
 # due to upstream bugs in Claude Code (e.g. anthropics/claude-code#29722).
@@ -281,6 +289,29 @@ npx claude-superskills
 # Test locally (no marketplace required)
 claude --plugin-dir ./claude-superskills
 ```
+
+## 🚨 CRITICAL: PLANNING RULE
+
+> **All multi-step implementation plans MUST be saved to `docs/plans/` using the `writing-plans` skill.**
+
+### Planning Convention (mandatory)
+
+Before starting any non-trivial implementation (new skills, architecture changes, absorptions, refactors):
+
+1. **Use the `writing-plans` skill** to create the plan
+2. **Save to** `docs/plans/YYYY-MM-DD-<feature-name>.md`
+3. **Never plan only in session state** (e.g., `~/.copilot/session-state/`) — plans must live in the repo for traceability
+4. **Hand off to `executing-plans`** skill for step-by-step execution
+
+```bash
+# Standard plan file naming
+docs/plans/2026-04-30-ui-ux-pro-max-absorption.md
+docs/plans/2026-05-01-ava-web-skill.md
+```
+
+Plans in `docs/plans/` are version-controlled and auditable. Session-state plans are ephemeral and not shared with the team.
+
+---
 
 ## Development Commands
 
@@ -476,7 +507,7 @@ Skills that interact with project structure should include a discovery phase tha
 
 ## Version Management
 
-The package version is defined in `cli-installer/package.json` (currently **v1.23.0**).
+The package version is defined in `cli-installer/package.json` (currently **v1.24.0**).
 `.claude-plugin/plugin.json` `"version"` must always match `package.json` exactly.
 
 - `cli-installer/package.json` — source of truth for npm version
@@ -597,7 +628,7 @@ Curated skill collections:
 - **content**: `youtube-summarizer`, `audio-transcriber`, `docling-converter`, `pptx-translator`, `ava-pptx`
 - **developer**: `skill-creator`
 - **orchestration**: `agent-skill-discovery`, `agent-skill-orchestrator`
-- **all**: all 56 skills
+- **all**: all 63 skills
 
 ## Automation Scripts
 
@@ -621,6 +652,7 @@ Curated skill collections:
 - **Architecture** — System design, C4 modeling, and ADRs (`senior-solution-architect`, `product-architecture`)
 - **Startup** — Market sizing, unit economics, and GTM for founders (`startup-growth-strategist`, `product-strategy`, `abx-strategy`)
 - **Obsidian** — Knowledge management, note building, wikilinks, frontmatter, automation, and visual workspaces (`obsidian-markdown`, `obsidian-links`, `obsidian-frontmatter`, `obsidian-automation`, `obsidian-note-builder`, `obsidian-canvas`)
+- **UI/UX Design** — Comprehensive design intelligence, brand identity, design systems, component styling, presentations, and banner design (`ui-ux-pro-max`, `design`, `design-system`, `brand`, `ui-styling`, `slides`, `banner-design`)
 
 ### Orchestration Skills
 
