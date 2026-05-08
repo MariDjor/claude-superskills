@@ -2,9 +2,9 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use executing-plans to implement this plan task-by-task.
 
-**Goal:** Carve out 28 skills from `claude-superskills` into 3 focused repos: `obsidian-superskills` (6 skills), `career-superskills` (20 skills), and `ava-superskills` (2 skills, private). Delete 3 low-value skills. Bump `claude-superskills` to v2.0.0 with 33 skills remaining.
+**Goal:** Carve out 28 skills from `claude-superskills` into 3 focused repos: `obsidian-superskills` (6 skills), `career-superskills` (20 skills), and `avanade-superskills` (2 skills, private). Delete 3 low-value skills. Bump `claude-superskills` to v2.0.0 with 33 skills remaining.
 
-**Architecture:** Each new repo is a full clone of the `claude-superskills` structure — complete with `cli-installer`, `scripts`, `docs`, `.github/workflows`, `.claude-plugin`, `CLAUDE.md`, `VERSIONING.md`, `CHANGELOG.md`, and `bundles.json`. The "copy everything, then adapt" strategy avoids missing files. The `ava-superskills` repo is private and has no npm installer — install-only via Claude Code plugin.
+**Architecture:** Each new repo is a full clone of the `claude-superskills` structure — complete with `cli-installer`, `scripts`, `docs`, `.github/workflows`, `.claude-plugin`, `CLAUDE.md`, `VERSIONING.md`, `CHANGELOG.md`, and `bundles.json`. The "copy everything, then adapt" strategy avoids missing files. The `avanade-superskills` repo is private and has no npm installer — install-only via Claude Code plugin.
 
 **Tech Stack:** Node.js, npm, GitHub CLI (`gh`), Claude Code plugin model, GitHub Actions.
 
@@ -30,8 +30,8 @@
 ### career-superskills (20 skills) — novo repo público
 `academic-cv-builder`, `career-changer-translator`, `cover-letter-generator`, `creative-portfolio-resume`, `executive-resume-writer`, `interview-prep-generator`, `job-description-analyzer`, `linkedin-profile-optimizer`, `offer-comparison-analyzer`, `portfolio-case-study-writer`, `reference-list-builder`, `resume-ats-optimizer`, `resume-bullet-writer`, `resume-formatter`, `resume-quantifier`, `resume-section-builder`, `resume-tailor`, `resume-version-manager`, `salary-negotiation-prep`, `tech-resume-optimizer`
 
-### ava-superskills (2 skills) — novo repo PRIVADO, sem npm
-`ava-pptx`, `ava-web`
+### avanade-superskills (2 skills) — novo repo PRIVADO, sem npm
+`avanade-pptx`, `avanade-web`
 
 ### claude-superskills (33 skills) — bumpa para v2.0.0
 Todos os demais: meta, planejamento, produto, pesquisa, conteúdo, UI/UX.
@@ -476,32 +476,53 @@ claude --plugin-dir ./career-superskills   # deve carregar 20 skills
 
 ---
 
-## Task 3: Criar ava-superskills (privado, sem npm)
+## Task 3: Criar avanade-superskills (privado, sem npm)
 
-O `ava-superskills` é mais simples — não tem cli-installer nem GitHub Actions de publicação.
+O `avanade-superskills` é mais simples — não tem cli-installer nem GitHub Actions de publicação.
 
 ### 3.1 — Criar estrutura mínima
 
 ```bash
 cd ~/Library/CloudStorage/OneDrive-Avanade/14_Code_Projects
-mkdir ava-superskills && cd ava-superskills
+mkdir avanade-superskills && cd avanade-superskills
 git init
 
 mkdir -p skills .claude-plugin docs
 ```
 
-### 3.2 — Copiar os 2 skills Avanade
+### 3.2 — Copiar e renomear os 2 skills Avanade
+
+Os skills existem como `ava-pptx` e `ava-web` em `claude-superskills`. Precisam ser copiados **e renomeados** para `avanade-pptx` e `avanade-web`.
 
 ```bash
-cp -r ../claude-superskills/skills/ava-pptx skills/
-cp -r ../claude-superskills/skills/ava-web skills/
+# Copia com novo nome de diretório
+cp -r ../claude-superskills/skills/ava-pptx skills/avanade-pptx
+cp -r ../claude-superskills/skills/ava-web  skills/avanade-web
+```
+
+Atualizar o campo `name` no frontmatter de cada SKILL.md:
+
+`skills/avanade-pptx/SKILL.md` — linha 2:
+```yaml
+name: avanade-pptx
+```
+
+`skills/avanade-web/SKILL.md` — linha 2:
+```yaml
+name: avanade-web
+```
+
+Verificar se há referências internas ao nome antigo no corpo dos SKILL.md:
+```bash
+grep -r "ava-pptx\|ava-web" skills/
+# Se encontrar, substituir manualmente por avanade-pptx / avanade-web
 ```
 
 ### 3.3 — Criar .claude-plugin/plugin.json
 
 ```json
 {
-  "name": "ava-superskills",
+  "name": "avanade-superskills",
   "version": "1.0.0",
   "description": "Avanade-branded AI skills for PowerPoint and web generation following official Ava brand guidelines.",
   "author": "Eric Andrade",
@@ -513,16 +534,16 @@ cp -r ../claude-superskills/skills/ava-web skills/
 ### 3.4 — Criar CLAUDE.md
 
 ```markdown
-# ava-superskills
+# avanade-superskills
 
 Avanade-branded AI skills. Private repository — not published to npm.
 
 ## Skills
-- `ava-pptx` — PowerPoint presentations following Ava brand guidelines
-- `ava-web` — Web page generation following Ava brand guidelines
+- `avanade-pptx` — PowerPoint presentations following Ava brand guidelines
+- `avanade-web` — Web page generation following Ava brand guidelines
 
 ## Install
-claude --plugin-dir ./ava-superskills
+claude --plugin-dir ./avanade-superskills
 
 ## Version
 v1.0.0
@@ -537,7 +558,7 @@ README.md mínimo com install instructions e link para Avanade brand guidelines.
 CHANGELOG.md:
 ```markdown
 ## [1.0.0] - 2026-05-07
-- Initial release — ava-pptx and ava-web carved out from claude-superskills v1.25.0
+- Initial release — avanade-pptx and avanade-web carved out from claude-superskills v1.25.0
 ```
 
 ### 3.6 — Criar repo privado e push
@@ -546,11 +567,11 @@ CHANGELOG.md:
 git add .
 git commit -m "feat: initial release v1.0.0 — Avanade-branded skills"
 
-gh repo create ericgandrade/ava-superskills \
+gh repo create ericgandrade/avanade-superskills \
   --private \
   --description "Avanade-branded AI skills (internal — not published to npm)"
 
-git remote add origin https://github.com/ericgandrade/ava-superskills.git
+git remote add origin https://github.com/ericgandrade/avanade-superskills.git
 git branch -M main
 git push -u origin main
 git tag v1.0.0 && git push origin v1.0.0
@@ -560,9 +581,9 @@ git tag v1.0.0 && git push origin v1.0.0
 
 **Verificar:**
 ```bash
-claude --plugin-dir ./ava-superskills   # deve carregar 2 skills
+claude --plugin-dir ./avanade-superskills   # deve carregar 2 skills
 # Confirmar que o repo está PRIVATE no GitHub:
-gh repo view ericgandrade/ava-superskills --json visibility -q .visibility   # deve retornar PRIVATE
+gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility   # deve retornar PRIVATE
 ```
 
 ---
@@ -587,7 +608,7 @@ git rm -r skills/academic-cv-builder skills/career-changer-translator skills/cov
            skills/resume-section-builder skills/resume-tailor skills/resume-version-manager \
            skills/salary-negotiation-prep skills/tech-resume-optimizer
 
-# Remove ava skills (agora em ava-superskills privado)
+# Remove ava skills (agora em avanade-superskills como avanade-pptx / avanade-web)
 git rm -r skills/ava-pptx skills/ava-web
 
 # Deleta skills de baixo valor (decisão 2026-05-07)
@@ -604,7 +625,7 @@ ls skills/ | wc -l   # deve retornar 33
 Remover dos bundles `all`, `content`, `ui-ux`, `career`, `obsidian`:
 - Todos os career skills
 - Todos os obsidian skills
-- `ava-pptx`, `ava-web`
+- `avanade-pptx`, `avanade-web`
 - `code-method`, `ai-native-product`, `docling-converter`
 
 Remover completamente os bundles `career` e `obsidian` (agora são repos separados).
@@ -622,7 +643,7 @@ Editar `CHANGELOG.md` — substituir o placeholder gerado pelo release.js com:
 ### Breaking Changes
 - Removed 6 Obsidian skills → now available at github.com/ericgandrade/obsidian-superskills (`npx obsidian-superskills`)
 - Removed 20 career/resume skills → now available at github.com/ericgandrade/career-superskills (`npx career-superskills`)
-- Removed 2 Avanade-branded skills (ava-pptx, ava-web) → now in private repo ericgandrade/ava-superskills
+- Removed 2 Avanade-branded skills (`ava-pptx` → renamed to `avanade-pptx`, `ava-web` → renamed to `avanade-web`) → now in private repo ericgandrade/avanade-superskills
 
 ### Removed
 - Deleted low-value skills: `code-method`, `ai-native-product`, `docling-converter`
@@ -687,10 +708,10 @@ ls ~/Library/CloudStorage/.../career-superskills/skills/ | wc -l     # → 20
 claude --plugin-dir ./career-superskills       # carrega 20 skills sem erro
 gh repo view ericgandrade/career-superskills --json visibility -q .visibility    # → PUBLIC
 
-# ava-superskills
-ls ~/Library/CloudStorage/.../ava-superskills/skills/ | wc -l        # → 2
-claude --plugin-dir ./ava-superskills          # carrega 2 skills sem erro
-gh repo view ericgandrade/ava-superskills --json visibility -q .visibility       # → PRIVATE
+# avanade-superskills
+ls ~/Library/CloudStorage/.../avanade-superskills/skills/ | wc -l        # → 2
+claude --plugin-dir ./avanade-superskills          # carrega 2 skills sem erro
+gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility       # → PRIVATE
 
 # claude-superskills
 npx claude-superskills --version               # → 2.0.0
@@ -700,5 +721,5 @@ claude --plugin-dir ./claude-superskills       # carrega 33 skills sem erro
 # npm packages visíveis
 npm view obsidian-superskills version          # → 1.0.0
 npm view career-superskills version            # → 1.0.0
-npm view ava-superskills 2>/dev/null || echo "NOT PUBLISHED (correct)"  # → NOT PUBLISHED
+npm view avanade-superskills 2>/dev/null || echo "NOT PUBLISHED (correct)"  # → NOT PUBLISHED
 ```
