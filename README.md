@@ -1,10 +1,10 @@
-# 🤖 Claude Superskills v1.25.1
+# 🤖 Claude Superskills v2.0.0
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
-![Version](https://img.shields.io/badge/version-1.25.1-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Skills](https://img.shields.io/badge/skills-65-brightgreen.svg)
+![Skills](https://img.shields.io/badge/skills-18-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platforms-8-orange.svg)
 
 ## 🚀 Quick Install
@@ -493,6 +493,18 @@ See [detailed comparison](docs/bundles/bundles.md#-bundle-comparison).
 - **[Skill Anatomy](docs/guides/skill-anatomy.md)** - How to build skills
 - **[Skills Development](docs/references/skills-development.md)** - Advanced creation
 - **[Changelog](CHANGELOG.md)** - Version history
+
+## Related Packages
+
+Need skills beyond the core 18? Install focused packages:
+
+| Package | Skills | Focus | Install |
+|---------|--------|-------|---------|
+| [obsidian-superskills](https://github.com/ericgandrade/obsidian-superskills) | 6 | Obsidian knowledge management | `npx obsidian-superskills` |
+| [career-superskills](https://github.com/ericgandrade/career-superskills) | 20 | Job search & career development | `npx career-superskills` |
+| [product-superskills](https://github.com/ericgandrade/product-superskills) | 8 | Product management & GTM strategy | `npx product-superskills` |
+| [design-superskills](https://github.com/ericgandrade/design-superskills) | 9 | UI/UX design, brand & diagrams | `npx design-superskills` |
+| [avanade-superskills](https://github.com/ericgandrade/avanade-superskills) | 3 | Avanade-branded content (private) | `git clone git@github.com:ericgandrade/avanade-superskills.git` |
 
 ---
 

@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **claude-superskills** is a reusable AI skills library for **8 AI platforms**: GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI. Skills are Markdown-based workflow specifications (`SKILL.md`) that teach AI agents how to perform specific tasks.
 
-- **npm package**: `claude-superskills` (v1.25.1) — `npx claude-superskills` — **64 skills**
+- **npm package**: `claude-superskills` (v2.0.0) — `npx claude-superskills` — **18 skills**
 - **Claude Code plugin**: `claude --plugin-dir ./claude-superskills` — native plugin, no npm needed
 - **GitHub**: `https://github.com/ericgandrade/claude-superskills`
 - **Old package** `cli-ai-skills` is deprecated, redirects to this one
@@ -69,73 +69,25 @@ claude-superskills/
 │   ├── plugin.json           # Plugin metadata (name, version, description, author...)
 │   └── marketplace.json      # Marketplace catalog — lists plugin + GitHub source
 │
-├── skills/                    # SINGLE SOURCE OF TRUTH for all skills
-│   ├── abx-strategy/
-│   ├── academic-cv-builder/
+├── skills/                    # SINGLE SOURCE OF TRUTH for all 18 skills
 │   ├── agent-skill-discovery/
 │   ├── agent-skill-orchestrator/
-│   ├── ai-native-product/
 │   ├── audio-transcriber/
 │   ├── brainstorming/
-│   ├── career-changer-translator/
-│   ├── cover-letter-generator/
-│   ├── creative-portfolio-resume/
 │   ├── deep-research/
-│   ├── docling-converter/
 │   ├── document-converter/
 │   ├── executing-plans/
-│   ├── executive-resume-writer/
 │   ├── grill-me/
-│   ├── interview-prep-generator/
-│   ├── job-description-analyzer/
-│   ├── linkedin-profile-optimizer/
 │   ├── mckinsey-strategist/
-│   ├── offer-comparison-analyzer/
-│   ├── portfolio-case-study-writer/
-│   ├── product-architecture/
-│   ├── product-delivery/
-│   ├── product-discovery/
-│   ├── product-leadership/
-│   ├── product-operating-model/
-│   ├── product-strategy/
+│   ├── pptx-translator/
 │   ├── prompt-engineer/
-│   ├── reference-list-builder/
-│   ├── resume-ats-optimizer/
-│   ├── resume-bullet-writer/
-│   ├── resume-formatter/
-│   ├── resume-quantifier/
-│   ├── resume-section-builder/
-│   ├── resume-tailor/
-│   ├── resume-version-manager/
-│   ├── salary-negotiation-prep/
 │   ├── senior-solution-architect/
 │   ├── skill-creator/
-│   ├── startup-growth-strategist/
 │   ├── storytelling-expert/
-│   ├── tech-resume-optimizer/
 │   ├── us-program-research/
-│   ├── writing-plans/
-│   ├── youtube-summarizer/
-│   ├── pptx-translator/
-│   ├── ava-pptx/
-│   ├── ava-web/
 │   ├── webpage-reader/
-│   ├── mermaid-diagram/
-│   ├── excalidraw-diagram/
-│   ├── obsidian-markdown/
-│   ├── obsidian-links/
-│   ├── obsidian-frontmatter/
-│   ├── obsidian-automation/
-│   ├── obsidian-note-builder/
-│   └── obsidian-canvas/
-│
-├── ui-ux-pro-max/
-├── design/
-├── design-system/
-├── brand/
-├── ui-styling/
-├── slides/
-└── banner-design/
+│   ├── writing-plans/
+│   └── youtube-summarizer/
 │
 ├── cli-installer/             # NPM package (claude-superskills)
 │   ├── bin/cli.js            # Main CLI entry point (commands, flags, install flow)
@@ -282,7 +234,7 @@ npx claude-superskills
 /plugin install claude-superskills@claude-superskills
     → clones repo → copies to ~/.claude/plugins/cache/claude-superskills/
     → auto-discovers skills/ directory
-    → registers all 64 skills as /claude-superskills:<skill-name>
+    → registers all 18 skills as /claude-superskills:<skill-name>
 
 # NOTE: The shell command `claude plugin install ...` is currently unstable
 # due to upstream bugs in Claude Code (e.g. anthropics/claude-code#29722).
@@ -509,7 +461,7 @@ Skills that interact with project structure should include a discovery phase tha
 
 ## Version Management
 
-The package version is defined in `cli-installer/package.json` (currently **v1.25.1**).
+The package version is defined in `cli-installer/package.json` (currently **v2.0.0**).
 `.claude-plugin/plugin.json` `"version"` must always match `package.json` exactly.
 
 - `cli-installer/package.json` — source of truth for npm version
@@ -623,14 +575,12 @@ OpenCode uses `~/.agent/skills/`. Antigravity uses `~/.gemini/antigravity/skills
 ### Bundle System (`lib/bundles.js`)
 
 Curated skill collections:
-- **essential**: core workflow skills including `skill-creator`, `prompt-engineer`, discovery/orchestration, and planning trio
+- **essential**: `skill-creator`, `prompt-engineer`, discovery/orchestration, and full planning quartet
 - **planning**: `brainstorming`, `writing-plans`, `executing-plans`, `grill-me`, `agent-skill-orchestrator`
-- **product**: comprehensive product management, strategic planning, and GTM frameworks
 - **research**: `deep-research`, `us-program-research`, `agent-skill-discovery`, `prompt-engineer`
-- **content**: `youtube-summarizer`, `audio-transcriber`, `docling-converter`, `pptx-translator`, `ava-pptx`, `ava-web`
-- **developer**: `skill-creator`
+- **content**: `youtube-summarizer`, `audio-transcriber`, `pptx-translator`, `document-converter`, `storytelling-expert`
 - **orchestration**: `agent-skill-discovery`, `agent-skill-orchestrator`
-- **all**: all 64 skills
+- **all**: all 18 skills
 
 ## Automation Scripts
 
@@ -648,13 +598,8 @@ Curated skill collections:
 - **Automation** — Workflow optimization (`prompt-engineer`)
 - **Orchestration** — Resource discovery and task planning (`agent-skill-discovery`, `agent-skill-orchestrator`)
 - **Planning** — Pre-implementation design and execution (`brainstorming`, `writing-plans`, `executing-plans`, `grill-me`)
-- **Product & Strategy** — Frameworks for product management, discovery, and GTM (`product-strategy`, `product-discovery`, `abx-strategy`, etc.)
-- **Research** — Deep research and academic analysis (`deep-research`, `us-program-research`)
-- **Content** — Media and document processing (`youtube-summarizer`, `audio-transcriber`, `docling-converter`, `document-converter`, `pptx-translator`, `ava-pptx`, `ava-web`, `webpage-reader`, `mermaid-diagram`, `excalidraw-diagram`)
-- **Architecture** — System design, C4 modeling, and ADRs (`senior-solution-architect`, `product-architecture`)
-- **Startup** — Market sizing, unit economics, and GTM for founders (`startup-growth-strategist`, `product-strategy`, `abx-strategy`)
-- **Obsidian** — Knowledge management, note building, wikilinks, frontmatter, automation, and visual workspaces (`obsidian-markdown`, `obsidian-links`, `obsidian-frontmatter`, `obsidian-automation`, `obsidian-note-builder`, `obsidian-canvas`)
-- **UI/UX Design** — Comprehensive design intelligence, brand identity, design systems, component styling, presentations, banner design, and Avanade-branded web generation (`ui-ux-pro-max`, `design`, `design-system`, `brand`, `ui-styling`, `slides`, `banner-design`, `ava-web`)
+- **Research** — Deep research and academic analysis (`deep-research`, `us-program-research`, `senior-solution-architect`, `webpage-reader`)
+- **Content** — Media and document processing (`youtube-summarizer`, `audio-transcriber`, `pptx-translator`, `document-converter`, `storytelling-expert`)
 
 ### Orchestration Skills
 

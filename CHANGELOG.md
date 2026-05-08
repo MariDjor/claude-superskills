@@ -6,6 +6,24 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.0] - 2026-05-08
+
+### Breaking Changes
+- Removed 6 Obsidian skills → now available at `npx obsidian-superskills` (github.com/ericgandrade/obsidian-superskills)
+- Removed 20 career/resume skills → now available at `npx career-superskills` (github.com/ericgandrade/career-superskills)
+- Removed 8 product/strategy skills → now available at `npx product-superskills` (github.com/ericgandrade/product-superskills)
+- Removed 9 design/UI skills → now available at `npx design-superskills` (github.com/ericgandrade/design-superskills)
+- Removed `ava-pptx` and `ava-web` (renamed to `avanade-pptx`/`avanade-web`) → now in private repo ericgandrade/avanade-superskills
+
+### Removed
+- Deleted low-value skills: `code-method`, `ai-native-product`, `docling-converter`
+
+### Changed
+- claude-superskills is now a focused core: 18 skills across meta/orchestration, planning, research, and content
+- Added `grill-me` to the planning bundle (added in v1.25.1)
+
+
+
 ## [1.25.1] - 2026-05-08
 
 ### Added
