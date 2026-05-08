@@ -1128,11 +1128,16 @@ Avanade-branded AI skills — private repository, not published to npm.
 - `avanade-web` — Web page generation following Avanade visual identity
 - `avanade-pdf` — PDF document generation (any type) in Avanade format
 
+## Prerequisites
+
+- Must be added as a collaborator on this private repo (contact @ericgandrade)
+- SSH key configured for GitHub — `ssh -T git@github.com` must succeed before cloning
+
 ## Installation
 
 ### Shell installer (all 8 platforms)
 ```bash
-git clone https://github.com/ericgandrade/avanade-superskills.git
+git clone git@github.com:ericgandrade/avanade-superskills.git
 cd avanade-superskills
 ./scripts/install.sh           # install to all detected platforms
 ./scripts/install.sh list      # list installed skills
@@ -1157,7 +1162,21 @@ To bump version: update `version` in `.claude-plugin/plugin.json` and `scripts/i
 README com:
 - Título: `# Avanade Superskills v1.0.0`
 - Descrição: 3 skills para Avanade-branded content generation
-- Seção de install com os dois métodos (shell installer + plugin-dir)
+- **Seção de pré-requisitos** (antes do install):
+  ```markdown
+  ## Prerequisites
+  - You must be added as a collaborator on the private GitHub repo.
+    Contact @ericgandrade to request access.
+  - SSH key configured for GitHub (`ssh -T git@github.com` must succeed).
+    HTTPS clone will fail on private repos without a PAT.
+  ```
+- Seção de install com SSH (não HTTPS):
+  ```bash
+  git clone git@github.com:ericgandrade/avanade-superskills.git
+  cd avanade-superskills
+  ./scripts/install.sh
+  ```
+- Dois métodos: shell installer + `claude --plugin-dir`
 - Tabela dos 3 skills
 - Nota: repo privado, uso interno Avanade
 
@@ -1190,7 +1209,7 @@ gh repo create ericgandrade/avanade-superskills \
   --private \
   --description "Avanade-branded AI skills — internal use only (avanade-pptx, avanade-web, avanade-pdf)"
 
-git remote add origin https://github.com/ericgandrade/avanade-superskills.git
+git remote add origin git@github.com:ericgandrade/avanade-superskills.git
 git branch -M main
 git push -u origin main
 git tag v1.0.0 && git push origin v1.0.0
