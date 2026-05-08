@@ -161,8 +161,9 @@ Fazer busca-e-substituição em `cli-installer/bin/cli.js`:
 Fazer busca-e-substituição:
 - `claude-superskills` → `obsidian-superskills`
 - `ericgandrade/claude-superskills` → `ericgandrade/obsidian-superskills`
+- `~/.claude-superskills/` → `~/.obsidian-superskills/`
 
-O campo de cache path (`~/.claude-superskills/`) pode permanecer ou ser alterado para `~/.obsidian-superskills/` — manter `~/.claude-superskills/` é aceitável se o downloader usa o nome do pacote como subdir.
+O cache path deve ser único por pacote para evitar colisões quando múltiplos repos estão instalados na mesma máquina.
 
 ### 1.6 — Atualizar .claude-plugin/plugin.json
 
@@ -300,6 +301,21 @@ npm install
 cd ..
 ```
 
+Verificar que nenhum bundle referencia skills fora dos 6 do repo:
+```bash
+node -e "
+const b = require('./bundles.json');
+const skills = require('fs').readdirSync('./skills');
+Object.entries(b.bundles).forEach(([name, bundle]) => {
+  bundle.skills.forEach(s => {
+    if (!skills.includes(s)) console.error('MISSING in bundle', name, ':', s);
+  });
+});
+console.log('bundles ok');
+"
+# deve imprimir apenas "bundles ok"
+```
+
 ### 1.16 — Inicializar git e criar repo no GitHub
 
 ```bash
@@ -394,6 +410,7 @@ Deletar `cli-installer/package-lock.json`.
 Busca-e-substituição:
 - `claude-superskills` → `career-superskills`
 - `ericgandrade/claude-superskills` → `ericgandrade/career-superskills`
+- `~/.claude-superskills/` → `~/.career-superskills/`
 - Skill count → `20 skills`
 
 ### 2.5 — Atualizar .claude-plugin/plugin.json
@@ -489,7 +506,23 @@ grep "claude-superskills\|cli-ai-skills" .github/workflows/publish-npm.yml  # de
 
 ```bash
 cd cli-installer && npm install && cd ..
+```
 
+Verificar bundles:
+```bash
+node -e "
+const b = require('./bundles.json');
+const skills = require('fs').readdirSync('./skills');
+Object.entries(b.bundles).forEach(([name, bundle]) => {
+  bundle.skills.forEach(s => {
+    if (!skills.includes(s)) console.error('MISSING in bundle', name, ':', s);
+  });
+});
+console.log('bundles ok');
+"
+```
+
+```bash
 git init
 git add .
 git commit -m "feat: initial release v1.0.0 — 20 career skills carved out from claude-superskills"
@@ -568,6 +601,7 @@ Deletar `cli-installer/package-lock.json`.
 Busca-e-substituição:
 - `claude-superskills` → `product-superskills`
 - `ericgandrade/claude-superskills` → `ericgandrade/product-superskills`
+- `~/.claude-superskills/` → `~/.product-superskills/`
 - Skill count → `8 skills`
 
 ### 3.5 — Atualizar .claude-plugin/plugin.json
@@ -653,6 +687,23 @@ grep "claude-superskills\|cli-ai-skills" .github/workflows/publish-npm.yml  # de
 
 ```bash
 cd cli-installer && npm install && cd ..
+```
+
+Verificar bundles:
+```bash
+node -e "
+const b = require('./bundles.json');
+const skills = require('fs').readdirSync('./skills');
+Object.entries(b.bundles).forEach(([name, bundle]) => {
+  bundle.skills.forEach(s => {
+    if (!skills.includes(s)) console.error('MISSING in bundle', name, ':', s);
+  });
+});
+console.log('bundles ok');
+"
+```
+
+```bash
 git init
 git add .
 git commit -m "feat: initial release v1.0.0 — 8 product skills carved out from claude-superskills"
@@ -731,6 +782,7 @@ Deletar `cli-installer/package-lock.json`.
 Busca-e-substituição:
 - `claude-superskills` → `design-superskills`
 - `ericgandrade/claude-superskills` → `ericgandrade/design-superskills`
+- `~/.claude-superskills/` → `~/.design-superskills/`
 - Skill count → `9 skills`
 
 ### 4.5 — Atualizar .claude-plugin/plugin.json
@@ -816,6 +868,23 @@ grep "claude-superskills\|cli-ai-skills" .github/workflows/publish-npm.yml  # de
 
 ```bash
 cd cli-installer && npm install && cd ..
+```
+
+Verificar bundles:
+```bash
+node -e "
+const b = require('./bundles.json');
+const skills = require('fs').readdirSync('./skills');
+Object.entries(b.bundles).forEach(([name, bundle]) => {
+  bundle.skills.forEach(s => {
+    if (!skills.includes(s)) console.error('MISSING in bundle', name, ':', s);
+  });
+});
+console.log('bundles ok');
+"
+```
+
+```bash
 git init
 git add .
 git commit -m "feat: initial release v1.0.0 — 9 design/UI skills carved out from claude-superskills"
@@ -1257,6 +1326,17 @@ gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility  
 ---
 
 ## Task 6: Limpar claude-superskills e bumpar para v2.0.0
+
+> ⛔ **PRÉ-REQUISITO:** Tasks 1–5 devem estar 100% completas e todos os pacotes npm visíveis no registry antes de iniciar esta task.
+> Verificar:
+> ```bash
+> npm view obsidian-superskills version   # → 1.0.0
+> npm view career-superskills version     # → 1.0.0
+> npm view product-superskills version    # → 1.0.0
+> npm view design-superskills version     # → 1.0.0
+> gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility  # → PRIVATE
+> ```
+> Só prosseguir após todos os 5 checks passarem.
 
 ### 6.1 — Deletar skills removidos
 
