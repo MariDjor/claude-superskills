@@ -32,6 +32,26 @@ const os = require('os');
 
 const packageJson = require('../package.json');
 const VERSION = packageJson.version;
+const semver = require('semver');
+
+const MIGRATION_PACKAGES = [
+  { name: 'obsidian-superskills', count: 6,  label: 'Obsidian knowledge management',       cmd: 'npx obsidian-superskills' },
+  { name: 'career-superskills',   count: 20, label: 'Job search & career development',      cmd: 'npx career-superskills' },
+  { name: 'product-superskills',  count: 8,  label: 'Product management & GTM strategy',    cmd: 'npx product-superskills' },
+  { name: 'design-superskills',   count: 9,  label: 'UI/UX design, brand & diagrams',       cmd: 'npx design-superskills' },
+  { name: 'avanade-superskills',  count: 3,  label: 'Avanade-branded content (private)',    cmd: 'git clone https://github.com/ericgandrade/avanade-superskills' },
+];
+
+function printMigrationWarning() {
+  if (semver.major(VERSION) < 2) return;
+  console.log(chalk.yellow.bold('⚠️  v2.0 Migration Notice'));
+  console.log(chalk.yellow('46 skills were moved to focused packages. Install what you need:\n'));
+  for (const pkg of MIGRATION_PACKAGES) {
+    console.log(`  ${chalk.white.bold(pkg.name)} ${chalk.dim(`(${pkg.count} skills — ${pkg.label})`)}`);
+    console.log(`  ${chalk.cyan(pkg.cmd)}\n`);
+  }
+  console.log(chalk.dim('claude-superskills now contains 17 core skills: orchestration, planning, research & content.\n'));
+}
 
 const commandAliases = {
   i: 'install',
@@ -599,6 +619,8 @@ async function main() {
   setupCleanupHandler();
 
   console.log(chalk.cyan.bold(`\n🚀 claude-superskills v${VERSION} - Multi-Platform Installer\n`));
+
+  printMigrationWarning();
 
   if (args.includes('--help') || args.includes('-h')) {
     showHelp();
