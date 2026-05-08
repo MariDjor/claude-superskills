@@ -273,7 +273,17 @@ Substituir com conteúdo inicial:
 
 ### 1.13 — Atualizar .github/workflows/publish-npm.yml
 
-Substituir `claude-superskills` por `obsidian-superskills`. Remover o step `Deprecate old cli-ai-skills package` (não aplicável).
+```bash
+sed -i '' 's/claude-superskills/obsidian-superskills/g' .github/workflows/publish-npm.yml
+```
+
+Remover manualmente o step `Deprecate old cli-ai-skills package` (não aplicável).
+
+Verificar que não sobrou nenhuma referência:
+```bash
+grep "claude-superskills\|cli-ai-skills" .github/workflows/publish-npm.yml
+# deve retornar vazio
+```
 
 ### 1.14 — Atualizar docs/
 
@@ -468,6 +478,13 @@ Mesmas substituições que Task 1.9–1.14, com:
 - Skill count: `20 skills`
 - Título: `# 💼 Career Superskills v1.0.0`
 
+Incluindo o step 1.13 para o workflow:
+```bash
+sed -i '' 's/claude-superskills/career-superskills/g' .github/workflows/publish-npm.yml
+# Remover step "Deprecate old cli-ai-skills package"
+grep "claude-superskills\|cli-ai-skills" .github/workflows/publish-npm.yml  # deve retornar vazio
+```
+
 ### 2.9 — Reinstalar dependências e publicar
 
 ```bash
@@ -625,6 +642,13 @@ Busca-e-substituição:
 - Título README: `# 📦 Product Superskills v1.0.0`
 - CHANGELOG: `## [1.0.0] - 2026-05-08 — Initial release, 8 product skills carved out from claude-superskills v1.25.0`
 
+Workflow:
+```bash
+sed -i '' 's/claude-superskills/product-superskills/g' .github/workflows/publish-npm.yml
+# Remover step "Deprecate old cli-ai-skills package"
+grep "claude-superskills\|cli-ai-skills" .github/workflows/publish-npm.yml  # deve retornar vazio
+```
+
 ### 3.9 — Reinstalar dependências e publicar
 
 ```bash
@@ -780,6 +804,13 @@ Busca-e-substituição:
 - Skill count: `9 skills`
 - Título README: `# 🎨 Design Superskills v1.0.0`
 - CHANGELOG: `## [1.0.0] - 2026-05-08 — Initial release, 9 design skills carved out from claude-superskills v1.25.0`
+
+Workflow:
+```bash
+sed -i '' 's/claude-superskills/design-superskills/g' .github/workflows/publish-npm.yml
+# Remover step "Deprecate old cli-ai-skills package"
+grep "claude-superskills\|cli-ai-skills" .github/workflows/publish-npm.yml  # deve retornar vazio
+```
 
 ### 4.9 — Reinstalar dependências e publicar
 
