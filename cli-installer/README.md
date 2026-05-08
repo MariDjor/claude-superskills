@@ -1,10 +1,10 @@
-# claude-superskills v1.22.0
+# claude-superskills v2.0.0
 
-Universal installer for the `claude-superskills` library. Install 64 reusable AI skills across GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI from one command.
+Universal installer for the `claude-superskills` library. Install 18 focused AI skills across GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI from one command.
 
 If Claude Desktop is detected, the installer can also generate a Claude Cowork plugin zip for manual upload.
 
-![Version](https://img.shields.io/badge/version-1.22.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Node](https://img.shields.io/badge/node-%3E%3D14.0.0-green.svg)
 
@@ -80,12 +80,10 @@ Support status:
 - `essential` - Core workflow skills for discovery, orchestration, planning, and prompt optimization
 - `planning` - Pre-implementation design and structured execution
 - `research` - Deep research and resource discovery
-- `content` - YouTube, audio, document conversion, CloudConvert, and storytelling workflows
-- `product` - Product strategy, discovery, architecture, delivery, leadership, and AI-native product work
-- `career` - Resume, job search, interview, negotiation, and portfolio workflows
-- `developer` - Skill creation workflows
+- `content` - YouTube, audio, document conversion, and storytelling workflows
+- `research` - Deep research, solution architecture, and program discovery
 - `orchestration` - Resource discovery and planning
-- `all` - All 64 available skills
+- `all` - All 18 available skills
 
 ```bash
 npx claude-superskills --list-bundles
@@ -115,6 +113,6 @@ npx claude-superskills doctor
 ## Notes
 
 - The installer downloads skills from GitHub and caches them locally before copying them into platform directories.
-- The installer compares installed skill versions with `v1.21.7` and recommends updates automatically.
+- The installer compares installed skill versions with `v2.0.0` and recommends updates automatically.
 - Skills are authored in the repository `skills/` directory only; platform directories are installation targets, not source directories.
 - Claude Cowork updates are manual by design: generate the zip, remove the previous `claude-superskills` plugin in Cowork, then upload the new zip.
