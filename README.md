@@ -1,10 +1,10 @@
-# 🤖 Claude Superskills v1.25.0
+# 🤖 Claude Superskills v1.25.1
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
-![Version](https://img.shields.io/badge/version-1.25.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.25.1-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
-![Skills](https://img.shields.io/badge/skills-64-brightgreen.svg)
+![Skills](https://img.shields.io/badge/skills-65-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platforms-8-orange.svg)
 
 ## 🚀 Quick Install
@@ -232,6 +232,7 @@ Important:
 | **brainstorming** | v2.0.0 | Mandatory pre-implementation design clarification workflow |
 | **writing-plans** | v2.0.0 | Build detailed, actionable implementation plans before coding |
 | **executing-plans** | v2.0.0 | Execute plans in batches with checkpoints and review gates |
+| **grill-me** | v1.0.0 | Relentless Socratic interview to stress-test any plan or design |
 | **mckinsey-strategist** | v2.1.0 | Senior strategy consulting with SWOT, VRIO, 7S and First Principles analysis |
 
 ### 🏛️ Software Architecture

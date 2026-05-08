@@ -40,19 +40,6 @@ Parameters to infer or confirm:
 5. **Speaker notes** — default Yes (translate alongside slides)
 6. **Output filename** — resolved interactively in Step 1.5 (after this confirmation box); default is `{stem}_{target_lang_code}.pptx`
 
-Before the confirmation box, display the Economy Mode hint once:
-
-```
-╔══════════════════════════════════════════════════════════════╗
-║  💡 Economy Mode — run with a cheaper model to save tokens:  ║
-║  Gemini CLI:  gemini --model gemini-2.0-flash "..."          ║
-║  Codex CLI:   codex --model gpt-4o-mini "..."                ║
-║  OpenCode:    set model: gpt-4o-mini in .agent/config.yaml   ║
-║  Claude Code: SlideTranslator agents use Haiku automatically ║
-║  Cursor/Copilot/AdaL: select a cheaper model in the UI/config║
-╚══════════════════════════════════════════════════════════════╝
-```
-
 ```
 ╔══════════════════════════════════════════════════════════════╗
 ║  PPTX TRANSLATOR — Configuration                            ║
@@ -183,10 +170,17 @@ def extract_text(pptx_path):
             notes_tf = slide.notes_slide.notes_text_frame
             notes_text = notes_tf.text.strip() if notes_tf else ""
 
+        # SmartArt detection — flag slides with embedded diagrams
+        smartart_found = []
+        for shape in slide.shapes:
+            if shape.shape_type is None:  # graphicFrame (SmartArt/Chart)
+                smartart_found.append(shape.name)
+
         manifest.append({
             "slide_num": slide_num,
             "text_blocks": text_blocks,
-            "notes": notes_text
+            "notes": notes_text,
+            "smartart_shapes": smartart_found  # non-empty = has SmartArt
         })
 
     return manifest
@@ -196,6 +190,70 @@ print(json.dumps(manifest, ensure_ascii=False, indent=2))
 ```
 
 Save manifest to `/tmp/pptx_manifest_{timestamp}.json`. **Serialize with `json.dumps(..., ensure_ascii=False)` — no `indent` parameter** to minimize payload size sent to sub-agents.
+
+After extraction, report SmartArt slides and translate their content via zip:
+
+```python
+import zipfile, os, json
+from lxml import etree
+
+smartart_slides = [s for s in manifest if s.get("smartart_shapes")]
+if smartart_slides:
+    print(f"\n⚠️  {len(smartart_slides)} slide(s) contain SmartArt — text stored in separate XML files:")
+    for s in smartart_slides:
+        print(f"   Slide {s['slide_num']}: {s['smartart_shapes']}")
+    print("   SmartArt text will be translated via direct XML editing after write-back.")
+
+    DRAWING_NS = 'http://schemas.openxmlformats.org/drawingml/2006/main'
+
+    with zipfile.ZipFile(output_path, 'r') as zin:
+        diagram_files = [f for f in zin.namelist()
+                         if f.startswith('ppt/diagrams/data') and f.endswith('.xml')]
+        file_roots = {}
+        smartart_items = []
+        for df in diagram_files:
+            root = etree.fromstring(zin.read(df))
+            file_roots[df] = root
+            for i, t in enumerate(root.findall(f'.//{{{DRAWING_NS}}}t')):
+                if t.text and t.text.strip():
+                    smartart_items.append({"file": df, "node_idx": i, "text": t.text})
+
+    if smartart_items:
+        smartart_input = json.dumps(
+            [{"i": idx, "t": item["text"]} for idx, item in enumerate(smartart_items)],
+            ensure_ascii=False
+        )
+        with open("/tmp/smartart_input.json", "w") as f:
+            f.write(smartart_input)
+        print(f"   {len(smartart_items)} SmartArt text nodes — launching SmartArtTranslator agent…")
+
+        # Launch SmartArtTranslator sub-agent (same prompt pattern as SlideTranslator):
+        # Input: /tmp/smartart_input.json — list of {"i": idx, "t": "source text"}
+        # Output: /tmp/smartart_output.json — list of {"i": idx, "t": "translated text"}
+        # Apply same STRICT RULES (preserve proper nouns, whitespace, completeness)
+
+        with open("/tmp/smartart_output.json") as f:
+            smartart_translations = {item["i"]: item["t"] for item in json.load(f)}
+
+        for df, root in file_roots.items():
+            nodes = root.findall(f'.//{{{DRAWING_NS}}}t')
+            for idx, item in enumerate(smartart_items):
+                if item["file"] == df and idx in smartart_translations:
+                    nodes[item["node_idx"]].text = smartart_translations[idx]
+
+        tmp_smartart = output_path + ".sa.tmp"
+        with zipfile.ZipFile(output_path, 'r') as zin:
+            with zipfile.ZipFile(tmp_smartart, 'w', zipfile.ZIP_DEFLATED) as zout:
+                for zi in zin.infolist():
+                    if zi.filename in file_roots:
+                        data = etree.tostring(file_roots[zi.filename],
+                                              xml_declaration=True, encoding='UTF-8', standalone=True)
+                    else:
+                        data = zin.read(zi.filename)
+                    zout.writestr(zi, data)
+        os.replace(tmp_smartart, output_path)
+        print(f"   ✅ SmartArt translations applied to {len(diagram_files)} diagram file(s)")
+```
 
 ### After Extraction: AI-Powered Language Classification
 
@@ -323,8 +381,8 @@ Each agent in a batch:
 
 Each sub-agent must be launched with the identity **SlideTranslator**:
 
-- **Claude Code (Agent tool):** set `description="SlideTranslator — slides X-Y/TOTAL"` and `model="haiku"`. Translation is a mechanical JSON-in/JSON-out task — Haiku is fully capable and costs ~20x less than Sonnet per token.
-- **All other platforms:** the agent prompt begins with `# SlideTranslator` so the identity is visible in platform logs. Model is inherited from the session — see the Economy Mode hint shown in Step 1.
+- **Claude Code (Agent tool):** set `description="SlideTranslator — slides X-Y/TOTAL"` and `model="sonnet"`. Translation quality matters — Sonnet handles complex, legal, and technical content reliably. Do NOT use Haiku; it produces partial translations on dense or legal text.
+- **All other platforms:** the agent prompt begins with `# SlideTranslator` so the identity is visible in platform logs. Use the best available model in the session for quality output.
 
 ### Sub-Agent Prompt
 
@@ -337,6 +395,9 @@ STRICT RULES:
 - Preserve the meaning and tone of the original
 - NEVER translate: proper nouns, personal names (people's names), company names, brand names, product names, technology names, organizational acronyms, or code snippets
   Examples of what NOT to translate: "Accenture", "Microsoft", "Bradesco", "João Silva", "Azure", "BLT", "YTD", "KPI", "CCI"
+- ALWAYS translate generic role/concept words even if they look like titles: "Agente/Agentes" → "Agent/Agents", "Usuário" → "User", "Reunião" → "Meeting", etc.
+- PRESERVE any leading or trailing whitespace in each run exactly. If the original run is " text ", your translation must also start and end with a space. Spaces are part of the formatting.
+- COMPLETENESS CHECK: count the number of items in the input JSON. Your translated_blocks array MUST contain exactly the same number of items. If counts differ, you have missed blocks — find and translate them before saving.
 - Return JSON with the same structure as input (shape_id, parent_id, para_idx, run_idx preserved — these are required for write-back)
 - Translate speaker notes naturally, maintaining the presenter's voice
 
@@ -524,6 +585,46 @@ def write_translations(pptx_path, output_path, trans_dir):
     return runs_updated, cells_updated
 ```
 
+### Write-Back Post-Processing: Restore Edge Whitespace
+
+After saving, run a second pass to restore any leading/trailing spaces that agents may have stripped. Compare each translated run against the original:
+
+```python
+orig_prs = Presentation(pptx_path)
+trans_prs = Presentation(output_path)
+restored = 0
+
+orig_runs_map = {}
+for slide_idx, slide in enumerate(orig_prs.slides):
+    for shape, parent_id in iter_shapes(slide.shapes):
+        if shape.has_text_frame:
+            for para_idx, para in enumerate(shape.text_frame.paragraphs):
+                for run_idx, run in enumerate(para.runs):
+                    orig_runs_map[(slide_idx, shape.shape_id, parent_id, para_idx, run_idx)] = run.text
+
+for slide_idx, slide in enumerate(trans_prs.slides):
+    for shape, parent_id in iter_shapes(slide.shapes):
+        if shape.has_text_frame:
+            for para_idx, para in enumerate(shape.text_frame.paragraphs):
+                for run_idx, run in enumerate(para.runs):
+                    key = (slide_idx, shape.shape_id, parent_id, para_idx, run_idx)
+                    orig_text = orig_runs_map.get(key, '')
+                    trans_text = run.text
+                    if not orig_text or not trans_text:
+                        continue
+                    modified = trans_text
+                    if orig_text[0] == ' ' and trans_text[0] != ' ':
+                        modified = ' ' + modified
+                    if orig_text[-1] == ' ' and trans_text[-1] != ' ':
+                        modified = modified + ' '
+                    if modified != trans_text:
+                        run.text = modified
+                        restored += 1
+
+trans_prs.save(output_path)
+print(f"✅ Edge whitespace restored: {restored} runs fixed")
+```
+
 **Formatting preservation rules:**
 - Only `run.text` is changed — font size, bold, italic, color, and hyperlinks are untouched
 - Table cell content: clear existing runs, add single new run with translated text
@@ -540,7 +641,15 @@ Run a **single Python script** that performs integrity check, cleanup, and print
 
 ```python
 from pptx import Presentation
-import glob, os
+from pptx.enum.shapes import MSO_SHAPE_TYPE
+import glob, os, re
+
+def iter_shapes_check(shapes, parent_id=None):
+    for shape in shapes:
+        if shape.shape_type == MSO_SHAPE_TYPE.GROUP:
+            yield from iter_shapes_check(shape.shapes, parent_id=shape.shape_id)
+        else:
+            yield shape, parent_id
 
 # Integrity check
 try:
@@ -550,18 +659,53 @@ except Exception as e:
     integrity_ok = False
     print(f"⚠️  Integrity check failed: {e}")
 
+# Quality check — detect slides with residual source-language content
+# Uses unambiguous source-language words unlikely to appear in target language
+SOURCE_LANG_MARKERS = re.compile(
+    r'\b(não|são|também|já|após|antes|pela|pelo|nosso|nossa|nossos|nossas'
+    r'|temos|têm|será|serão|tinha|tinham|foram|deve|devem|pode|podem'
+    r'|cliente|empresa|serviços|solução|equipe|reunião|processo|gestão'
+    r'|fábrica|ágil|implementação|desenvolvimento|entrega|todos|todas'
+    r'|quando|porque|assim|muito|entre|cada)\b',
+    re.IGNORECASE
+)
+residual_slides = []
+if integrity_ok:
+    for slide_num, slide in enumerate(prs_check.slides, start=1):
+        texts = []
+        for shape, _ in iter_shapes_check(slide.shapes):
+            if shape.has_text_frame:
+                for para in shape.text_frame.paragraphs:
+                    for run in para.runs:
+                        if run.text.strip():
+                            texts.append(run.text)
+            if shape.has_table:
+                for row in shape.table.rows:
+                    for cell in row.cells:
+                        if cell.text.strip():
+                            texts.append(cell.text)
+        combined = ' '.join(texts)
+        matches = SOURCE_LANG_MARKERS.findall(combined)
+        total_words = len(combined.split())
+        if total_words > 0 and len(matches) >= 2 and len(matches) / total_words > 0.04:
+            residual_slides.append(slide_num)
+
+quality_ok = len(residual_slides) == 0
+
 # Cleanup all temp files
 for f in (glob.glob("/tmp/pptx_manifest_*.json") +
           glob.glob("/tmp/trans_slide_*.json") +
-          glob.glob("/tmp/pptx_classify_*.json")):
+          glob.glob("/tmp/pptx_classify_*.json") +
+          glob.glob("/tmp/smartart_*.json")):
     os.remove(f)
 
 # Final summary
+residual_note = f"None ✅" if quality_ok else f"{len(residual_slides)} slides ⚠️  → {residual_slides[:10]}"
 print(f"""
 [████████████████████] 100% — Done!
 
 ╔══════════════════════════════════════════════════════════════╗
-║  TRANSLATION COMPLETE {'✅' if integrity_ok else '⚠️ CHECK FILE'}
+║  TRANSLATION COMPLETE {'✅' if integrity_ok and quality_ok else '⚠️ REVIEW NEEDED'}
 ╠══════════════════════════════════════════════════════════════╣
 ║  Original file:      {pptx_path}
 ║  Translated file:    {output_path}
@@ -570,8 +714,15 @@ print(f"""
 ║  Table cells:        {cells_updated}
 ║  Language pair:      {source_lang} → {target_lang}
 ║  File integrity:     {'OK' if integrity_ok else 'FAILED — check file manually'}
+║  Residual source:    {residual_note}
 ╚══════════════════════════════════════════════════════════════╝
 """)
+
+if residual_slides:
+    print(f"⚠️  {len(residual_slides)} slide(s) may still contain source-language text.")
+    print(f"   Slides: {residual_slides}")
+    print(f"   Recommendation: open the file and verify these slides manually.")
+```
 
 ## Error Handling
 
@@ -593,7 +744,7 @@ print(f"""
 - ALWAYS use recursive `iter_shapes()` for both extraction AND write-back — never `slide.shapes` directly
 - ALWAYS key the write-back lookup by `(parent_id, shape_id, ...)` — never by `shape_id` alone
 - ALWAYS use batched parallel: group slides into batches of 3, launch each batch as 3 simultaneous agents, wait for completion, then launch next batch — NEVER launch all slides at once (exhausts platform turn budgets) and NEVER process one slide at a time (too slow)
-- ALWAYS launch SlideTranslator agents with `model="haiku"` on Claude Code — translation is mechanical (JSON-in/JSON-out) and does not require a frontier model; keep the SlideClassifier on the default session model
+- ALWAYS launch SlideTranslator agents with `model="sonnet"` on Claude Code — quality is critical; Haiku produces partial translations on dense, legal, or technical content and must NOT be used
 - ALWAYS serialize JSON payloads without indentation (`json.dumps(..., ensure_ascii=False)`) — minified JSON reduces input tokens by ~30% on large presentations
 - NEVER create pass-through translations for slides already in the target language — skip them entirely
 - NEVER use regex patterns or `langdetect` to decide which slides to translate — use the AI classifier sub-agent; regex lists are always incomplete and `langdetect` misclassifies short or mixed-language text

@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [1.25.1] - 2026-05-08
+
+### Added
+- **grill-me skill v1.0.0**: Relentless Socratic interview to stress-test any plan or design. Walks down every branch of the decision tree one question at a time, provides a recommended answer per question, and resolves decisions with dependencies. Explores the codebase instead of asking when answers are available there. Added to the `planning` bundle.
+
+
+
 ## [1.25.0] - 2026-04-30
 
 ### Added

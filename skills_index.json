@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated": "2026-04-03T14:55:13.345896Z",
+  "generated": "2026-05-08T07:21:36.015993Z",
   "skills": [
     {
       "name": "abx-strategy",
@@ -162,6 +162,84 @@
       "triggers": []
     },
     {
+      "name": "ava-pptx",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs to create a PowerPoint presentation, deck, slides, or pitch following official Ava brand guidelines. Trigger for \"create a deck\", \"make slides\", \"build a presentation\", \"prepare a pitch\", \"present to client\", \"quarterly deck\", or any request to generate .pptx files. This skill knows the exact colors, fonts, layouts, wave decorations, and logo placement from the Ava Standard PowerPoint template and produces client-ready, on-brand output.",
+      "category": "Content",
+      "tags": [
+        "pptx",
+        "powerpoint",
+        "presentation",
+        "branding",
+        "slides",
+        "deck"
+      ],
+      "risk": "low",
+      "platforms": [
+        "Claude Code",
+        "GitHub Copilot",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI",
+        "Cursor"
+      ],
+      "triggers": []
+    },
+    {
+      "name": "ava-web",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs to create a website, landing page, web component, or web UI following Ava brand guidelines. Trigger for \"create a landing page\", \"build a website\", \"design a hero section\", \"Avanade-branded website\", \"create a React component in Avanade style\", or any request to generate HTML/CSS/React/Next.js code with Ava visual identity.",
+      "category": "design",
+      "tags": [
+        "ui",
+        "web",
+        "avanade",
+        "branding",
+        "tailwind",
+        "react",
+        "nextjs",
+        "landing-page"
+      ],
+      "risk": "safe",
+      "platforms": [
+        "All (GitHub Copilot CLI",
+        "Claude Code",
+        "Codex",
+        "Gemini CLI",
+        "OpenCode",
+        "Cursor",
+        "AdaL",
+        "Antigravity)"
+      ],
+      "triggers": []
+    },
+    {
+      "name": "banner-design",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs to design banners in any of 22 styles (minimalist, gradient, bold typography, glassmorphism, neon, retro, geometric, etc.) for social media, advertising, website heroes, or print across Facebook, Twitter/X, LinkedIn, YouTube, Instagram, and Google Display.",
+      "category": "design",
+      "tags": [
+        "banner",
+        "ads",
+        "social-media",
+        "svg",
+        "print",
+        "gemini-ai"
+      ],
+      "risk": "safe",
+      "platforms": [
+        "All (GitHub Copilot",
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI",
+        "Antigravity",
+        "Cursor",
+        "AdaL)"
+      ],
+      "triggers": []
+    },
+    {
       "name": "brainstorming",
       "version": "2.0.0",
       "description": "This skill should be used when the user needs pre-implementation ideation for creative work, such as creating features, building components, adding functionality, or modifying behavior.",
@@ -182,6 +260,31 @@
         "Antigravity",
         "Cursor IDE",
         "AdaL CLI"
+      ],
+      "triggers": []
+    },
+    {
+      "name": "brand",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs brand identity guidance including brand voice definition, visual identity standards, messaging frameworks, asset management, brand consistency reviews, style guides, color palette management, and typography specifications.",
+      "category": "design",
+      "tags": [
+        "brand",
+        "voice",
+        "identity",
+        "messaging",
+        "style-guide"
+      ],
+      "risk": "safe",
+      "platforms": [
+        "All (GitHub Copilot",
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI",
+        "Antigravity",
+        "Cursor",
+        "AdaL)"
       ],
       "triggers": []
     },
@@ -209,6 +312,16 @@
         "Cursor IDE",
         "AdaL CLI"
       ],
+      "triggers": []
+    },
+    {
+      "name": "code-method",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user wants an overview of the CODE Method (Context Oriented Development for Enterprises) \u2014 a structured SDLC framework with 9 specialized agents and 8 workflow phases covering discovery, planning, architecture, UX, stories, sprint management, implementation, and code review. Use when unsure which CODE Method skill to invoke, or when setting up the methodology on a new project.",
+      "category": "general",
+      "tags": [],
+      "risk": "safe",
+      "platforms": [],
       "triggers": []
     },
     {
@@ -291,6 +404,57 @@
       "triggers": []
     },
     {
+      "name": "design",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs comprehensive design assistance including brand identity, design tokens, UI styling, logo generation (55 styles, Gemini AI), corporate identity programs (50 deliverables), HTML presentations, banner design (22 styles), icon design (15 styles, SVG), and social photo generation across major platforms.",
+      "category": "design",
+      "tags": [
+        "logo",
+        "branding",
+        "identity",
+        "banner",
+        "icon",
+        "social-media"
+      ],
+      "risk": "safe",
+      "platforms": [
+        "All (GitHub Copilot",
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI",
+        "Antigravity",
+        "Cursor",
+        "AdaL)"
+      ],
+      "triggers": []
+    },
+    {
+      "name": "design-system",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs to create, maintain, or migrate a design system including three-layer token architecture (primitive, semantic, component), CSS variables, spacing and typography scales, component specifications, and brand-compliant presentation slides.",
+      "category": "design",
+      "tags": [
+        "tokens",
+        "components",
+        "theming",
+        "css-variables",
+        "typography"
+      ],
+      "risk": "safe",
+      "platforms": [
+        "All (GitHub Copilot",
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI",
+        "Antigravity",
+        "Cursor",
+        "AdaL)"
+      ],
+      "triggers": []
+    },
+    {
       "name": "docling-converter",
       "version": "2.1.0",
       "description": "This skill should be used when the user needs to convert documents (PDF, DOCX, PPTX, XLSX, HTML, images) into structured Markdown or JSON using Docling. Also use when the user wants to convert a PowerPoint presentation (.pptx) to Markdown.",
@@ -360,9 +524,7 @@
       ],
       "risk": "Low",
       "platforms": [
-        "Claude Code",
-        "GitHub Copilot",
-        "All AI CLI tools"
+        "All 8"
       ],
       "triggers": []
     },
@@ -416,6 +578,24 @@
         "Antigravity",
         "Cursor IDE",
         "AdaL CLI"
+      ],
+      "triggers": []
+    },
+    {
+      "name": "grill-me",
+      "version": "1.0.0",
+      "description": "Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions \"grill me\".",
+      "category": "Planning",
+      "tags": [
+        "planning",
+        "stress-test",
+        "socratic",
+        "decision-tree",
+        "design-review"
+      ],
+      "risk": "Low",
+      "platforms": [
+        "All 8"
       ],
       "triggers": []
     },
@@ -539,9 +719,7 @@
       ],
       "risk": "Low",
       "platforms": [
-        "Claude Code",
-        "GitHub Copilot",
-        "All AI CLI tools"
+        "All 8"
       ],
       "triggers": []
     },
@@ -560,9 +738,7 @@
       ],
       "risk": "Medium (file system operations)",
       "platforms": [
-        "Claude Code",
-        "GitHub Copilot",
-        "All AI CLI tools"
+        "All 8"
       ],
       "triggers": []
     },
@@ -580,9 +756,7 @@
       ],
       "risk": "Low",
       "platforms": [
-        "Claude Code",
-        "GitHub Copilot",
-        "All AI CLI tools"
+        "All 8"
       ],
       "triggers": []
     },
@@ -601,9 +775,7 @@
       ],
       "risk": "Low",
       "platforms": [
-        "Claude Code",
-        "GitHub Copilot",
-        "All AI CLI tools"
+        "All 8"
       ],
       "triggers": []
     },
@@ -621,9 +793,7 @@
       ],
       "risk": "Low",
       "platforms": [
-        "Claude Code",
-        "GitHub Copilot",
-        "All AI CLI tools"
+        "All 8"
       ],
       "triggers": []
     },
@@ -661,9 +831,7 @@
       ],
       "risk": "Low",
       "platforms": [
-        "Claude Code",
-        "GitHub Copilot",
-        "All AI CLI tools"
+        "All 8"
       ],
       "triggers": []
     },
@@ -911,7 +1079,7 @@
     {
       "name": "prompt-engineer",
       "version": "2.0.0",
-      "description": "This skill should be used when the user needs to transform raw prompts into optimized prompts using frameworks (RTF, RISEN, Chain of Thought, RODES, Chain of Density, RACE, RISE, STAR, SOAP, CLEAR, GROW). Use when the user provides vague prompts, needs help articulating complex ideas, or wants to improve the effectiveness of AI interactions.",
+      "description": "Use this skill when the user explicitly asks to create, write, improve, or optimize a prompt for use with an AI. Trigger on phrases like \"write me a prompt\", \"improve this prompt\", \"create a system prompt\", \"how do I ask ChatGPT/Claude to...\", or \"quero um prompt para...\". Do NOT trigger for direct task requests where the user wants the output, not the prompt.",
       "category": "automation",
       "tags": [
         "prompt-engineering",
@@ -1216,6 +1384,31 @@
       "triggers": []
     },
     {
+      "name": "slides",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs to create strategic HTML presentations with Chart.js data visualizations, design tokens, responsive layouts, copywriting formulas, and contextual slide strategies for pitches, reports, or educational content.",
+      "category": "content",
+      "tags": [
+        "slides",
+        "presentation",
+        "html",
+        "chart.js",
+        "copywriting"
+      ],
+      "risk": "safe",
+      "platforms": [
+        "All (GitHub Copilot",
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI",
+        "Antigravity",
+        "Cursor",
+        "AdaL)"
+      ],
+      "triggers": []
+    },
+    {
       "name": "startup-growth-strategist",
       "version": "2.0.0",
       "description": "This skill should be used when the user needs to validate a business idea, calculate market size (TAM/SAM/SOM), project financial growth, or design a Go-To-Market strategy. Use when combining market sizing, unit economics, competitive analysis, and growth psychology into a unified startup strategy.",
@@ -1290,6 +1483,57 @@
         "Antigravity",
         "Cursor IDE",
         "AdaL CLI"
+      ],
+      "triggers": []
+    },
+    {
+      "name": "ui-styling",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs UI styling guidance including shadcn/ui components, Tailwind CSS utility-first styling, responsive layouts, accessible components, dark mode implementation, canvas-based visual designs, or consistent styling patterns across web and mobile applications.",
+      "category": "design",
+      "tags": [
+        "css",
+        "tailwind",
+        "shadcn",
+        "styling",
+        "responsive",
+        "dark-mode"
+      ],
+      "risk": "safe",
+      "platforms": [
+        "All (GitHub Copilot",
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI",
+        "Antigravity",
+        "Cursor",
+        "AdaL)"
+      ],
+      "triggers": []
+    },
+    {
+      "name": "ui-ux-pro-max",
+      "version": "1.0.0",
+      "description": "This skill should be used when the user needs comprehensive UI/UX design intelligence for web and mobile projects, including 50+ styles, 161 color palettes, 57 font pairings, UX guidelines, and stack-specific best practices across React, Next.js, Vue, Svelte, Angular, Astro, Flutter, SwiftUI, React Native, and HTML/Tailwind.",
+      "category": "design",
+      "tags": [
+        "ui-ux",
+        "design-system",
+        "web",
+        "mobile",
+        "color-palettes"
+      ],
+      "risk": "safe",
+      "platforms": [
+        "All (GitHub Copilot",
+        "Claude Code",
+        "Codex",
+        "OpenCode",
+        "Gemini CLI",
+        "Antigravity",
+        "Cursor",
+        "AdaL)"
       ],
       "triggers": []
     },

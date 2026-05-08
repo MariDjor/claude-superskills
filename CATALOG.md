@@ -1,7 +1,7 @@
 # 📚 Claude Superskills Catalog
 
-**Generated:** 2026-04-03T14:55:13.565225Z  
-**Total Skills:** 55  
+**Generated:** 2026-05-08T07:21:36.223636Z  
+**Total Skills:** 66  
 **Platforms:** GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, AdaL CLI
 
 ---
@@ -16,27 +16,35 @@
 | **agent-skill-orchestrator** | 2.1.0 | orchestration | orchestration, planning, strategy | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **ai-native-product** | 2.0.0 | product | ai-native, product, llm | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **audio-transcriber** | 2.1.0 | content | audio, transcription, whisper | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
+| **ava-pptx** | 1.0.0 | Content | pptx, powerpoint, presentation | low | Claude Code GitHub Copilot Codex OpenCode Gemini CLI Cursor |
+| **ava-web** | 1.0.0 | design | ui, web, avanade | safe | All (GitHub Copilot CLI Claude Code Codex Gemini CLI OpenCode Cursor AdaL Antigravity) |
+| **banner-design** | 1.0.0 | design | banner, ads, social-media | safe | All (GitHub Copilot Claude Code Codex OpenCode Gemini CLI Antigravity Cursor AdaL) |
 | **brainstorming** | 2.0.0 | planning | brainstorming, design, requirements | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
+| **brand** | 1.0.0 | design | brand, voice, identity | safe | All (GitHub Copilot Claude Code Codex OpenCode Gemini CLI Antigravity Cursor AdaL) |
 | **career-changer-translator** | 2.1.0 | career | career-change, transferable-skills, career-pivot | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
+| **code-method** | 1.0.0 | general | N/A | safe |  |
 | **cover-letter-generator** | 2.1.0 | career | cover-letter, job-application, resume | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **creative-portfolio-resume** | 2.1.0 | career | resume, creative, portfolio | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **deep-research** | 2.1.0 | research | research, search, analysis | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
+| **design** | 1.0.0 | design | logo, branding, identity | safe | All (GitHub Copilot Claude Code Codex OpenCode Gemini CLI Antigravity Cursor AdaL) |
+| **design-system** | 1.0.0 | design | tokens, components, theming | safe | All (GitHub Copilot Claude Code Codex OpenCode Gemini CLI Antigravity Cursor AdaL) |
 | **docling-converter** | 2.1.0 | content | document-conversion, markdown, json | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **document-converter** | 1.0.0 | content | document-conversion, pdf, office | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
-| **excalidraw-diagram** | 1.0.0 | Content / Visualization | excalidraw, diagram, whiteboard | Low | Claude Code GitHub Copilot All AI CLI tools |
+| **excalidraw-diagram** | 1.0.0 | Content / Visualization | excalidraw, diagram, whiteboard | Low | All 8 |
 | **executing-plans** | 2.0.0 | planning | planning, execution, checkpoints | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **executive-resume-writer** | 2.1.0 | career | executive-resume, c-suite, vp | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
+| **grill-me** | 1.0.0 | Planning | planning, stress-test, socratic | Low | All 8 |
 | **interview-prep-generator** | 2.1.0 | career | interview, star-stories, interview-prep | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **job-description-analyzer** | 2.1.0 | career | job-description, ats, keyword-extraction | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **linkedin-profile-optimizer** | 2.1.0 | career | linkedin, profile, recruiter | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **mckinsey-strategist** | 2.1.0 | strategy | consulting, strategy, mece | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
-| **mermaid-diagram** | 1.0.0 | Content / Visualization | mermaid, diagram, flowchart | Low | Claude Code GitHub Copilot All AI CLI tools |
-| **obsidian-automation** | 1.0.0 | Tools Needed | obsidian, automation, cli | Medium (file system operations) | Claude Code GitHub Copilot All AI CLI tools |
-| **obsidian-canvas** | 1.0.0 | Obsidian / Knowledge Management | obsidian, canvas, visual-workspace | Low | Claude Code GitHub Copilot All AI CLI tools |
-| **obsidian-frontmatter** | 1.0.0 | Obsidian / Knowledge Management | obsidian, frontmatter, yaml | Low | Claude Code GitHub Copilot All AI CLI tools |
-| **obsidian-links** | 1.0.0 | Obsidian / Knowledge Management | obsidian, wikilinks, knowledge-graph | Low | Claude Code GitHub Copilot All AI CLI tools |
+| **mermaid-diagram** | 1.0.0 | Content / Visualization | mermaid, diagram, flowchart | Low | All 8 |
+| **obsidian-automation** | 1.0.0 | Tools Needed | obsidian, automation, cli | Medium (file system operations) | All 8 |
+| **obsidian-canvas** | 1.0.0 | Obsidian / Knowledge Management | obsidian, canvas, visual-workspace | Low | All 8 |
+| **obsidian-frontmatter** | 1.0.0 | Obsidian / Knowledge Management | obsidian, frontmatter, yaml | Low | All 8 |
+| **obsidian-links** | 1.0.0 | Obsidian / Knowledge Management | obsidian, wikilinks, knowledge-graph | Low | All 8 |
 | **obsidian-markdown** | 1.0.0 | Obsidian | obsidian, markdown, wikilinks | Low | All 8 |
-| **obsidian-note-builder** | 1.0.0 | Obsidian / Knowledge Management | obsidian, note-building, zettelkasten | Low | Claude Code GitHub Copilot All AI CLI tools |
+| **obsidian-note-builder** | 1.0.0 | Obsidian / Knowledge Management | obsidian, note-building, zettelkasten | Low | All 8 |
 | **offer-comparison-analyzer** | 2.1.0 | career | job-offer, compensation, equity | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **portfolio-case-study-writer** | 2.1.0 | career | portfolio, case-study, ux | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **pptx-translator** | 2.8.0 | content | translation, pptx, powerpoint | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
@@ -58,9 +66,12 @@
 | **salary-negotiation-prep** | 2.1.0 | career | salary-negotiation, compensation, counter-offer | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **senior-solution-architect** | 2.1.0 | architecture | architecture, c4-model, adr | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **skill-creator** | 2.1.0 | meta | automation, scaffolding, skill-creation | safe | All 8 platforms |
+| **slides** | 1.0.0 | content | slides, presentation, html | safe | All (GitHub Copilot Claude Code Codex OpenCode Gemini CLI Antigravity Cursor AdaL) |
 | **startup-growth-strategist** | 2.0.0 | strategy | startup, growth, marketing | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **storytelling-expert** | 2.0.0 | content | storytelling, narrative, presentations | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **tech-resume-optimizer** | 2.1.0 | career | resume, tech-resume, software-engineer | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
+| **ui-styling** | 1.0.0 | design | css, tailwind, shadcn | safe | All (GitHub Copilot Claude Code Codex OpenCode Gemini CLI Antigravity Cursor AdaL) |
+| **ui-ux-pro-max** | 1.0.0 | design | ui-ux, design-system, web | safe | All (GitHub Copilot Claude Code Codex OpenCode Gemini CLI Antigravity Cursor AdaL) |
 | **us-program-research** | 2.0.0 | research | us-programs, university-research, rankings | medium | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **webpage-reader** | 1.0.0 | Content | web, extraction, markdown | Low | All 8 |
 | **writing-plans** | 2.0.0 | planning | planning, implementation-plan, task-breakdown | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
@@ -71,6 +82,10 @@
 ## 🎯 Skills by Category
 
 ### Content
+
+- **ava-pptx** (v1.0.0)
+  - Description: This skill should be used when the user needs to create a PowerPoint presentation, deck, slides, or ...
+  - Tags: pptx, powerpoint, presentation, branding, slides, deck
 
 - **webpage-reader** (v1.0.0)
   - Description: This skill should be used when the user wants to read, fetch, extract, or analyze the content of a w...
@@ -110,6 +125,12 @@
   - Description: This skill should be used when the user wants to create a well-structured, richly linked Obsidian no...
   - Tags: obsidian, note-building, zettelkasten, knowledge-graph, entity-extraction
 
+### Planning
+
+- **grill-me** (v1.0.0)
+  - Description: Interview the user relentlessly about a plan or design until reaching shared understanding, resolvin...
+  - Tags: planning, stress-test, socratic, decision-tree, design-review
+
 ### Tools needed
 
 - **obsidian-automation** (v1.0.0)
@@ -125,7 +146,7 @@
 ### Automation
 
 - **prompt-engineer** (v2.0.0)
-  - Description: This skill should be used when the user needs to transform raw prompts into optimized prompts using ...
+  - Description: Use this skill when the user explicitly asks to create, write, improve, or optimize a prompt for use...
   - Tags: prompt-engineering, optimization, frameworks, ai-enhancement
 
 ### Career
@@ -228,6 +249,10 @@
   - Description: This skill should be used when the user needs to translate PowerPoint presentations (.pptx) between ...
   - Tags: translation, pptx, powerpoint, multilingual, presentation
 
+- **slides** (v1.0.0)
+  - Description: This skill should be used when the user needs to create strategic HTML presentations with Chart.js d...
+  - Tags: slides, presentation, html, chart.js, copywriting
+
 - **storytelling-expert** (v2.0.0)
   - Description: This skill should be used when the user needs to transform ideas, presentations, speeches, or data i...
   - Tags: storytelling, narrative, presentations, speeches, frameworks
@@ -236,11 +261,47 @@
   - Description: This skill should be used when the user needs to extract transcripts from YouTube videos and generat...
   - Tags: video, summarization, transcription, youtube, content-analysis
 
+### Design
+
+- **ava-web** (v1.0.0)
+  - Description: This skill should be used when the user needs to create a website, landing page, web component, or w...
+  - Tags: ui, web, avanade, branding, tailwind, react, nextjs, landing-page
+
+- **banner-design** (v1.0.0)
+  - Description: This skill should be used when the user needs to design banners in any of 22 styles (minimalist, gra...
+  - Tags: banner, ads, social-media, svg, print, gemini-ai
+
+- **brand** (v1.0.0)
+  - Description: This skill should be used when the user needs brand identity guidance including brand voice definiti...
+  - Tags: brand, voice, identity, messaging, style-guide
+
+- **design** (v1.0.0)
+  - Description: This skill should be used when the user needs comprehensive design assistance including brand identi...
+  - Tags: logo, branding, identity, banner, icon, social-media
+
+- **design-system** (v1.0.0)
+  - Description: This skill should be used when the user needs to create, maintain, or migrate a design system includ...
+  - Tags: tokens, components, theming, css-variables, typography
+
+- **ui-styling** (v1.0.0)
+  - Description: This skill should be used when the user needs UI styling guidance including shadcn/ui components, Ta...
+  - Tags: css, tailwind, shadcn, styling, responsive, dark-mode
+
+- **ui-ux-pro-max** (v1.0.0)
+  - Description: This skill should be used when the user needs comprehensive UI/UX design intelligence for web and mo...
+  - Tags: ui-ux, design-system, web, mobile, color-palettes
+
 ### Discovery
 
 - **agent-skill-discovery** (v2.1.0)
   - Description: This skill should be used when the user wants to see all installed plugins, agents, skills, and MCP ...
   - Tags: discovery, inventory, catalog, platform-agnostic, mcp
+
+### General
+
+- **code-method** (v1.0.0)
+  - Description: This skill should be used when the user wants an overview of the CODE Method (Context Oriented Devel...
+  - Tags: 
 
 ### Gtm
 

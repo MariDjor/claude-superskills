@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **claude-superskills** is a reusable AI skills library for **8 AI platforms**: GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI. Skills are Markdown-based workflow specifications (`SKILL.md`) that teach AI agents how to perform specific tasks.
 
-- **npm package**: `claude-superskills` (v1.25.0) — `npx claude-superskills` — **64 skills**
+- **npm package**: `claude-superskills` (v1.25.1) — `npx claude-superskills` — **64 skills**
 - **Claude Code plugin**: `claude --plugin-dir ./claude-superskills` — native plugin, no npm needed
 - **GitHub**: `https://github.com/ericgandrade/claude-superskills`
 - **Old package** `cli-ai-skills` is deprecated, redirects to this one
@@ -85,6 +85,7 @@ claude-superskills/
 │   ├── document-converter/
 │   ├── executing-plans/
 │   ├── executive-resume-writer/
+│   ├── grill-me/
 │   ├── interview-prep-generator/
 │   ├── job-description-analyzer/
 │   ├── linkedin-profile-optimizer/
@@ -508,7 +509,7 @@ Skills that interact with project structure should include a discovery phase tha
 
 ## Version Management
 
-The package version is defined in `cli-installer/package.json` (currently **v1.25.0**).
+The package version is defined in `cli-installer/package.json` (currently **v1.25.1**).
 `.claude-plugin/plugin.json` `"version"` must always match `package.json` exactly.
 
 - `cli-installer/package.json` — source of truth for npm version
@@ -623,7 +624,7 @@ OpenCode uses `~/.agent/skills/`. Antigravity uses `~/.gemini/antigravity/skills
 
 Curated skill collections:
 - **essential**: core workflow skills including `skill-creator`, `prompt-engineer`, discovery/orchestration, and planning trio
-- **planning**: `brainstorming`, `writing-plans`, `executing-plans`, `agent-skill-orchestrator`
+- **planning**: `brainstorming`, `writing-plans`, `executing-plans`, `grill-me`, `agent-skill-orchestrator`
 - **product**: comprehensive product management, strategic planning, and GTM frameworks
 - **research**: `deep-research`, `us-program-research`, `agent-skill-discovery`, `prompt-engineer`
 - **content**: `youtube-summarizer`, `audio-transcriber`, `docling-converter`, `pptx-translator`, `ava-pptx`, `ava-web`
@@ -646,7 +647,7 @@ Curated skill collections:
 - **Meta-skills** — Create or manage other skills (`skill-creator`)
 - **Automation** — Workflow optimization (`prompt-engineer`)
 - **Orchestration** — Resource discovery and task planning (`agent-skill-discovery`, `agent-skill-orchestrator`)
-- **Planning** — Pre-implementation design and execution (`brainstorming`, `writing-plans`, `executing-plans`)
+- **Planning** — Pre-implementation design and execution (`brainstorming`, `writing-plans`, `executing-plans`, `grill-me`)
 - **Product & Strategy** — Frameworks for product management, discovery, and GTM (`product-strategy`, `product-discovery`, `abx-strategy`, etc.)
 - **Research** — Deep research and academic analysis (`deep-research`, `us-program-research`)
 - **Content** — Media and document processing (`youtube-summarizer`, `audio-transcriber`, `docling-converter`, `document-converter`, `pptx-translator`, `ava-pptx`, `ava-web`, `webpage-reader`, `mermaid-diagram`, `excalidraw-diagram`)
