@@ -2,7 +2,7 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use executing-plans to implement this plan task-by-task.
 
-**Goal:** Carve out 29 skills from `claude-superskills` into 3 focused repos: `obsidian-superskills` (6 skills), `career-superskills` (20 skills), and `avanade-superskills` (3 skills, private). Delete 3 low-value skills. Bump `claude-superskills` to v2.0.0 with 33 skills remaining.
+**Goal:** Carve out 46 skills from `claude-superskills` into 5 focused repos: `obsidian-superskills` (6), `career-superskills` (20), `product-superskills` (8), `design-superskills` (9), and `avanade-superskills` (3, private). Delete 3 low-value skills. Bump `claude-superskills` to v2.0.0 with 17 skills remaining — a focused core of orchestration, planning, research, and content.
 
 **Architecture:** Each new repo is a full clone of the `claude-superskills` structure — complete with `cli-installer`, `scripts`, `docs`, `.github/workflows`, `.claude-plugin`, `CLAUDE.md`, `VERSIONING.md`, `CHANGELOG.md`, and `bundles.json`. The "copy everything, then adapt" strategy avoids missing files. The `avanade-superskills` repo is private, has no npm package, and uses a self-contained shell installer (`install.sh`) with full functionality: install for all 8 platforms, uninstall, update, and list.
 
@@ -18,7 +18,8 @@
 | `ai-native-product` | ❌ Delete | Overlap com `product-strategy` |
 | `docling-converter` | ❌ Delete | `document-converter` cobre o caso |
 | `storytelling-expert` | ✅ Fica em claude-superskills | Content/storytelling genérico |
-| `slides` | ✅ Fica em claude-superskills | HTML + Chart.js, não é Avanade-branded |
+| `slides` | → `design-superskills` | HTML + Chart.js — coeso com design/UI |
+| `mckinsey-strategist` | ✅ Fica em claude-superskills | Estratégia consultiva cross-domínio |
 
 ---
 
@@ -30,11 +31,25 @@
 ### career-superskills (20 skills) — novo repo público
 `academic-cv-builder`, `career-changer-translator`, `cover-letter-generator`, `creative-portfolio-resume`, `executive-resume-writer`, `interview-prep-generator`, `job-description-analyzer`, `linkedin-profile-optimizer`, `offer-comparison-analyzer`, `portfolio-case-study-writer`, `reference-list-builder`, `resume-ats-optimizer`, `resume-bullet-writer`, `resume-formatter`, `resume-quantifier`, `resume-section-builder`, `resume-tailor`, `resume-version-manager`, `salary-negotiation-prep`, `tech-resume-optimizer`
 
+### product-superskills (8 skills) — novo repo público
+`product-strategy`, `product-discovery`, `product-delivery`, `product-leadership`, `product-architecture`, `product-operating-model`, `abx-strategy`, `startup-growth-strategist`
+
+### design-superskills (9 skills) — novo repo público
+`ui-ux-pro-max`, `design`, `design-system`, `brand`, `ui-styling`, `slides`, `banner-design`, `excalidraw-diagram`, `mermaid-diagram`
+
 ### avanade-superskills (3 skills) — novo repo PRIVADO, sem npm
 `avanade-pptx`, `avanade-web`, `avanade-pdf` (novo skill — criado neste plano)
 
-### claude-superskills (33 skills) — bumpa para v2.0.0
-Todos os demais: meta, planejamento, produto, pesquisa, conteúdo, UI/UX.
+### claude-superskills (17 skills) — bumpa para v2.0.0
+Core focado: meta/orquestração, planejamento, pesquisa, conteúdo, e `mckinsey-strategist`.
+
+| Grupo | Skills |
+|-------|--------|
+| Meta/Orquestração | `skill-creator`, `agent-skill-discovery`, `agent-skill-orchestrator` |
+| Planejamento | `brainstorming`, `writing-plans`, `executing-plans`, `prompt-engineer` |
+| Pesquisa | `deep-research`, `us-program-research`, `senior-solution-architect`, `webpage-reader` |
+| Conteúdo/Mídia | `youtube-summarizer`, `audio-transcriber`, `pptx-translator`, `document-converter`, `storytelling-expert` |
+| Estratégia | `mckinsey-strategist` |
 
 ---
 
@@ -476,7 +491,311 @@ claude --plugin-dir ./career-superskills   # deve carregar 20 skills
 
 ---
 
-## Task 3: Criar avanade-superskills (privado, sem npm, com shell installer)
+## Task 3: Criar product-superskills
+
+Segue exatamente o mesmo padrão do Task 1 (obsidian) e Task 2 (career): clone completo, adaptar, npm, GitHub Actions.
+
+### 3.1 — Clonar estrutura base
+
+```bash
+cd ~/Library/CloudStorage/OneDrive-Avanade/14_Code_Projects
+cp -r claude-superskills product-superskills
+cd product-superskills
+rm -rf .git output/ proposta-media/ plugin-output/
+rm -rf .codex/ .opencode/ .adal/ .agent/ .cursor/ .gemini/
+rm -f .claude/settings.local.json .DS_Store
+rm -rf docs/plans/ docs/plan/
+```
+
+### 3.2 — Manter apenas os 8 skills de produto
+
+```bash
+rm -rf skills/
+mkdir skills
+for skill in \
+  product-strategy product-discovery product-delivery product-leadership \
+  product-architecture product-operating-model abx-strategy startup-growth-strategist; do
+  cp -r ../claude-superskills/skills/$skill skills/
+done
+```
+
+**Verificar:** `ls skills/ | wc -l` → 8
+
+### 3.3 — Atualizar cli-installer/package.json
+
+```json
+{
+  "name": "product-superskills",
+  "version": "1.0.0",
+  "description": "8 AI skills for product management, strategy, and GTM — product discovery, delivery, architecture, ABX, and startup growth. Works with Claude Code, GitHub Copilot, and 6 more AI platforms.",
+  "bin": { "product-superskills": "bin/cli.js" },
+  "keywords": ["product-management", "strategy", "gtm", "abx", "startup", "claude", "copilot", "ai", "skills"],
+  "repository": { "type": "git", "url": "git+https://github.com/ericgandrade/product-superskills.git" },
+  "bugs": { "url": "https://github.com/ericgandrade/product-superskills/issues" },
+  "homepage": "https://github.com/ericgandrade/product-superskills#readme"
+}
+```
+
+Deletar `cli-installer/package-lock.json`.
+
+### 3.4 — Atualizar cli-installer/bin/cli.js e downloader.js
+
+Busca-e-substituição:
+- `claude-superskills` → `product-superskills`
+- `ericgandrade/claude-superskills` → `ericgandrade/product-superskills`
+- Skill count → `8 skills`
+
+### 3.5 — Atualizar .claude-plugin/plugin.json
+
+```json
+{
+  "name": "product-superskills",
+  "version": "1.0.0",
+  "description": "8 AI skills for product management, product strategy, GTM, ABX, and startup growth.",
+  "author": "Eric Andrade",
+  "license": "MIT",
+  "skills": "skills/"
+}
+```
+
+### 3.6 — Atualizar .claude-plugin/marketplace.json
+
+```json
+{
+  "plugins": [
+    {
+      "name": "product-superskills",
+      "description": "8 skills for product managers and strategists: product strategy, discovery, delivery, leadership, architecture, operating model, ABX strategy, and startup growth.",
+      "source": "github",
+      "repo": "ericgandrade/product-superskills"
+    }
+  ]
+}
+```
+
+### 3.7 — Atualizar bundles.json
+
+```json
+{
+  "version": "1.0.0",
+  "generated": "2026-05-08T00:00:00Z",
+  "bundles": {
+    "core-product": {
+      "name": "Core Product Management",
+      "description": "End-to-end product management: strategy, discovery, delivery, leadership, and operating model.",
+      "skills": ["product-strategy","product-discovery","product-delivery","product-leadership","product-operating-model"],
+      "target": "Product Managers, CPOs"
+    },
+    "architecture": {
+      "name": "Product Architecture",
+      "description": "Technical product and systems design.",
+      "skills": ["product-architecture"],
+      "target": "Technical PMs, Architects"
+    },
+    "growth": {
+      "name": "Growth & GTM",
+      "description": "Go-to-market strategy and startup growth frameworks.",
+      "skills": ["abx-strategy","startup-growth-strategist"],
+      "target": "Founders, GTM leads, Strategists"
+    },
+    "all": {
+      "name": "All Product Skills",
+      "description": "Complete product management and strategy toolkit — all 8 skills.",
+      "skills": ["product-strategy","product-discovery","product-delivery","product-leadership",
+                 "product-architecture","product-operating-model","abx-strategy","startup-growth-strategist"],
+      "target": "PMs, Founders, Strategists"
+    }
+  }
+}
+```
+
+### 3.8 — Atualizar scripts/release.js, README.md, CLAUDE.md, CHANGELOG.md, docs/
+
+- `Claude Superskills` → `Product Superskills`
+- `claude-superskills` → `product-superskills`
+- Skill count: `8 skills`
+- Título README: `# 📦 Product Superskills v1.0.0`
+- CHANGELOG: `## [1.0.0] - 2026-05-08 — Initial release, 8 product skills carved out from claude-superskills v1.25.0`
+
+### 3.9 — Reinstalar dependências e publicar
+
+```bash
+cd cli-installer && npm install && cd ..
+git init
+git add .
+git commit -m "feat: initial release v1.0.0 — 8 product skills carved out from claude-superskills"
+gh repo create ericgandrade/product-superskills \
+  --public \
+  --description "8 AI skills for product management, strategy, GTM, and startup growth"
+git remote add origin https://github.com/ericgandrade/product-superskills.git
+git branch -M main
+git push -u origin main
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+**Verificar:**
+```bash
+npx product-superskills --version           # → 1.0.0
+ls skills/ | wc -l                          # → 8
+claude --plugin-dir ./product-superskills   # carrega 8 skills sem erro
+gh repo view ericgandrade/product-superskills --json visibility -q .visibility  # → PUBLIC
+```
+
+---
+
+## Task 4: Criar design-superskills
+
+Segue exatamente o mesmo padrão de Task 1, 2 e 3.
+
+### 4.1 — Clonar estrutura base
+
+```bash
+cd ~/Library/CloudStorage/OneDrive-Avanade/14_Code_Projects
+cp -r claude-superskills design-superskills
+cd design-superskills
+rm -rf .git output/ proposta-media/ plugin-output/
+rm -rf .codex/ .opencode/ .adal/ .agent/ .cursor/ .gemini/
+rm -f .claude/settings.local.json .DS_Store
+rm -rf docs/plans/ docs/plan/
+```
+
+### 4.2 — Manter apenas os 9 skills de design
+
+```bash
+rm -rf skills/
+mkdir skills
+for skill in \
+  ui-ux-pro-max design design-system brand ui-styling slides banner-design \
+  excalidraw-diagram mermaid-diagram; do
+  cp -r ../claude-superskills/skills/$skill skills/
+done
+```
+
+**Verificar:** `ls skills/ | wc -l` → 9
+
+### 4.3 — Atualizar cli-installer/package.json
+
+```json
+{
+  "name": "design-superskills",
+  "version": "1.0.0",
+  "description": "9 AI skills for UI/UX design, brand identity, design systems, component styling, diagrams, presentations, and banner design. Works with Claude Code, GitHub Copilot, and 6 more AI platforms.",
+  "bin": { "design-superskills": "bin/cli.js" },
+  "keywords": ["design", "ui-ux", "brand", "design-system", "figma", "diagrams", "claude", "copilot", "ai", "skills"],
+  "repository": { "type": "git", "url": "git+https://github.com/ericgandrade/design-superskills.git" },
+  "bugs": { "url": "https://github.com/ericgandrade/design-superskills/issues" },
+  "homepage": "https://github.com/ericgandrade/design-superskills#readme"
+}
+```
+
+Deletar `cli-installer/package-lock.json`.
+
+### 4.4 — Atualizar cli-installer/bin/cli.js e downloader.js
+
+Busca-e-substituição:
+- `claude-superskills` → `design-superskills`
+- `ericgandrade/claude-superskills` → `ericgandrade/design-superskills`
+- Skill count → `9 skills`
+
+### 4.5 — Atualizar .claude-plugin/plugin.json
+
+```json
+{
+  "name": "design-superskills",
+  "version": "1.0.0",
+  "description": "9 AI skills for UI/UX design, brand identity, design systems, styling, diagrams, presentations, and banners.",
+  "author": "Eric Andrade",
+  "license": "MIT",
+  "skills": "skills/"
+}
+```
+
+### 4.6 — Atualizar .claude-plugin/marketplace.json
+
+```json
+{
+  "plugins": [
+    {
+      "name": "design-superskills",
+      "description": "9 skills for designers and front-end teams: UI/UX intelligence, brand identity, design systems, component styling, Mermaid/Excalidraw diagrams, HTML presentations, and banner design.",
+      "source": "github",
+      "repo": "ericgandrade/design-superskills"
+    }
+  ]
+}
+```
+
+### 4.7 — Atualizar bundles.json
+
+```json
+{
+  "version": "1.0.0",
+  "generated": "2026-05-08T00:00:00Z",
+  "bundles": {
+    "ui-ux": {
+      "name": "UI/UX Design",
+      "description": "Comprehensive UI/UX design intelligence and component styling.",
+      "skills": ["ui-ux-pro-max","ui-styling","design"],
+      "target": "Front-end developers, product designers"
+    },
+    "brand-identity": {
+      "name": "Brand & Identity",
+      "description": "Brand identity, design systems, and token architecture.",
+      "skills": ["brand","design-system"],
+      "target": "Brand designers, design leads"
+    },
+    "visual": {
+      "name": "Visual & Diagrams",
+      "description": "Diagrams, presentations, and banner design.",
+      "skills": ["mermaid-diagram","excalidraw-diagram","slides","banner-design"],
+      "target": "Developers, content creators, marketers"
+    },
+    "all": {
+      "name": "All Design Skills",
+      "description": "Complete design toolkit — all 9 skills.",
+      "skills": ["ui-ux-pro-max","design","design-system","brand","ui-styling",
+                 "slides","banner-design","excalidraw-diagram","mermaid-diagram"],
+      "target": "Designers, front-end developers, product teams"
+    }
+  }
+}
+```
+
+### 4.8 — Atualizar scripts/release.js, README.md, CLAUDE.md, CHANGELOG.md, docs/
+
+- `Claude Superskills` → `Design Superskills`
+- `claude-superskills` → `design-superskills`
+- Skill count: `9 skills`
+- Título README: `# 🎨 Design Superskills v1.0.0`
+- CHANGELOG: `## [1.0.0] - 2026-05-08 — Initial release, 9 design skills carved out from claude-superskills v1.25.0`
+
+### 4.9 — Reinstalar dependências e publicar
+
+```bash
+cd cli-installer && npm install && cd ..
+git init
+git add .
+git commit -m "feat: initial release v1.0.0 — 9 design/UI skills carved out from claude-superskills"
+gh repo create ericgandrade/design-superskills \
+  --public \
+  --description "9 AI skills for UI/UX design, brand identity, design systems, diagrams, and presentations"
+git remote add origin https://github.com/ericgandrade/design-superskills.git
+git branch -M main
+git push -u origin main
+git tag v1.0.0 && git push origin v1.0.0
+```
+
+**Verificar:**
+```bash
+npx design-superskills --version           # → 1.0.0
+ls skills/ | wc -l                         # → 9
+claude --plugin-dir ./design-superskills   # carrega 9 skills sem erro
+gh repo view ericgandrade/design-superskills --json visibility -q .visibility  # → PUBLIC
+```
+
+---
+
+## Task 5: Criar avanade-superskills (privado, sem npm, com shell installer)
 
 O `avanade-superskills` é privado e não vai para npm. Em vez do cli-installer Node.js, usa um shell installer completo (`install.sh`) com as mesmas funcionalidades: install para todas as 8 plataformas, uninstall, update, e list.
 
@@ -871,9 +1190,9 @@ gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility  
 
 ---
 
-## Task 4: Limpar claude-superskills e bumpar para v2.0.0
+## Task 6: Limpar claude-superskills e bumpar para v2.0.0
 
-### 4.1 — Deletar skills removidos
+### 6.1 — Deletar skills removidos
 
 ```bash
 cd ~/Library/CloudStorage/OneDrive-Avanade/14_Code_Projects/claude-superskills
@@ -891,6 +1210,16 @@ git rm -r skills/academic-cv-builder skills/career-changer-translator skills/cov
            skills/resume-section-builder skills/resume-tailor skills/resume-version-manager \
            skills/salary-negotiation-prep skills/tech-resume-optimizer
 
+# Remove product skills (agora em product-superskills)
+git rm -r skills/product-strategy skills/product-discovery skills/product-delivery \
+           skills/product-leadership skills/product-architecture skills/product-operating-model \
+           skills/abx-strategy skills/startup-growth-strategist
+
+# Remove design skills (agora em design-superskills)
+git rm -r skills/ui-ux-pro-max skills/design skills/design-system skills/brand \
+           skills/ui-styling skills/slides skills/banner-design \
+           skills/excalidraw-diagram skills/mermaid-diagram
+
 # Remove ava skills (agora em avanade-superskills como avanade-pptx / avanade-web)
 git rm -r skills/ava-pptx skills/ava-web
 
@@ -900,20 +1229,22 @@ git rm -r skills/code-method skills/ai-native-product skills/docling-converter
 
 **Verificar:**
 ```bash
-ls skills/ | wc -l   # deve retornar 33
+ls skills/ | wc -l   # deve retornar 17
 ```
 
-### 4.2 — Atualizar bundles.json
+### 6.2 — Atualizar bundles.json
 
-Remover dos bundles `all`, `content`, `ui-ux`, `career`, `obsidian`:
-- Todos os career skills
+Remover dos bundles todos os skills movidos para outros repos:
 - Todos os obsidian skills
-- `avanade-pptx`, `avanade-web`
+- Todos os career skills
+- Todos os product skills (`product-strategy`, `product-discovery`, `product-delivery`, `product-leadership`, `product-architecture`, `product-operating-model`, `abx-strategy`, `startup-growth-strategist`)
+- Todos os design skills (`ui-ux-pro-max`, `design`, `design-system`, `brand`, `ui-styling`, `slides`, `banner-design`, `excalidraw-diagram`, `mermaid-diagram`)
+- `ava-pptx`, `ava-web`
 - `code-method`, `ai-native-product`, `docling-converter`
 
-Remover completamente os bundles `career` e `obsidian` (agora são repos separados).
+Remover completamente os bundles `career`, `obsidian`, `product`, e `design` (agora são repos separados). Manter apenas: `essential`, `planning`, `research`, `content`, `orchestration`, `all`.
 
-### 4.3 — Bumpar para v2.0.0
+### 6.3 — Bumpar para v2.0.0
 
 ```bash
 node scripts/release.js major
@@ -921,24 +1252,26 @@ node scripts/release.js major
 
 Editar `CHANGELOG.md` — substituir o placeholder gerado pelo release.js com:
 ```markdown
-## [2.0.0] - 2026-05-07
+## [2.0.0] - 2026-05-08
 
 ### Breaking Changes
 - Removed 6 Obsidian skills → now available at github.com/ericgandrade/obsidian-superskills (`npx obsidian-superskills`)
 - Removed 20 career/resume skills → now available at github.com/ericgandrade/career-superskills (`npx career-superskills`)
+- Removed 8 product/strategy skills → now available at github.com/ericgandrade/product-superskills (`npx product-superskills`)
+- Removed 9 design/UI skills → now available at github.com/ericgandrade/design-superskills (`npx design-superskills`)
 - Removed 2 Avanade-branded skills (`ava-pptx` → renamed to `avanade-pptx`, `ava-web` → renamed to `avanade-web`) → now in private repo ericgandrade/avanade-superskills
 
 ### Removed
 - Deleted low-value skills: `code-method`, `ai-native-product`, `docling-converter`
 
 ### Changed
-- claude-superskills is now focused: 33 skills across meta, planning, product, research, content, and UI/UX
+- claude-superskills is now a focused core: 17 skills across meta/orchestration, planning, research, and content
 ```
 
-### 4.4 — Atualizar README.md
+### 6.4 — Atualizar README.md
 
 - Título: `# 🤖 Claude Superskills v2.0.0`
-- Skill count badge: `skills-33`
+- Skill count badge: `skills-17`
 - Remover tabelas de skills removidos
 - Adicionar seção `## Related Packages`:
   ```markdown
@@ -947,27 +1280,30 @@ Editar `CHANGELOG.md` — substituir o placeholder gerado pelo release.js com:
   |---------|--------|-------|
   | [obsidian-superskills](https://github.com/ericgandrade/obsidian-superskills) | 6 | Obsidian knowledge management |
   | [career-superskills](https://github.com/ericgandrade/career-superskills) | 20 | Job search & career development |
+  | [product-superskills](https://github.com/ericgandrade/product-superskills) | 8 | Product management & GTM strategy |
+  | [design-superskills](https://github.com/ericgandrade/design-superskills) | 9 | UI/UX design, brand & diagrams |
   ```
 
-### 4.5 — Atualizar CLAUDE.md
+### 6.5 — Atualizar CLAUDE.md
 
-- Skill count: `64` → `33`
-- Remover skills da architecture tree
+- Skill count: `64` → `17`
+- Remover skills da architecture tree (obsidian, career, product, design, ava-*)
 - Adicionar referências aos novos repos em "Related Packages"
 - Atualizar versão: `v1.25.0` → `v2.0.0`
+- Atualizar npm description: `"17 core AI skills for Claude Code, GitHub Copilot & 6 more platforms"`
 
-### 4.6 — Atualizar GitHub About
+### 6.6 — Atualizar GitHub About
 
 ```bash
 gh repo edit ericgandrade/claude-superskills \
-  --description "33 Universal AI Skills for Claude Code, GitHub Copilot & 6 more platforms. Planning, orchestration, product strategy, research, UI/UX and content workflows."
+  --description "17 Universal AI Skills for Claude Code, GitHub Copilot & 6 more platforms. Meta/orchestration, planning, research, and content — the focused core of the Superskills family."
 ```
 
-### 4.7 — Commit, tag, push
+### 6.7 — Commit, tag, push
 
 ```bash
 git add .
-git commit -m "feat!: carve out obsidian/career/ava skills into dedicated repos — bump to v2.0.0"
+git commit -m "feat!: carve out obsidian/career/product/design/ava skills into dedicated repos — bump to v2.0.0"
 git tag v2.0.0
 git push origin main && git push origin v2.0.0
 ```
@@ -991,6 +1327,18 @@ ls ~/Library/CloudStorage/.../career-superskills/skills/ | wc -l     # → 20
 claude --plugin-dir ./career-superskills       # carrega 20 skills sem erro
 gh repo view ericgandrade/career-superskills --json visibility -q .visibility    # → PUBLIC
 
+# product-superskills
+npx product-superskills --version              # → 1.0.0
+ls ~/Library/CloudStorage/.../product-superskills/skills/ | wc -l    # → 8
+claude --plugin-dir ./product-superskills      # carrega 8 skills sem erro
+gh repo view ericgandrade/product-superskills --json visibility -q .visibility   # → PUBLIC
+
+# design-superskills
+npx design-superskills --version               # → 1.0.0
+ls ~/Library/CloudStorage/.../design-superskills/skills/ | wc -l     # → 9
+claude --plugin-dir ./design-superskills       # carrega 9 skills sem erro
+gh repo view ericgandrade/design-superskills --json visibility -q .visibility    # → PUBLIC
+
 # avanade-superskills
 ls ~/Library/CloudStorage/.../avanade-superskills/skills/ | wc -l        # → 3
 ./scripts/install.sh list                                                  # lista avanade-pptx, avanade-web, avanade-pdf
@@ -999,11 +1347,13 @@ gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility  
 
 # claude-superskills
 npx claude-superskills --version               # → 2.0.0
-ls ~/Library/CloudStorage/.../claude-superskills/skills/ | wc -l     # → 33
-claude --plugin-dir ./claude-superskills       # carrega 33 skills sem erro
+ls ~/Library/CloudStorage/.../claude-superskills/skills/ | wc -l     # → 17
+claude --plugin-dir ./claude-superskills       # carrega 17 skills sem erro
 
 # npm packages visíveis
 npm view obsidian-superskills version          # → 1.0.0
 npm view career-superskills version            # → 1.0.0
+npm view product-superskills version           # → 1.0.0
+npm view design-superskills version            # → 1.0.0
 npm view avanade-superskills 2>/dev/null || echo "NOT PUBLISHED (correct)"  # → NOT PUBLISHED
 ```
