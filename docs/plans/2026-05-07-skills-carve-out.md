@@ -304,6 +304,10 @@ gh repo create ericgandrade/obsidian-superskills \
 git remote add origin https://github.com/ericgandrade/obsidian-superskills.git
 git branch -M main
 git push -u origin main
+
+# OBRIGATÓRIO antes do tag push — sem isso o publish no npm vai falhar silenciosamente
+gh secret set NPM_TOKEN --repo ericgandrade/obsidian-superskills --body "$NPM_TOKEN"
+
 git tag v1.0.0
 git push origin v1.0.0
 ```
@@ -480,6 +484,10 @@ gh repo create ericgandrade/career-superskills \
 git remote add origin https://github.com/ericgandrade/career-superskills.git
 git branch -M main
 git push -u origin main
+
+# OBRIGATÓRIO antes do tag push — sem isso o publish no npm vai falhar silenciosamente
+gh secret set NPM_TOKEN --repo ericgandrade/career-superskills --body "$NPM_TOKEN"
+
 git tag v1.0.0 && git push origin v1.0.0
 ```
 
@@ -630,6 +638,10 @@ gh repo create ericgandrade/product-superskills \
 git remote add origin https://github.com/ericgandrade/product-superskills.git
 git branch -M main
 git push -u origin main
+
+# OBRIGATÓRIO antes do tag push — sem isso o publish no npm vai falhar silenciosamente
+gh secret set NPM_TOKEN --repo ericgandrade/product-superskills --body "$NPM_TOKEN"
+
 git tag v1.0.0 && git push origin v1.0.0
 ```
 
@@ -782,6 +794,10 @@ gh repo create ericgandrade/design-superskills \
 git remote add origin https://github.com/ericgandrade/design-superskills.git
 git branch -M main
 git push -u origin main
+
+# OBRIGATÓRIO antes do tag push — sem isso o publish no npm vai falhar silenciosamente
+gh secret set NPM_TOKEN --repo ericgandrade/design-superskills --body "$NPM_TOKEN"
+
 git tag v1.0.0 && git push origin v1.0.0
 ```
 
