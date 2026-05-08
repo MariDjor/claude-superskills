@@ -2,9 +2,9 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use executing-plans to implement this plan task-by-task.
 
-**Goal:** Carve out 28 skills from `claude-superskills` into 3 focused repos: `obsidian-superskills` (6 skills), `career-superskills` (20 skills), and `avanade-superskills` (2 skills, private). Delete 3 low-value skills. Bump `claude-superskills` to v2.0.0 with 33 skills remaining.
+**Goal:** Carve out 29 skills from `claude-superskills` into 3 focused repos: `obsidian-superskills` (6 skills), `career-superskills` (20 skills), and `avanade-superskills` (3 skills, private). Delete 3 low-value skills. Bump `claude-superskills` to v2.0.0 with 33 skills remaining.
 
-**Architecture:** Each new repo is a full clone of the `claude-superskills` structure — complete with `cli-installer`, `scripts`, `docs`, `.github/workflows`, `.claude-plugin`, `CLAUDE.md`, `VERSIONING.md`, `CHANGELOG.md`, and `bundles.json`. The "copy everything, then adapt" strategy avoids missing files. The `avanade-superskills` repo is private and has no npm installer — install-only via Claude Code plugin.
+**Architecture:** Each new repo is a full clone of the `claude-superskills` structure — complete with `cli-installer`, `scripts`, `docs`, `.github/workflows`, `.claude-plugin`, `CLAUDE.md`, `VERSIONING.md`, `CHANGELOG.md`, and `bundles.json`. The "copy everything, then adapt" strategy avoids missing files. The `avanade-superskills` repo is private, has no npm package, and uses a self-contained shell installer (`install.sh`) with full functionality: install for all 8 platforms, uninstall, update, and list.
 
 **Tech Stack:** Node.js, npm, GitHub CLI (`gh`), Claude Code plugin model, GitHub Actions.
 
@@ -30,8 +30,8 @@
 ### career-superskills (20 skills) — novo repo público
 `academic-cv-builder`, `career-changer-translator`, `cover-letter-generator`, `creative-portfolio-resume`, `executive-resume-writer`, `interview-prep-generator`, `job-description-analyzer`, `linkedin-profile-optimizer`, `offer-comparison-analyzer`, `portfolio-case-study-writer`, `reference-list-builder`, `resume-ats-optimizer`, `resume-bullet-writer`, `resume-formatter`, `resume-quantifier`, `resume-section-builder`, `resume-tailor`, `resume-version-manager`, `salary-negotiation-prep`, `tech-resume-optimizer`
 
-### avanade-superskills (2 skills) — novo repo PRIVADO, sem npm
-`avanade-pptx`, `avanade-web`
+### avanade-superskills (3 skills) — novo repo PRIVADO, sem npm
+`avanade-pptx`, `avanade-web`, `avanade-pdf` (novo skill — criado neste plano)
 
 ### claude-superskills (33 skills) — bumpa para v2.0.0
 Todos os demais: meta, planejamento, produto, pesquisa, conteúdo, UI/UX.
@@ -476,100 +476,384 @@ claude --plugin-dir ./career-superskills   # deve carregar 20 skills
 
 ---
 
-## Task 3: Criar avanade-superskills (privado, sem npm)
+## Task 3: Criar avanade-superskills (privado, sem npm, com shell installer)
 
-O `avanade-superskills` é mais simples — não tem cli-installer nem GitHub Actions de publicação.
+O `avanade-superskills` é privado e não vai para npm. Em vez do cli-installer Node.js, usa um shell installer completo (`install.sh`) com as mesmas funcionalidades: install para todas as 8 plataformas, uninstall, update, e list.
 
-### 3.1 — Criar estrutura mínima
+### 3.1 — Criar estrutura do repo
 
 ```bash
 cd ~/Library/CloudStorage/OneDrive-Avanade/14_Code_Projects
 mkdir avanade-superskills && cd avanade-superskills
 git init
 
-mkdir -p skills .claude-plugin docs
+mkdir -p skills .claude-plugin docs scripts
 ```
 
-### 3.2 — Copiar e renomear os 2 skills Avanade
+### 3.2 — Copiar e renomear os 2 skills existentes
 
-Os skills existem como `ava-pptx` e `ava-web` em `claude-superskills`. Precisam ser copiados **e renomeados** para `avanade-pptx` e `avanade-web`.
+Os skills existem como `ava-pptx` e `ava-web` em `claude-superskills`. Precisam ser copiados **e renomeados**.
 
 ```bash
-# Copia com novo nome de diretório
 cp -r ../claude-superskills/skills/ava-pptx skills/avanade-pptx
 cp -r ../claude-superskills/skills/ava-web  skills/avanade-web
 ```
 
 Atualizar o campo `name` no frontmatter de cada SKILL.md:
 
-`skills/avanade-pptx/SKILL.md` — linha 2:
-```yaml
-name: avanade-pptx
-```
+`skills/avanade-pptx/SKILL.md` — linha 2: `name: avanade-pptx`
+`skills/avanade-web/SKILL.md` — linha 2: `name: avanade-web`
 
-`skills/avanade-web/SKILL.md` — linha 2:
-```yaml
-name: avanade-web
-```
-
-Verificar se há referências internas ao nome antigo no corpo dos SKILL.md:
+Verificar referências internas ao nome antigo:
 ```bash
 grep -r "ava-pptx\|ava-web" skills/
-# Se encontrar, substituir manualmente por avanade-pptx / avanade-web
+# Substituir qualquer ocorrência por avanade-pptx / avanade-web
 ```
 
-### 3.3 — Criar .claude-plugin/plugin.json
+### 3.3 — Criar o novo skill avanade-pdf
+
+Criar `skills/avanade-pdf/SKILL.md`:
+
+```markdown
+---
+name: avanade-pdf
+description: Use this skill when the user needs to generate any document (report, proposal, brief, executive summary, technical document) as a branded PDF following official Avanade visual identity guidelines — colors, fonts, logo placement, header, and footer.
+license: MIT
+---
+
+# Avanade PDF Generator
+
+## Role
+
+You are an Avanade document designer. Generate well-structured, on-brand PDF documents using HTML + CSS rendered to PDF via WeasyPrint or wkhtmltopdf.
+
+## Avanade Brand Guidelines
+
+**Colors:**
+- Primary purple: `#A100FF`
+- Dark background: `#1A1A2E`
+- Light gray: `#F5F5F5`
+- Text dark: `#1A1A1A`
+- Text light: `#FFFFFF`
+- Accent: `#7700CC`
+
+**Typography:**
+- Headings: Arial Bold or GT Walsheim (fallback: Arial)
+- Body: Arial or Calibri, 11pt, line-height 1.6
+- Code/mono: Courier New
+
+**Layout:**
+- Header: Avanade logo top-left, document title top-right, purple top border (4px)
+- Footer: page number center, "Confidential — Avanade" right, purple bottom border (2px)
+- Margins: 2.5cm top/bottom, 2cm left/right
+- Cover page: full purple left stripe (40%), white right content area
+
+## When to Use
+
+Trigger when the user asks to:
+- Generate a PDF in Avanade format
+- Create an Avanade-branded document (report, proposal, brief, executive summary)
+- Export content as a branded Avanade PDF
+
+## Workflow
+
+### Step 1 — Gather Content
+
+Ask the user for:
+1. Document type (report / proposal / brief / executive summary / other)
+2. Title and subtitle
+3. Author name and date
+4. Content sections (or ask user to paste raw content to be formatted)
+5. Confidentiality level (Confidential / Internal / Public)
+
+### Step 2 — Generate HTML Template
+
+Produce a complete, self-contained HTML file with embedded CSS following the brand guidelines above. Structure:
+- Cover page
+- Table of contents (if >3 sections)
+- Content sections with Avanade-styled headings, tables, and callout boxes
+- Back page with Avanade contact/legal footer
+
+### Step 3 — Convert to PDF
+
+```bash
+# Option A: WeasyPrint (preferred — pure Python, no X11 dependency)
+pip install weasyprint
+weasyprint document.html document.pdf
+
+# Option B: wkhtmltopdf (fallback)
+wkhtmltopdf --page-size A4 --margin-top 25mm --margin-bottom 25mm \
+            --margin-left 20mm --margin-right 20mm \
+            document.html document.pdf
+```
+
+### Step 4 — Output
+
+Save the PDF to the current directory as `{document-title}-avanade.pdf`.
+Report: file path, page count, file size.
+
+## Critical Rules
+
+- NEVER use colors outside the Avanade palette
+- ALWAYS include the Avanade logo placeholder (`[AVANADE LOGO]`) — user replaces with actual SVG/PNG
+- ALWAYS include page numbers in the footer
+- Match the document type to an appropriate structure (proposal ≠ report ≠ brief)
+- If WeasyPrint is not installed, instruct the user to install it before proceeding
+
+## Example Usage
+
+1. "Generate an Avanade PDF proposal for a digital transformation engagement"
+2. "Create a branded executive summary PDF for the Q2 results"
+3. "Make an Avanade technical report on AI infrastructure recommendations"
+```
+
+Criar `skills/avanade-pdf/README.md`:
+
+```markdown
+## Metadata
+
+| Field | Value |
+|-------|-------|
+| Version | 1.0.0 |
+| Author | Eric Andrade |
+| Created | 2026-05-07 |
+| Updated | 2026-05-07 |
+| Platforms | All 8 |
+| Category | Document Generation |
+| Tags | pdf, avanade, branding, document, report, proposal |
+| Risk | Low |
+```
+
+### 3.4 — Criar .claude-plugin/plugin.json
 
 ```json
 {
   "name": "avanade-superskills",
   "version": "1.0.0",
-  "description": "Avanade-branded AI skills for PowerPoint and web generation following official Ava brand guidelines.",
+  "description": "Avanade-branded AI skills for PowerPoint, web, and PDF generation following official Avanade visual identity guidelines.",
   "author": "Eric Andrade",
   "license": "MIT",
   "skills": "skills/"
 }
 ```
 
-### 3.4 — Criar CLAUDE.md
+### 3.5 — Criar o shell installer (scripts/install.sh)
+
+Este script substitui o cli-installer Node.js. Deve ter as mesmas funcionalidades do `npx claude-superskills`.
+
+Criar `scripts/install.sh`:
+
+```bash
+#!/usr/bin/env bash
+set -e
+
+REPO="ericgandrade/avanade-superskills"
+CACHE_DIR="$HOME/.avanade-superskills/cache"
+VERSION="1.0.0"
+
+# Platform install paths
+CLAUDE_DIR="$HOME/.claude/skills"
+COPILOT_DIR="$HOME/.github/skills"
+CODEX_DIR="$HOME/.codex/skills"
+OPENCODE_DIR="$HOME/.agent/skills"
+GEMINI_DIR="$HOME/.gemini/skills"
+ANTIGRAVITY_DIR="$HOME/.gemini/antigravity/skills"
+CURSOR_DIR="$HOME/.cursor/skills"
+ADAL_DIR="$HOME/.adal/skills"
+
+SKILLS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/skills"
+
+usage() {
+  echo "Usage: $0 [command] [options]"
+  echo ""
+  echo "Commands:"
+  echo "  install    Install skills to all detected platforms (default)"
+  echo "  uninstall  Remove skills from all platforms"
+  echo "  update     Pull latest and reinstall"
+  echo "  list       List installed skills"
+  echo ""
+  echo "Options:"
+  echo "  --all      Install to all platforms without prompting"
+  echo "  --quiet    Suppress non-essential output"
+}
+
+detect_platforms() {
+  DETECTED=()
+  command -v claude    &>/dev/null && DETECTED+=("claude")
+  command -v gh        &>/dev/null && DETECTED+=("copilot")
+  command -v codex     &>/dev/null && DETECTED+=("codex")
+  command -v opencode  &>/dev/null && DETECTED+=("opencode")
+  command -v gemini    &>/dev/null && DETECTED+=("gemini")
+  command -v cursor    &>/dev/null && DETECTED+=("cursor")
+  command -v adal      &>/dev/null && DETECTED+=("adal")
+}
+
+install_to_platform() {
+  local platform="$1"
+  local target_dir=""
+  case "$platform" in
+    claude)      target_dir="$CLAUDE_DIR" ;;
+    copilot)     target_dir="$COPILOT_DIR" ;;
+    codex)       target_dir="$CODEX_DIR" ;;
+    opencode)    target_dir="$OPENCODE_DIR" ;;
+    gemini)      target_dir="$GEMINI_DIR" ;;
+    antigravity) target_dir="$ANTIGRAVITY_DIR" ;;
+    cursor)      target_dir="$CURSOR_DIR" ;;
+    adal)        target_dir="$ADAL_DIR" ;;
+    *) echo "Unknown platform: $platform"; return 1 ;;
+  esac
+  mkdir -p "$target_dir"
+  cp -r "$SKILLS_DIR"/. "$target_dir/"
+  echo "✅ Installed to $target_dir"
+}
+
+uninstall_from_platform() {
+  local platform="$1"
+  local target_dir=""
+  case "$platform" in
+    claude)      target_dir="$CLAUDE_DIR" ;;
+    copilot)     target_dir="$COPILOT_DIR" ;;
+    codex)       target_dir="$CODEX_DIR" ;;
+    opencode)    target_dir="$OPENCODE_DIR" ;;
+    gemini)      target_dir="$GEMINI_DIR" ;;
+    antigravity) target_dir="$ANTIGRAVITY_DIR" ;;
+    cursor)      target_dir="$CURSOR_DIR" ;;
+    adal)        target_dir="$ADAL_DIR" ;;
+  esac
+  for skill in "$SKILLS_DIR"/*/; do
+    skill_name=$(basename "$skill")
+    rm -rf "${target_dir:?}/$skill_name"
+  done
+  echo "🗑️  Uninstalled from $target_dir"
+}
+
+cmd_install() {
+  detect_platforms
+  echo "🔍 Detected platforms: ${DETECTED[*]}"
+  for platform in "${DETECTED[@]}"; do
+    install_to_platform "$platform"
+  done
+  echo "✅ avanade-superskills v$VERSION installed."
+}
+
+cmd_uninstall() {
+  detect_platforms
+  for platform in "${DETECTED[@]}"; do
+    uninstall_from_platform "$platform"
+  done
+  echo "✅ avanade-superskills uninstalled."
+}
+
+cmd_update() {
+  echo "⬇️  Pulling latest from GitHub..."
+  git -C "$(dirname "$SKILLS_DIR")" pull origin main
+  cmd_install
+}
+
+cmd_list() {
+  echo "📦 Skills in avanade-superskills v$VERSION:"
+  for skill in "$SKILLS_DIR"/*/; do
+    echo "  - $(basename "$skill")"
+  done
+}
+
+COMMAND="${1:-install}"
+case "$COMMAND" in
+  install)   cmd_install ;;
+  uninstall) cmd_uninstall ;;
+  update)    cmd_update ;;
+  list)      cmd_list ;;
+  --help|-h) usage ;;
+  *) echo "Unknown command: $COMMAND"; usage; exit 1 ;;
+esac
+```
+
+```bash
+chmod +x scripts/install.sh
+```
+
+Criar `scripts/uninstall.sh` como wrapper:
+```bash
+#!/usr/bin/env bash
+"$(dirname "${BASH_SOURCE[0]}")/install.sh" uninstall
+```
+```bash
+chmod +x scripts/uninstall.sh
+```
+
+### 3.6 — Criar CLAUDE.md
 
 ```markdown
 # avanade-superskills
 
-Avanade-branded AI skills. Private repository — not published to npm.
+Avanade-branded AI skills — private repository, not published to npm.
 
-## Skills
-- `avanade-pptx` — PowerPoint presentations following Ava brand guidelines
-- `avanade-web` — Web page generation following Ava brand guidelines
+## Skills (3)
+- `avanade-pptx` — PowerPoint presentations following Avanade brand guidelines
+- `avanade-web` — Web page generation following Avanade visual identity
+- `avanade-pdf` — PDF document generation (any type) in Avanade format
 
-## Install
+## Installation
+
+### Shell installer (all 8 platforms)
+```bash
+git clone https://github.com/ericgandrade/avanade-superskills.git
+cd avanade-superskills
+./scripts/install.sh           # install to all detected platforms
+./scripts/install.sh list      # list installed skills
+./scripts/install.sh update    # pull latest and reinstall
+./scripts/install.sh uninstall # remove from all platforms
+```
+
+### Claude Code plugin (direct, no install)
+```bash
 claude --plugin-dir ./avanade-superskills
+```
 
 ## Version
 v1.0.0
+
+## Version Management
+To bump version: update `version` in `.claude-plugin/plugin.json` and `scripts/install.sh`, then update `CHANGELOG.md`, commit, and tag.
 ```
 
-### 3.5 — Criar README.md, CHANGELOG.md, .gitignore, LICENSE
+### 3.7 — Criar README.md
 
-Copy `.gitignore` and `LICENSE` from `claude-superskills`.
+README com:
+- Título: `# Avanade Superskills v1.0.0`
+- Descrição: 3 skills para Avanade-branded content generation
+- Seção de install com os dois métodos (shell installer + plugin-dir)
+- Tabela dos 3 skills
+- Nota: repo privado, uso interno Avanade
 
-README.md mínimo com install instructions e link para Avanade brand guidelines.
+### 3.8 — Criar CHANGELOG.md, .gitignore, LICENSE
 
-CHANGELOG.md:
+`.gitignore` — copiar de `claude-superskills`.
+
+`CHANGELOG.md`:
 ```markdown
+# Changelog
+
 ## [1.0.0] - 2026-05-07
-- Initial release — avanade-pptx and avanade-web carved out from claude-superskills v1.25.0
+
+### Added
+- avanade-pptx: PowerPoint generation with Avanade brand (renamed from ava-pptx)
+- avanade-web: Web page generation with Avanade brand (renamed from ava-web)
+- avanade-pdf: New skill — generate any document type as branded Avanade PDF
+- scripts/install.sh: Full shell installer — install/uninstall/update/list for all 8 AI platforms
 ```
 
-### 3.6 — Criar repo privado e push
+`LICENSE` — copiar de `claude-superskills`.
+
+### 3.9 — Criar repo privado e push
 
 ```bash
 git add .
-git commit -m "feat: initial release v1.0.0 — Avanade-branded skills"
+git commit -m "feat: initial release v1.0.0 — 3 Avanade-branded skills + shell installer"
 
 gh repo create ericgandrade/avanade-superskills \
   --private \
-  --description "Avanade-branded AI skills (internal — not published to npm)"
+  --description "Avanade-branded AI skills — internal use only (avanade-pptx, avanade-web, avanade-pdf)"
 
 git remote add origin https://github.com/ericgandrade/avanade-superskills.git
 git branch -M main
@@ -577,13 +861,12 @@ git push -u origin main
 git tag v1.0.0 && git push origin v1.0.0
 ```
 
-**Não criar GitHub Actions workflow** — sem npm publication.
-
 **Verificar:**
 ```bash
-claude --plugin-dir ./avanade-superskills   # deve carregar 2 skills
-# Confirmar que o repo está PRIVATE no GitHub:
-gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility   # deve retornar PRIVATE
+ls skills/ | wc -l                          # → 3
+./scripts/install.sh list                   # lista os 3 skills
+claude --plugin-dir ./avanade-superskills   # carrega 3 skills sem erro
+gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility  # → PRIVATE
 ```
 
 ---
@@ -709,8 +992,9 @@ claude --plugin-dir ./career-superskills       # carrega 20 skills sem erro
 gh repo view ericgandrade/career-superskills --json visibility -q .visibility    # → PUBLIC
 
 # avanade-superskills
-ls ~/Library/CloudStorage/.../avanade-superskills/skills/ | wc -l        # → 2
-claude --plugin-dir ./avanade-superskills          # carrega 2 skills sem erro
+ls ~/Library/CloudStorage/.../avanade-superskills/skills/ | wc -l        # → 3
+./scripts/install.sh list                                                  # lista avanade-pptx, avanade-web, avanade-pdf
+claude --plugin-dir ./avanade-superskills          # carrega 3 skills sem erro
 gh repo view ericgandrade/avanade-superskills --json visibility -q .visibility       # → PRIVATE
 
 # claude-superskills
