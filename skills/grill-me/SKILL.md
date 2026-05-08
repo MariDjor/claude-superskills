@@ -1,6 +1,6 @@
 ---
 name: grill-me
-description: Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree. Use when user wants to stress-test a plan, get grilled on their design, or mentions "grill me".
+description: Relentless Socratic interview that walks down every branch of a plan or design, resolving decisions one-by-one. Trigger ONLY when the user explicitly says "grill me" or the PT equivalent "me grille". Do NOT trigger for stress-test, poke holes, devil's advocate, challenge, review, or feedback requests.
 license: MIT
 ---
 
@@ -12,14 +12,20 @@ Stress-test a plan, design, or idea through relentless Socratic questioning. Wal
 
 ## When to Use
 
-Trigger when the user:
-- Says "grill me" or "grill me on this"
-- Asks to stress-test, pressure-test, or poke holes in a plan
-- Wants to think through edge cases before committing
-- Has a design or architecture they want challenged
-- Says "challenge me" or "play devil's advocate"
+Trigger ONLY when the user explicitly uses the word "grill" — e.g.:
+- "grill me on this"
+- "grill me on my plan / architecture / design"
+- "I want you to grill me before I present"
+- PT: "me grille sobre esse plano"
 
-Do NOT trigger for passive review requests ("review this", "give feedback") — those don't require the relentless Socratic interview format.
+Do NOT trigger for synonyms or near-misses, even when the intent seems similar:
+- "stress-test this" → not grill-me
+- "poke holes in my plan" → not grill-me
+- "play devil's advocate" → not grill-me
+- "challenge my assumptions" → not grill-me
+- "pressure-test this" → not grill-me
+- "review this and tell me what's wrong" → not grill-me
+- "give me feedback" → not grill-me
 
 ## Workflow
 
