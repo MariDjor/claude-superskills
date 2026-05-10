@@ -45,3 +45,10 @@ plugin-output/
 
 # graphify knowledge graph output (local only)
 graphify-out/
+
+# Local platform runtime dirs (installed skills, settings, cache)
+.agent/
+.claude/
+.codex/
+.gemini/
+.opencode/
