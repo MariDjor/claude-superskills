@@ -1,6 +1,6 @@
 {
   "skill_name": "deep-research",
-  "description": "Triggers for multi-step deep web research with source synthesis, citations, skeptical evaluation, confidence/gap analysis, and optional dense/frontier research",
+  "description": "Triggers for multi-step deep web research with source synthesis, citations, skeptical evaluation, confidence/gap analysis, optional Markdown report saving, and optional dense/frontier research",
   "queries": [
     {"id": 1, "query": "Research the competitive landscape for B2B project management software", "should_trigger": true},
     {"id": 2, "query": "Do a deep dive into the current state of EU AI regulation", "should_trigger": true},
@@ -16,6 +16,7 @@
     {"id": 22, "query": "Build a cited research brief on AI coding agents with confidence levels and gaps", "should_trigger": true},
     {"id": 23, "query": "Use dense deep-research with a frontier model to produce a Perplexity-like evidence report", "should_trigger": true},
     {"id": 24, "query": "Run maximum-depth research with parallel agents and a citation audit on enterprise RAG platforms", "should_trigger": true},
+    {"id": 27, "query": "Deep research enterprise AI search platforms and save the final report as Markdown", "should_trigger": true},
     {"id": 11, "query": "Write a Python script to scrape this website", "should_trigger": false},
     {"id": 12, "query": "Summarize this YouTube video I'll share", "should_trigger": false},
     {"id": 13, "query": "Help me write a cover letter for a data analyst role", "should_trigger": false},

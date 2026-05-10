@@ -14,6 +14,7 @@
         "Output cites sources for major claims",
         "Output includes an evidence matrix or evidence ledger",
         "Output distinguishes confirmed, contested, weak, and inferred claims where relevant",
+        "Output asks whether to save the final report as Markdown unless a destination was already specified",
         "Output closes with a confidence & gaps section",
         "Output is structured for executive/board readability"
       ]
@@ -31,6 +32,7 @@
         "Output structures the competitive comparison in a readable format (table or profiles)",
         "Output includes an evidence matrix or evidence ledger",
         "Output distinguishes confirmed, contested, weak, and inferred claims where relevant",
+        "Output asks whether to save the final report as Markdown unless a destination was already specified",
         "Output closes with a confidence & gaps section",
         "Output draws conclusions about market positioning and white space"
       ]
@@ -47,6 +49,7 @@
         "Output cites sources for major claims",
         "Output includes an evidence matrix or evidence ledger",
         "Output distinguishes confirmed, contested, weak, and inferred claims where relevant",
+        "Output asks whether to save the final report as Markdown unless a destination was already specified",
         "Output includes a confidence & gaps section"
       ]
     },
@@ -62,7 +65,20 @@
         "Output prioritizes primary sources, official docs, papers, and credible secondary sources",
         "Output includes an evidence matrix or evidence ledger",
         "Output includes critique or rebuttal notes for contested claims",
+        "Output asks whether to save the final report as Markdown unless a destination was already specified",
         "Output closes with a confidence & gaps section"
+      ]
+    },
+    {
+      "id": 5,
+      "prompt": "Use dense deep-research on enterprise AI search platforms and save the final report as Markdown.",
+      "expected_output": "A dense research report saved or prepared as Markdown using the comprehensive report template, with evidence matrix, citations, disputed claims, and confidence/gaps",
+      "expectations": [
+        "Output confirms or states the Markdown save path",
+        "Output uses a path like research/YYYY-MM-DD-<topic-slug>.md when no path is specified",
+        "Output follows a comprehensive report structure with executive summary, methodology, findings by sub-question, evidence matrix, disputed claims, confidence & gaps, and sources",
+        "Output includes source URLs in the saved or returned Markdown report",
+        "Output states plainly if filesystem saving is unavailable or fails"
       ]
     }
   ]

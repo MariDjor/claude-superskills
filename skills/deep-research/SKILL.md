@@ -1,6 +1,6 @@
 ---
 name: deep-research
-description: This skill should be used when the user needs deep, multi-step web research with source synthesis, citations, skeptical evidence evaluation, confidence/gap analysis, and optional dense/frontier research using parallel agents.
+description: This skill should be used when the user needs deep, multi-step web research with source synthesis, citations, skeptical evidence evaluation, confidence/gap analysis, optional Markdown report saving, and optional dense/frontier research using parallel agents.
 license: MIT
 ---
 
@@ -21,6 +21,7 @@ Use this skill when:
 - Doing technical due diligence
 - Preparing decision memos with citations
 - Producing dense, high-confidence, Perplexity-like research with adversarial critique
+- Saving a comprehensive research report as Markdown
 
 ## Requirements
 
@@ -87,9 +88,12 @@ Do not hard-code one model as universally best. Use the strongest available mode
 
 ## Research Protocol
 
-1. Define objective, scope, and decomposition
+1. Define objective, scope, output destination, and decomposition
 - Restate the original research question in one sentence.
 - Identify audience, decision context, time horizon, geography/market scope, and requested output format.
+- Ask whether to save the final report as a Markdown file unless the user already specified a destination.
+- If the user wants a file and filesystem tools are available, plan to save to `research/YYYY-MM-DD-<topic-slug>.md` unless another path is requested.
+- If filesystem tools are unavailable, produce the final report as Markdown in the response and state that it was not saved.
 - Decompose the topic into 3-5 concrete sub-questions.
 - Each sub-question must cover a distinct dimension of the original question.
 - Together, the sub-questions should be sufficient to answer the main question.
@@ -195,6 +199,7 @@ Evidence ledger fields:
 - Cite every non-obvious factual claim inline.
 - Separate confirmed facts, interpretations, recommendations, and unresolved gaps.
 - In dense/frontier mode, include critique/rebuttal notes from `ContrarianScout` and `CitationAuditor`.
+- If the user approved Markdown saving, write the final report to the agreed `.md` path and mention the saved path in the final response.
 
 ## Output Formats
 
@@ -244,6 +249,107 @@ Every substantive report must close with `Confidence & Gaps`:
 - Missing or inaccessible information
 - Recommended follow-up research
 
+## Markdown Report Saving
+
+At the start of a research task, ask:
+
+```
+Do you want me to save the final research report as a Markdown file?
+Default path: research/YYYY-MM-DD-<topic-slug>.md
+```
+
+Rules:
+- Do not save a file unless the user explicitly agrees or requested a file upfront.
+- Use lowercase kebab-case for `<topic-slug>`.
+- Create the destination folder if needed and filesystem tools are available.
+- Save only the final polished report, not raw agent notes.
+- Include source URLs in the saved report.
+- If saving fails, return the report in the response and state the failure plainly.
+
+## Comprehensive Report Template
+
+Use this template for dense/frontier research and for any research saved to Markdown:
+
+```md
+# <Research Topic>
+
+**Date:** <YYYY-MM-DD>
+**Mode:** Native Research | Dense / Frontier Research
+**Recommended model/tooling path:** <model class or tooling path, if applicable>
+**Audience:** <target reader>
+**Time horizon:** <time window>
+**Scope:** <geography, market, domain, or explicit boundaries>
+
+## Executive Summary
+
+- <Finding 1 with citation>
+- <Finding 2 with citation>
+- <Finding 3 with citation>
+
+## Research Question
+
+<Restated research question>
+
+## Sub-questions
+
+1. <Sub-question 1>
+2. <Sub-question 2>
+3. <Sub-question 3>
+4. <Optional sub-question 4>
+5. <Optional sub-question 5>
+
+## Methodology
+
+- Search strategy: <query families and source types>
+- Source hierarchy: <primary, scholarly, reputable secondary, supporting context>
+- Agent topology: <native scouts or dense/frontier topology>
+- Inclusion criteria: <what counted as useful evidence>
+- Exclusion criteria: <what was rejected or down-ranked>
+
+## Findings By Sub-question
+
+### 1. <Sub-question>
+
+**Answer:** <concise answer with citations>
+
+**Evidence:**
+- <Claim or data point> — <source>
+- <Claim or data point> — <source>
+
+**Caveats:** <limitations or uncertainty>
+
+## Evidence Matrix
+
+| Claim | Status | Source(s) | Source quality | Notes / limitations |
+|-------|--------|-----------|----------------|---------------------|
+| <Claim> | confirmed / contested / weak / inferred | <URLs or source names> | primary / scholarly / secondary / supporting | <notes> |
+
+## Contradictions And Disputed Claims
+
+| Disputed claim | Source positions | Credibility assessment | Current judgment |
+|----------------|------------------|------------------------|------------------|
+| <Claim> | <who says what> | <why one source is stronger/weaker> | <confirmed / unresolved / likely false> |
+
+## Recommendations Or Implications
+
+- <Recommendation or implication tied to evidence>
+- <Recommendation or implication tied to evidence>
+
+## Confidence & Gaps
+
+- Overall confidence: high / medium / low
+- Strongest evidence: <summary>
+- Weakest evidence: <summary>
+- Known disagreements: <summary>
+- Missing or inaccessible information: <summary>
+- Recommended follow-up research: <summary>
+
+## Sources
+
+- <Title> — <publisher>, <date if available>, <URL>
+- <Title> — <publisher>, <date if available>, <URL>
+```
+
 ## Quality Bar
 
 - Evidence before conclusions
@@ -252,6 +358,7 @@ Every substantive report must close with `Confidence & Gaps`:
 - No uncited critical claims
 - Claim status visible for material claims
 - Dense/frontier outputs include model/tooling limitations
+- Saved Markdown reports follow the comprehensive report template unless the user requests a different structure
 
 ## Time & Cost
 
@@ -289,6 +396,7 @@ Every substantive report must close with `Confidence & Gaps`:
 | Strong sources disagree | Different methods, dates, jurisdictions, or definitions | Present both claims, explain credibility factors, and lower confidence if unresolved |
 | Too many low-quality sources | Query is attracting SEO/marketing content | Add primary-source, filetype, site, institution, or regulatory terms to query |
 | Frontier model unavailable | Host platform lacks requested model/tooling | Use native mode or strongest available model and disclose limitation |
+| Markdown save fails | Filesystem unavailable, path invalid, or permission denied | Return the report in the response and state that saving failed |
 
 ## Example Usage
 
@@ -296,3 +404,4 @@ Every substantive report must close with `Confidence & Gaps`:
 2. "Use deep-research to summarize regulatory updates from the last 12 months."
 3. "Use deep-research to produce a source-backed buy-vs-build memo."
 4. "Use dense deep-research with a frontier model to produce a Perplexity-like evidence report."
+5. "Use dense deep-research and save the final report as Markdown."
