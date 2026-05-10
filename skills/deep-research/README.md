@@ -1,6 +1,6 @@
 # deep-research
 
-Multi-step research skill using native web tools (WebSearch/WebFetch) to synthesize comprehensive findings with citations — no external API keys required.
+Multi-step research skill using native web tools (WebSearch/WebFetch) to decompose complex questions, gather authoritative sources, synthesize claim-level evidence, cite findings, and report confidence/gaps. It runs without external API keys by default and includes an optional dense/frontier mode for maximum-depth research.
 
 ## When to use
 
@@ -8,12 +8,19 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to synthes
 - Gather and synthesize technical documentation.
 - Produce a structured report with cited evidence.
 - Answer complex questions that require web searches.
+- Run dense, Perplexity-like research with parallel agents, frontier-model recommendation, adversarial critique, and citation audit.
 
 ## What is included
 
-- `SKILL.md` — End-to-end research workflow: query decomposition, parallel source collection, synthesis, and structured report with citations
-- `evals/evals.json` — 3 realistic test cases with assertions for trigger accuracy and workflow correctness
-- `evals/trigger-eval.json` — 20 queries (10 should-trigger / 10 should-not-trigger) for description optimization
+- `SKILL.md` — End-to-end research workflow: operating modes, sub-question decomposition, parallel source collection, evidence ledger, skeptical synthesis, and structured report with citations
+- Native mode — no external API keys required; uses built-in WebSearch/WebFetch
+- Dense/frontier mode — recommends the strongest available model and runs a wider parallel agent topology when the host platform supports subagents
+- Sub-question decomposition into 3-5 concrete research threads
+- Evidence ledger with source quality notes and claim status
+- Required confidence/gaps section
+- Skeptical conflict handling for contradictory sources
+- `evals/evals.json` — realistic test cases with assertions for trigger accuracy and workflow correctness
+- `evals/trigger-eval.json` — trigger and non-trigger examples for description optimization
 
 ## Typical invocation
 
@@ -21,6 +28,32 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to synthes
 - "Deep-research the current state of vector databases for RAG."
 - "Research pricing models for SaaS developer tools."
 - "Synthesize the latest findings on AI agent evaluation frameworks."
+- "Use dense deep-research with a frontier model to create a Perplexity-like evidence report."
+
+## Operating modes
+
+### Native research
+
+- Default mode.
+- Uses built-in `WebSearch` and `WebFetch`.
+- Decomposes complex topics into 3-5 sub-questions.
+- Runs parallel `ResearchScout` agents where supported.
+- Produces citations, evidence ledger, and confidence/gaps.
+
+### Dense / frontier research
+
+- Activated when the user asks for maximum depth, exhaustive research, frontier models, adversarial review, or "Perplexity turbinado" style output.
+- Recommends the strongest available model or model class for the task.
+- Adds specialized research roles such as `PrimarySourceHunter`, `ContrarianScout`, `RecencyScout`, `CitationAuditor`, and `SynthesisJudge`.
+- Falls back to native mode if frontier tooling or subagents are unavailable.
+
+## What's New in v2.2
+
+- **Dense / Frontier Mode** -- Maximum-depth research path with model recommendation, wider parallel topology, critique, rebuttal, and citation audit
+- **Sub-question decomposition** -- Complex topics are broken into 3-5 concrete research threads before searching
+- **Evidence ledger** -- Claims are tracked with source metadata, source quality, and evidence status
+- **Skeptical synthesis** -- Conflicts and weak evidence are surfaced instead of smoothed over
+- **Confidence & gaps** -- Reports close with confidence level, source disagreements, and missing coverage
 
 ## What's New in v2.0
 
@@ -35,10 +68,10 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to synthes
 
 | Field | Value |
 |-------|-------|
-| Version | 2.1.0 |
+| Version | 2.2.0 |
 | Author | Eric Andrade |
 | Created | 2026-02-20 |
-| Updated | 2026-03-19 |
+| Updated | 2026-05-10 |
 | Platforms | GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, AdaL CLI |
 | Category | research |
 | Tags | research, search, analysis, synthesis, citations |
