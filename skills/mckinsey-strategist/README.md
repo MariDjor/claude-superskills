@@ -1,60 +1,56 @@
 # 💼 McKinsey Strategist
 
-Atua como um Sócio Sênior da McKinsey & Co. para diagnosticar problemas complexos de negócios e fornecer recomendações estratégicas de alto impacto.
+Acts as a McKinsey & Co. Senior Partner to diagnose complex business problems and provide high-impact strategic recommendations.
 
-## 🎯 Objetivo
+## 🎯 Objective
 
-Ajudar usuários a resolverem problemas complexos utilizando frameworks de consultoria de elite, rigor analítico e pensamento de primeiros princípios.
+Help users solve complex problems using elite consulting frameworks, analytical rigor, and first-principles thinking.
 
-## 🚀 Como Usar
+## 🚀 How to Use
 
-### Instalação
-
-Se você já clonou o repositório `claude-superskills`, basta navegar até o diretório e executar:
+### Installation
 
 ```bash
-npx claude-superskills install --local skills/mckinsey-strategist
+npx claude-superskills install mckinsey-strategist
 ```
 
-Ou adicione manualmente ao seu arquivo de configuração do CLI.
-
-### Comandos de Exemplo
+### Example Commands
 
 ```bash
-copilot> act as a consultant: queda de receita em e-commerce
-copilot> strategic analysis for: startup SaaS com churn alto
-copilot> business diagnosis: expansão internacional de varejo
-copilot> consulting case: fusão de duas empresas de tecnologia
+claude> act as a consultant: revenue decline in e-commerce
+claude> strategic analysis for: SaaS startup with high churn
+claude> business diagnosis: international retail expansion
+claude> consulting case: merger of two technology companies
 ```
 
-## 🧠 Frameworks Integrados
+## 🧠 Integrated Frameworks
 
-O skill aplica automaticamente um diagnóstico profundo utilizando:
+The skill automatically applies a deep diagnostic using:
 
-1.  **SWOT Analysis** (Forças, Fraquezas, Oportunidades, Ameaças)
-2.  **VRIO Framework** (Vantagem Competitiva Sustentável)
-3.  **McKinsey 7S Framework** (Alinhamento Organizacional)
-4.  **Second-Order Thinking** (Consequências de 2ª e 3ª ordem)
-5.  **Impact vs. Effort Matrix** (Priorização Estratégica)
+1.  **SWOT Analysis** (Strengths, Weaknesses, Opportunities, Threats)
+2.  **VRIO Framework** (Sustainable Competitive Advantage)
+3.  **McKinsey 7S Framework** (Organizational Alignment)
+4.  **Second-Order Thinking** (2nd and 3rd order consequences)
+5.  **Impact vs. Effort Matrix** (Strategic Prioritization)
 
-## 📝 Exemplo de Saída
+## 📝 Output Example
 
-**Input:** "Analise a entrada de um novo competidor low-cost no mercado."
+**Input:** "Analyze the entry of a new low-cost competitor in the market."
 
-**Skill (Síntese Executiva):**
-"A entrada do competidor low-cost ameaça erodir a margem em 20%, exigindo uma diferenciação imediata via proposta de valor premium e bloqueio de canais de distribuição exclusivos."
+**Skill (Executive Synthesis):**
+"The low-cost competitor's entry threatens to erode margins by 20%, requiring immediate differentiation through a premium value proposition and exclusive distribution channel lock-in."
 
-**Deep Dive Analítico:**
-[Tabelas detalhadas de SWOT, VRIO e 7S]
+**Analytical Deep Dive:**
+[Detailed SWOT, VRIO, and 7S tables]
 
-**Proposta Estratégica:**
-1.  **Bloqueio de Canais Exclusivos** (Impacto Alto, Esforço Médio)
-    *   *2ª Ordem:* Retaliação de preços pelo competidor.
-    *   *Mitigação:* Contratos de longo prazo com distribuidores chave.
+**Strategic Proposal:**
+1.  **Exclusive Channel Lock-in** (High Impact, Medium Effort)
+    *   *2nd Order:* Price retaliation by competitor.
+    *   *Mitigation:* Long-term contracts with key distributors.
 
 ---
 
-**Licença:** MIT
+**License:** MIT
 
 ---
 

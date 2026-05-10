@@ -132,19 +132,19 @@ Every summary follows this comprehensive structure:
 ```markdown
 # [Video Title]
 
-**Canal:** [Channel Name]
-**Duração:** [Duration]
+**Channel:** [Channel Name]
+**Duration:** [Duration]
 **URL:** [Video URL]
-**Data de Publicação:** [Date]
+**Published:** [Date]
 
 ---
 
-## 📊 Síntese Executiva
+## 📊 Executive Summary
 [High-level overview, 2-3 paragraphs]
 
 ---
 
-## 📝 Resumo Detalhado
+## 📝 Detailed Summary
 ### [Topic 1]
 [Detailed analysis with examples, data, quotes]
 
@@ -153,25 +153,25 @@ Every summary follows this comprehensive structure:
 
 ---
 
-## 💡 Principais Insights
+## 💡 Key Insights
 - **Insight 1:** [Explanation]
 - **Insight 2:** [Explanation]
 
 ---
 
-## 📚 Conceitos e Terminologia
+## 📚 Concepts and Terminology
 - **Term 1:** [Definition]
 - **Term 2:** [Definition]
 
 ---
 
-## 🔗 Recursos Mencionados
+## 🔗 Resources Mentioned
 - [Resource 1]
 - [Resource 2]
 
 ---
 
-## 📌 Conclusão
+## 📌 Conclusion
 [Final synthesis and key takeaways]
 ```
 

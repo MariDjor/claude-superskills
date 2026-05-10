@@ -330,10 +330,10 @@ echo "[████████████████████] 100% - Step
 ```markdown
 # [Video Title]
 
-**Canal:** [Channel Name]  
-**Duração:** [Duration]  
+**Channel:** [Channel Name]  
+**Duration:** [Duration]  
 **URL:** [https://youtube.com/watch?v=VIDEO_ID]  
-**Data de Publicação:** [Date if available]
+**Published:** [Date if available]
 
 
 ## 📝 Detailed Summary
@@ -377,7 +377,7 @@ This video provides a comprehensive introduction to the fundamental concepts of 
 What would you like to save?
 → Summary + raw transcript
 
-✅ File saved: resumo-exemplo123-2026-02-01.md (includes raw transcript)
+✅ File saved: summary-example123-2026-02-01.md (includes raw transcript)
 [████████████████████] 100% - ✓ Processing complete!
 ```
 

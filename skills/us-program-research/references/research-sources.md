@@ -86,10 +86,10 @@ site:{school}.edu "{program}" curriculum 2025
 
 **Anti-juniorization warning message template:**
 ```
-⚠️ ALERTA ANTI-JUNIORIZAÇÃO: {Programa} possui cohort diurno integral com
-foco intensivo em {Python/R/SQL/ML}. Para candidatos com perfil VP, este
-formato pode reclassificar a percepção de mercado para nível júnior.
-Recomendação: Priorizar programas com formato executivo/noturno.
+⚠️ ANTI-JUNIORIZATION ALERT: {Program} has a full-time daytime cohort with
+an intensive focus on {Python/R/SQL/ML}. For VP-profile candidates, this
+format may reclassify market perception to junior level.
+Recommendation: Prioritize programs with executive/evening format.
 ```
 
 ### For PhD:
@@ -120,7 +120,7 @@ Recomendação: Priorizar programas com formato executivo/noturno.
 
 When a program has no public reviews on Niche, Reddit, GMAT Club, or GradCafe:
 1. Score Student Satisfaction at 20% of criterion weight (minimum)
-2. Add explicit warning: "⚠️ Quase sem reviews públicos — risco de lacuna de informação"
+2. Add explicit warning: "⚠️ Almost no public reviews — risk of information gap"
 3. Move program toward Tier 3 or 4 regardless of other scores
 4. Recommend candidate contact current students directly before applying
 

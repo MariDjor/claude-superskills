@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - **Solution:** Removed `cleanup_temp_files()` function entirely
   - **Impact:** Script now only creates and manages files it's supposed to:
     - `transcript-TIMESTAMP.md` (always created)
-    - `ata-TIMESTAMP.md` (optional, if LLM processing succeeds)
+    - `summary-TIMESTAMP.md` (optional, if LLM processing succeeds)
 
 ### 🗑️ Removed
 
@@ -41,9 +41,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Intelligent Prompt Workflow** (Step 3b) - Complete integration with prompt-engineer skill
   - **Scenario A**: User-provided prompts are automatically improved with prompt-engineer
     - Displays both original and improved versions side-by-side
-    - Single confirmation: "Usar versão melhorada? [s/n]"
+    - Single confirmation: "Use improved version? [y/n]"
   - **Scenario B**: Auto-generation when no prompt provided
-    - Analyzes transcript and suggests document type (ata, resumo, notas)
+    - Analyzes transcript and suggests document type (minutes, summary, notes)
     - Shows suggestion and asks confirmation
     - Generates complete structured prompt (RISEN/RODES/STAR)
     - Shows preview and asks final confirmation
@@ -62,7 +62,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - **Timestamp-based File Naming** - Avoid overwriting previous transcriptions
   - Format: `transcript-YYYYMMDD-HHMMSS.md`
-  - Format: `ata-YYYYMMDD-HHMMSS.md`
+  - Format: `summary-YYYYMMDD-HHMMSS.md`
   - Prevents data loss from repeated runs
 
 - **Automatic Cleanup** - Remove temporary files after processing
@@ -75,9 +75,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Color-coded status messages (green=success, yellow=warning, red=error)
   - Spinner animations for long-running tasks
 
-- **Dual Output Support** - Generate both transcript and processed ata
+- **Dual Output Support** - Generate both transcript and processed summary
   - `transcript-*.md` - Raw transcription with timestamps
-  - `ata-*.md` - Intelligent summary/meeting minutes (if LLM available)
+  - `summary-*.md` - Intelligent summary/meeting minutes (if LLM available)
   - User can decline LLM processing to get transcript-only
 
 ### 🔧 Changed
@@ -114,8 +114,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Now uses timestamp to prevent data loss
   - Each run creates unique files
 
-- **Missing ata/summary** - v1.0.0 only generated raw transcript
-  - Now generates intelligent ata/resumo using LLM
+- **Missing summary** - v1.0.0 only generated raw transcript
+  - Now generates intelligent summary/meeting minutes using LLM
   - Respects user's prompt instructions
 
 - **No progress feedback** - v1.0.0 had silent processing (users didn't know if it froze)
@@ -132,11 +132,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### 🔗 Related Issues
 
-- Fixes #1: Prompt do usuário RISEN ignorado
-- Fixes #2: Arquivos temporários (metadata.json, transcription.json) deixados como lixo
-- Fixes #3: Output incompleto (apenas transcript RAW, sem ata)
-- Fixes #4: Falta de indicador de progresso visual
-- Fixes #5: Formato de saída sem timestamp
+- Fixes #1: User RISEN prompt was ignored
+- Fixes #2: Temporary files (metadata.json, transcription.json) left as garbage
+- Fixes #3: Incomplete output (raw transcript only, no summary)
+- Fixes #4: Missing visual progress indicator
+- Fixes #5: Output format without timestamp
 
 ---
 
@@ -158,7 +158,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 📝 Known Limitations (Fixed in v1.1.0)
 
 - User prompts ignored (no LLM integration)
-- Only raw transcript generated (no ata/summary)
+- Only raw transcript generated (no summary/meeting minutes)
 - Temporary files not cleaned up
 - No progress indicators
 - Files overwritten on repeated runs

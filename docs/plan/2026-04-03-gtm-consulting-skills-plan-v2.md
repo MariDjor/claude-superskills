@@ -2,13 +2,13 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use `executing-plans` to implement this plan task-by-task.
 
-**Goal:** Adicionar 7 skills ao claude-superskills cobrindo o ciclo completo de GTM para consulting Microsoft — do ICP ao co-sell, da qualificação à expansão de conta. Fills a gap not covered by `abx-strategy`, `product-strategy`, or `startup-growth-strategist`.
+**Goal:** Add 7 skills to claude-superskills covering the full GTM cycle for Microsoft consulting — from ICP to co-sell, from qualification to account expansion. Fills a gap not covered by `abx-strategy`, `product-strategy`, or `startup-growth-strategist`.
 
-**Architecture:** Single-source-of-truth model. Cada skill vive em `skills/<name>/SKILL.md` + `skills/<name>/README.md`. Frontmatter mínimo (name, description, license only). Sem version bump até os skills estarem completos e validados. Implementação em 2 batches com gate de aprovação entre eles.
+**Architecture:** Single-source-of-truth model. Each skill lives in `skills/<name>/SKILL.md` + `skills/<name>/README.md`. Minimal frontmatter (name, description, license only). No version bump until skills are complete and validated. Implementation in 2 batches with an approval gate between them.
 
 **Tech Stack:** Markdown skill files, YAML frontmatter, validation scripts (`validate-skill-yaml.sh`, `validate-skill-content.sh`), Python index generators.
 
-**Context:** Eric Andrade, VP/Client Solutions Lead, Avanade Brazil. Responsável por criar e melhorar GTMs para ofertas de consulting Microsoft (Assessment, System Integration, Outsourcing, Shared Services). Segmentação operacional interna: MVC / High Growth / Emerging / Whitespace. Pillars: AI Business Solutions | Security | Cloud & AI Platforms | Advisory.
+**Context:** Eric Andrade, VP/Client Solutions Lead, Avanade Brazil. Responsible for creating and improving GTMs for Microsoft consulting offers (Assessment, System Integration, Outsourcing, Shared Services). Internal operational segmentation: MVC / High Growth / Emerging / Whitespace. Pillars: AI Business Solutions | Security | Cloud & AI Platforms | Advisory.
 
 **Reference documents used in this plan:**
 - `GTM_Mastery_Avanade.md` — 8 GTM pillars, coverage model, co-sell strategy, common GTM gaps
@@ -16,49 +16,49 @@
 
 ---
 
-## Session Context (Estado da Sessão em 2026-04-03)
+## Session Context (as of 2026-04-03)
 
-### Status atual
+### Current Status
 
-- ✅ Plano v2 escrito e salvo neste arquivo
-- ✅ Plano v1 (`2026-04-03-gtm-consulting-skills-plan.md`) ainda existe — supersedido por este v2
-- ⏳ **Nenhum skill foi implementado ainda** — próximo passo é Batch 1
-- ⏳ Batch 1 aguarda aprovação/execução: `microsoft-consulting-icp` + `consulting-gtm-designer`
-- ⏳ Batch 2 aguarda Batch 1 completo + review
+- ✅ Plan v2 written and saved in this file
+- ✅ Plan v1 (`2026-04-03-gtm-consulting-skills-plan.md`) still exists — superseded by this v2
+- ⏳ **No skill has been implemented yet** — next step is Batch 1
+- ⏳ Batch 1 awaiting approval/execution: `microsoft-consulting-icp` + `consulting-gtm-designer`
+- ⏳ Batch 2 awaiting Batch 1 complete + review
 
-### Próximo passo imediato
+### Immediate Next Step
 
-Executar Batch 1 com `executing-plans`:
+Execute Batch 1 with `executing-plans`:
 1. `skills/microsoft-consulting-icp/SKILL.md` + `README.md`
 2. `skills/consulting-gtm-designer/SKILL.md` + `README.md`
-3. Regenerar indexes
-4. Validar com scripts
+3. Regenerate indexes
+4. Validate with scripts
 
-### Fluxo de uso dos skills (como o Eric usaria no dia a dia)
+### Skill Usage Flow (how Eric would use this daily)
 
 ```
-ESTRATÉGIA (trimestral)
+STRATEGY (quarterly)
     ↓
-microsoft-consulting-icp        → "Quem devo perseguir?" (ICP por tier × oferta)
-consulting-gtm-designer         → "Como vendo para eles?" (GTM Canvas)
-microsoft-cosell-strategy       → "Como alavanco a Microsoft?" (co-sell + funding)
+microsoft-consulting-icp        → "Who should I pursue?" (ICP by tier × offer)
+consulting-gtm-designer         → "How do I sell to them?" (GTM Canvas)
+microsoft-cosell-strategy       → "How do I leverage Microsoft?" (co-sell + funding)
 
-EXECUÇÃO (por oportunidade)
+EXECUTION (per opportunity)
     ↓
-presales-qualifier              → "Vale investir pre-sales neste deal?"
-executive-account-briefing      → "Como me preparo para a reunião C-level?"
-consulting-pursuit-governance   → "Como governo este pursuit ativo?"
+presales-qualifier              → "Is it worth investing pre-sales in this deal?"
+executive-account-briefing      → "How do I prepare for the C-level meeting?"
+consulting-pursuit-governance   → "How do I govern this active pursuit?"
 
-EXPANSÃO (por conta existente)
+EXPANSION (per existing account)
     ↓
-consulting-account-expansion    → "Como cresço revenue nesta conta?"
+consulting-account-expansion    → "How do I grow revenue in this account?"
 ```
 
-### Repositórios externos identificados (não triados ainda)
+### External Repositories Identified (not yet triaged)
 
-O Eric identificou 10 repositórios públicos de GTM skills para análise futura. Estes podem ser relevantes para **GTM de produto (PRD)** — não para consulting services, que é o foco deste plano.
+Eric identified 10 public GTM skills repositories for future analysis. These may be relevant for **product GTM (PRD)** — not for consulting services, which is the focus of this plan.
 
-**Repositórios para triage futura (PRD GTM):**
+**Repositories for future triage (PRD GTM):**
 - https://github.com/iamachilles/gtm-skills-os/tree/main/skills
 - https://github.com/kenny589/gtm-flywheel
 - https://github.com/gooseworks-ai/goose-skills
@@ -70,21 +70,21 @@ O Eric identificou 10 repositórios públicos de GTM skills para análise futura
 - https://github.com/Prospeda/gtm-skills
 - https://github.com/Othmane-Khadri/gtm-agent-playbook
 
-**Avaliação inicial (sem triage completa):**
-- Os docs `GTM_Mastery_Avanade.md` e `MASTER_21_Frameworks_Vendas.md` são suficientes para os 7 skills de consulting deste plano
-- Para skills de **PRD GTM** (SaaS, PLG, trial conversion, ARR/NRR metrics), os repositórios acima têm mais potencial
-- Os 21 frameworks têm ingredientes úteis para PRD também (JOLT para trial-to-paid, SPIN para demo, GAP Selling para demo narrative) — mas base estrutural precisaria de referências de produto (April Dunford, Wes Bush)
-- Triage desses repos deve acontecer em sessão separada, seguindo o processo do `obsidian-skills-adoption-plan.md` como modelo
+**Initial assessment (no full triage yet):**
+- The `GTM_Mastery_Avanade.md` and `MASTER_21_Frameworks_Vendas.md` docs are sufficient for the 7 consulting skills in this plan
+- For **PRD GTM** skills (SaaS, PLG, trial conversion, ARR/NRR metrics), the repositories above have more potential
+- The 21 frameworks have useful ingredients for PRD as well (JOLT for trial-to-paid, SPIN for demo, GAP Selling for demo narrative) — but the structural base would need product references (April Dunford, Wes Bush)
+- Triage of these repos should happen in a separate session, following the `obsidian-skills-adoption-plan.md` process as a model
 
-### Decisões de design fixadas (não reverter)
+### Design Decisions Fixed (do not revert)
 
-1. **Segmentação primária:** MVC / High Growth / Emerging / Whitespace (não Enterprise/SMC)
-2. **Hero Offer:** opção recomendada para Whitespace/Emerging — NUNCA gate obrigatório
-3. **Arc Assessment → SI → Outsourcing:** caminho possível, não sequência forçada
-4. **Diferenciação de abx-strategy:** esse skill é para B2B genérico; estes são para Microsoft consulting
-5. **Framework source:** os 21 frameworks são usados como ingredientes adaptados ao contexto Avanade, não copiados verbatim
+1. **Primary segmentation:** MVC / High Growth / Emerging / Whitespace (not Enterprise/SMC)
+2. **Hero Offer:** recommended entry option for Whitespace/Emerging — NEVER a mandatory gate
+3. **Arc Assessment → SI → Outsourcing:** a possible path, not a forced sequence
+4. **Differentiation from abx-strategy:** that skill is for generic B2B; these are for Microsoft consulting
+5. **Framework source:** the 21 frameworks are used as adapted ingredients for the Avanade context, not copied verbatim
 
-### Regras de frontmatter (crítico — Claude Code quebra se errar)
+### Frontmatter Rules (critical — Claude Code breaks if wrong)
 
 ```yaml
 ---
@@ -95,47 +95,47 @@ license: MIT
 ```
 
 **PROIBIDO em SKILL.md:** `version`, `author`, `platforms`, `category`, `tags`, `risk`, `created`, `updated` — causam erro de loading no Claude Code.
-**Esses campos vão em README.md** na tabela `## Metadata`.
+**These fields go in README.md** in the `## Metadata` table.
 
 ---
 
-## Segmentação Operacional (Base para Todos os Skills)
+## Operational Segmentation (Base for All Skills)
 
-| Tier | Critério | Motion |
+| Tier | Criterion | Motion |
 |------|----------|--------|
-| **MVC** | $5M+ Revenue com Avanade | BDE (Business Development Executive). Named coverage. Full pursuit governance. |
+| **MVC** | $5M+ Revenue with Avanade | BDE (Business Development Executive). Named coverage. Full pursuit governance. |
 | **High Growth** | $1.1M–$4.9M Revenue | BDE. Named coverage. Expansion-focused. |
-| **Emerging** | >$1M Revenue (crescimento esperado) | DDC (Digital Demand Center) + BDE híbrido |
-| **Whitespace** | Net new — sem relacionamento | DDC. Digital first. Hero Offer como entry opcional. |
+| **Emerging** | >$1M Revenue (expected growth) | DDC (Digital Demand Center) + hybrid BDE |
+| **Whitespace** | Net new — no relationship | DDC. Digital first. Hero Offer as optional entry. |
 
-> **Hero Offer rule:** Hero Offers (fixed-fee, $30–75K, 2–6 semanas) são **opção de entrada recomendada para Whitespace e Emerging**, não gate obrigatório. Cliente pode comprar SI direto se o contexto permitir. O importante é vender.
+> **Hero Offer rule:** Hero Offers (fixed-fee, $30–75K, 2–6 weeks) are **the recommended entry option for Whitespace and Emerging**, not a mandatory gate. The client can buy SI directly if the context allows. The important thing is to sell.
 
 ---
 
 ## Decision Gates
 
 1. ✅ Batch 1 skills aprovados (microsoft-consulting-icp, consulting-gtm-designer)
-2. ⏳ User approves Batch 1 após implementação e review
+2. ⏳ User approves Batch 1 after implementation and review
 3. ⏳ User approves Batch 2 antes de implementar (presales-qualifier, consulting-pursuit-governance, executive-account-briefing, microsoft-cosell-strategy, consulting-account-expansion)
 
 ---
 
-## Batch 1: Skills Prioritários
+## Batch 1: Priority Skills
 
 ### Skill 1: `microsoft-consulting-icp`
 
 **Purpose:** Define ICP para engagements de consulting Microsoft segmentado por tier de conta (MVC/HG/Emerging/Whitespace) e tipo de oferta. Inclui buyer persona mapping por oferta, PURE scoring adaptado ao contexto Avanade/Microsoft, e Anti-ICP para proteger pipeline quality.
 
-**Why not `abx-strategy`?** `abx-strategy` target B2B genérico com <500 contas e SaaS. Este skill é específico para: Microsoft platform consulting, dinâmica do ecossistema Avanade/Microsoft, segmentação MVC/HG/Emerging/Whitespace, e diferenças no buyer committee entre um CIO comprando Assessment vs. CFO aprovando Outsourcing de 3 anos.
+**Why not `abx-strategy`?** `abx-strategy` targets generic B2B with <500 accounts and SaaS. This skill is specific to: Microsoft platform consulting, Avanade/Microsoft ecosystem dynamics, MVC/HG/Emerging/Whitespace segmentation, and differences in the buyer committee between a CIO buying an Assessment vs. a CFO approving a 3-year Outsourcing engagement.
 
 **Frameworks integrados:** PURE (scoring), Strategic Selling / Miller Heiman (Economic Buyer, User Buyer, Technical Buyer, Coach), TAS quadrant model (INVEST/DEVELOP/HARVEST/OPPORTUNISTIC).
 
 **Trigger phrases:**
-- "Quem é meu ICP para Assessment no MVC?"
-- "Qual é o perfil de conta ideal para Outsourcing em High Growth?"
+- "Who is my ICP for Assessment in MVC?"
+- "What is the ideal account profile for Outsourcing in High Growth?"
 - "Ajuda a definir ICP para minha oferta de SI no Whitespace"
-- "Preciso mapear o comitê de compra para uma conta MVC de Shared Services"
-- "Define Anti-ICP para nossa oferta de Cloud no Emerging"
+- "I need to map the buying committee for an MVC account in Shared Services"
+- "Define Anti-ICP for our Cloud offer in Emerging"
 
 ---
 
@@ -172,7 +172,7 @@ Define Ideal Customer Profiles para engagements de consulting Microsoft, segment
 
 ## Purpose
 
-Define Ideal Customer Profiles (ICPs) para engagements de consulting Microsoft. Segmenta contas pelos tiers operacionais Avanade (MVC, High Growth, Emerging, Whitespace), mapeia buyer personas por tipo de oferta, aplica PURE scoring adaptado ao contexto de serviços profissionais, e produz Anti-ICP explícito para proteger win-rate e qualidade de pipeline.
+Defines Ideal Customer Profiles (ICPs) for Microsoft consulting engagements. Segments accounts by Avanade's operational tiers (MVC, High Growth, Emerging, Whitespace), maps buyer personas by offer type, applies PURE scoring adapted to the professional services context, and produces an explicit Anti-ICP to protect win-rate and pipeline quality.
 
 ## When to Use
 
@@ -282,10 +282,10 @@ Define explicitly who NOT to pursue per offer type and tier:
 ## Example Usage
 
 1. "Define ICP para Assessment no tier MVC no setor FSI — quero entrar no Bradesco com uma nova oferta de AI"
-2. "Score esta conta para Outsourcing: High Growth, setor CMT, $2M potencial, CFO recém-trocado, LGPD mandatório"
-3. "Mapeia o comitê de compra para um projeto de SI de $500K no Safra — já temos o IT Director como contato"
+2. "Score this account for Outsourcing: High Growth, CMT sector, $2M potential, recently changed CFO, LGPD mandatory"
+3. "Map the buying committee for a $500K SI project at Safra — we already have the IT Director as a contact"
 4. "Revisa meu pipeline Emerging — aplica Anti-ICP e me diz quais oportunidades descartar"
-5. "Qual é o perfil de conta Whitespace que justifica uma Hero Offer de AI Assessment antes de propor SI?"
+5. "What is the Whitespace account profile that justifies an AI Assessment Hero Offer before proposing SI?"
 ```
 
 **Step 3: Validate**
@@ -352,11 +352,11 @@ Different from generic B2B ICP tools — this skill is built around the Microsof
 
 ### Skill 2: `consulting-gtm-designer`
 
-**Purpose:** Build GTM strategy for Microsoft platform consulting offers targeting Avanade's account tiers. Produz GTM canvas por tipo de oferta com value prop por pilar, motion de entrada, arc de expansão, e win metrics.
+**Purpose:** Build GTM strategy for Microsoft platform consulting offers targeting Avanade's account tiers. Produces GTM canvas per offer type with value prop by pillar, entry motion, expansion arc, and win metrics.
 
-**Why not `product-strategy`?** `product-strategy` é para empresas de produto (PLG vs SLG, pricing tiers, freemium). Este skill é para serviços profissionais: packaging de oferta, motions de consulting, governança de pre-sales, arc Assessment → SI → Outsourcing como expansão estratégica.
+**Why not `product-strategy`?** `product-strategy` is for product companies (PLG vs SLG, pricing tiers, freemium). This skill is for professional services: offer packaging, consulting motions, pre-sales governance, Assessment → SI → Outsourcing arc as strategic expansion.
 
-**Hero Offer rule:** Hero Offer é opção de entrada recomendada para Whitespace/Emerging — não é gate obrigatório. O skill apresenta a arc Assessment → SI → Outsourcing como caminho possível, não sequência forçada.
+**Hero Offer rule:** Hero Offer is the recommended entry option for Whitespace/Emerging — it is not a mandatory gate. The skill presents the Assessment → SI → Outsourcing arc as a possible path, not a forced sequence.
 
 **Frameworks integrados:** Force Management (Required Capabilities, Proof Points, Business Outcomes), GAP Selling (Estado Atual → Estado Futuro → Impacto do Gap), Challenger Selling (Tailor pillar para value prop executiva).
 
@@ -364,7 +364,7 @@ Different from generic B2B ICP tools — this skill is built around the Microsof
 - "Monta o GTM para AI Assessment no tier MVC — setor FSI"
 - "Como entrar em contas Whitespace com oferta de Cloud & AI?"
 - "Estrutura o GTM para Outsourcing no High Growth — setor CMT"
-- "Qual é a estratégia de expansão de um Assessment para SI no Bradesco?"
+- "What is the expansion strategy from an Assessment to SI at Bradesco?"
 - "Define value prop por pilar para Shared Services no segmento HPS"
 
 ---
@@ -544,10 +544,10 @@ Translate each value prop into buyer-specific language using Challenger Selling 
 ## Example Usage
 
 1. "Monta GTM Canvas para AI Business Solutions Assessment no tier MVC — setor FSI, entering Bradesco"
-2. "Estrutura a expansão de um Assessment de Cloud para SI de $500K no Safra — o que precisa ser verdade?"
+2. "Structure the expansion from a Cloud Assessment to a $500K SI at Safra — what needs to be true?"
 3. "Define value prop de Security para High Growth no setor CMT — para CFO e CIO"
-4. "Revisa GTM de Outsourcing no Emerging — onde está o gap entre nossa motion e o que o mercado precisa?"
-5. "Cria GTM Canvas para Shared Services no HPS — Advisory pillar, tier MVC, entrada já feita via Assessment"
+4. "Review Outsourcing GTM in Emerging — where is the gap between our motion and what the market needs?"
+5. "Create GTM Canvas for Shared Services at HPS — Advisory pillar, MVC tier, entry already made via Assessment"
 ```
 
 **Step 3: Validate**
@@ -618,45 +618,45 @@ Explicitly designed around the reality that Hero Offer is an optional entry tool
 
 ### Skill 3: `presales-qualifier`
 
-**Purpose:** Framework de qualificação de pré-vendas para deals de consulting Microsoft. Combina BANT consultivo (DDC SAL process) + MEDDPICC adaptado + go/no-go estruturado. Governa investimento de horas de pré-vendas e define kill conditions.
+**Purpose:** Pre-sales qualification framework for Microsoft consulting deals. Combines consultative BANT (DDC SAL process) + adapted MEDDPICC + structured go/no-go. Governs pre-sales hour investment and defines kill conditions.
 
 **Frameworks integrados:** BANT (DDC qualification for SAL handoff), MEDDPICC (enterprise deal governance: Metrics, Economic Buyer, Decision Criteria, Decision Process, Identify Pain, Champion, Competition), SPICED (Critical Event for presales timing), Sandler Pain 3 levels (surface pain → business impact → personal consequence).
 
 **Trigger phrases:**
 - "Qualifica esta oportunidade de Outsourcing para o Bradesco"
-- "Qual é o go/no-go para investir pre-sales nesta conta MVC?"
-- "Nosso win-rate está baixo — ajuda a revisar critérios de qualificação"
+- "What is the go/no-go for investing pre-sales in this MVC account?"
+- "Our win-rate is low — help review the qualification criteria"
 - "MEDDPICC completo para esta oportunidade de SI de $800K"
-- "Define kill conditions para este deal — já temos 3 meses sem avanço"
+- "Define kill conditions for this deal — we've had 3 months with no progress"
 
 **Content specification:**
 
 Phase 1: BANT Consultivo (DDC SAL Qualification)
-- Budget: orçamento confirmado ou aprovação prevista (pergunta certa: "Qual é o processo de aprovação orçamentária para este projeto?")
-- Authority: economic buyer identificado e acessível (pergunta certa: "Quem assina o contrato? Já conversamos com esta pessoa?")
-- Need: dor específica articulada com impacto financeiro (não apenas "interesse")
-- Timeline: forcing function presente (Sandler: qual é a consequência de não resolver até [data]?)
+- Budget: confirmed budget or expected approval (right question: "What is the budget approval process for this project?")
+- Authority: economic buyer identified and accessible (right question: "Who signs the contract? Have we already spoken with this person?")
+- Need: specific pain articulated with financial impact (not just "interest")
+- Timeline: forcing function present (Sandler: what is the consequence of not resolving by [date]?)
 - Output: SAL qualification score → MQL vs. SQL decision
 
 Phase 2: MEDDPICC Scoring (Enterprise Deals)
 - Metrics: ROI quantificado com baseline (antes/depois)
-- Economic Buyer: mapeado, acessível, engajado
-- Decision Criteria: critérios de avaliação do cliente documentados
-- Decision Process: processo de compra entendido, próximos passos claros
-- Identify Pain: dor de negócio validada com Sandler 3 levels
-- Champion: coach interno com credibilidade política identificado
+- Economic Buyer: mapped, accessible, engaged
+- Decision Criteria: client evaluation criteria documented
+- Decision Process: buying process understood, next steps clear
+- Identify Pain: business pain validated with Sandler 3 levels
+- Champion: internal coach with political credibility identified
 - Competition: landscape competitivo mapeado, posicionamento definido
-- Score: 0–3 por dimensão. Total ≥ 18 = pursue actively. 12–17 = qualify further. <12 = disqualify or nurture
+- Score: 0–3 per dimension. Total ≥ 18 = pursue actively. 12–17 = qualify further. <12 = disqualify or nurture
 
 Phase 3: Go/No-Go Decision + Pre-Sales Governance
 - Pre-sales investment tiers by PURE + MEDDPICC combined score
-- Kill conditions: define explicit signals to stop investing (3+ months no progress, Economic Buyer inaccessível, champion saiu, competidor bloqueou)
-- SPICED Critical Event: "Qual é o evento que torna este projeto urgente para o cliente?" — sem Critical Event = no urgency = long tail or dead pipeline
+- Kill conditions: define explicit signals to stop investing (3+ months no progress, Economic Buyer inaccessible, champion left, competitor blocked)
+- SPICED Critical Event: "What is the event that makes this project urgent for the client?" — without Critical Event = no urgency = long tail or dead pipeline
 
 Phase 4: Win-Rate Tracking by Offer × Tier
 - Track win-rate by: offer type, account tier, vertical, lead source (inbound, co-sell, outbound)
-- Identify pattern: onde a qualificação está falhando? Pipeline inflado de Tier 3/4?
-- Recommendation: calibrar ICP com dados de win-rate real
+- Identify pattern: where is qualification failing? Pipeline inflated with Tier 3/4?
+- Recommendation: calibrate ICP with real win-rate data
 
 **Critical Rules:**
 - NEVER approve pre-sales investment without identified Champion
@@ -669,16 +669,16 @@ Phase 4: Win-Rate Tracking by Offer × Tier
 
 ### Skill 4: `consulting-pursuit-governance`
 
-**Purpose:** Governança de pursuits de consulting — scorecard de oportunidade, gates de investimento de pré-vendas, decisão Continue/Stop, e kill signals. Prevent pipeline inflation e bad deals.
+**Purpose:** Governance of consulting pursuits — opportunity scorecard, pre-sales investment gates, Continue/Stop decision, and kill signals. Prevents pipeline inflation and bad deals.
 
-**Frameworks integrados:** MEDDPICC (deal scorecard), Strategic Selling (buying influence map, win concession strategy), Conceptual Selling (UFC — Understanding, Fulfill, Commit), JOLT Effect (quando cliente está paralyzed por risco — quando parar de esperar).
+**Integrated frameworks:** MEDDPICC (deal scorecard), Strategic Selling (buying influence map, win concession strategy), Conceptual Selling (UFC — Understanding, Fulfill, Commit), JOLT Effect (when the client is paralyzed by risk — when to stop waiting).
 
 **Trigger phrases:**
 - "Monta o pursuit scorecard para esta oportunidade de $1.2M"
-- "Qual é a decisão go/no-go para continuar investindo pre-sales no Cielo?"
-- "Identifica kill signals neste deal — já temos 5 meses de stall"
-- "Como estruturo a governança de pursuit para oportunidades acima de $500K?"
-- "O cliente está travado, não decide — como aplicar JOLT nesta situação?"
+- "What is the go/no-go decision for continuing to invest pre-sales in Cielo?"
+- "Identify kill signals in this deal — we've had 5 months of stall"
+- "How do I structure pursuit governance for opportunities above $500K?"
+- "The client is stuck and won't decide — how do I apply JOLT in this situation?"
 
 **Content specification:**
 
@@ -716,16 +716,16 @@ Phase 4: Post-Pursuit Learning
 
 ### Skill 5: `executive-account-briefing`
 
-**Purpose:** Gera briefings executivos para reuniões com C-level em contas Microsoft/Avanade. Perfil do executivo, agenda de reunião, perguntas de discovery calibradas por persona, e conversational hooks estratégicos.
+**Purpose:** Generates executive briefings for C-level meetings at Microsoft/Avanade accounts. Executive profile, meeting agenda, discovery questions calibrated by persona, and strategic conversational hooks.
 
 **Frameworks integrados:** Challenger Selling (Tailor pillar — customize insight delivery to specific persona), Conceptual Selling (Personal Win — what does THIS executive win if this project succeeds?), SPIN Selling (Implication questions calibrated to executive level — business consequence, not technical detail).
 
 **Trigger phrases:**
-- "Prepara briefing executivo para reunião com CIO do Bradesco amanhã"
-- "Quais são as perguntas certas para um CFO em primeira reunião de SI?"
+- "Prepare executive briefing for a meeting with Bradesco's CIO tomorrow"
+- "What are the right questions for a CFO in a first SI meeting?"
 - "Monta agenda para Executive Business Review com C-level do Safra"
 - "Gera perfil executivo e conversational hooks para novo CDO da Cielo"
-- "Prepara discovery questions para CFO que está avaliando Outsourcing"
+- "Prepare discovery questions for a CFO who is evaluating Outsourcing"
 
 **Content specification:**
 
@@ -764,15 +764,15 @@ Phase 4: Strategic Hooks and Follow-Up Design
 
 ### Skill 6: `microsoft-cosell-strategy`
 
-**Purpose:** Estratégia de co-venda com Microsoft para contas Avanade. Mapeia papéis ATU/STU/CSU, avalia prontidão de co-sell, define engagement strategy por oferta, e identifica acesso a funding/incentivos (MACC, Solution Play funding, FastTrack, ADS).
+**Purpose:** Co-selling strategy with Microsoft for Avanade accounts. Maps ATU/STU/CSU roles, evaluates co-sell readiness, defines engagement strategy by offer, and identifies access to funding/incentives (MACC, Solution Play funding, FastTrack, ADS).
 
-**Frameworks integrados:** GTM Mastery Avanade — seção co-sell (co-sell como canal mais subutilizado), Solution Plays, Microsoft investment vehicles.
+**Integrated frameworks:** GTM Mastery Avanade — co-sell section (co-sell as the most underutilized channel), Solution Plays, Microsoft investment vehicles.
 
 **Trigger phrases:**
 - "Como engajar o ATU do Bradesco para co-sell na nossa proposta de AI?"
-- "Qual é nossa prontidão de co-sell para esta oferta de Security?"
+- "What is our co-sell readiness for this Security offer?"
 - "Identifica oportunidades de funding Microsoft para esta conta MVC"
-- "Monta estratégia de co-venda com STU para deal de Cloud Migration de $800K"
+- "Build co-selling strategy with STU for a $800K Cloud Migration deal"
 - "Como acessar MACC ou ADS para este projeto de Outsourcing?"
 
 **Content specification:**
@@ -815,15 +815,15 @@ Phase 4: Funding and Incentives Access
 
 ### Skill 7: `consulting-account-expansion`
 
-**Purpose:** Estratégia de expansão de conta para contas existentes Avanade. Diagnóstico de conta em 5 dimensões, identificação do próximo bet de expansão, roadmap de 12–24 meses, e risk register de conta.
+**Purpose:** Account expansion strategy for existing Avanade accounts. Account diagnosis across 5 dimensions, identification of the next expansion bet, 12–24 month roadmap, and account risk register.
 
 **Frameworks integrados:** TAS (Target Account Selling — INVEST/DEVELOP/HARVEST/OPPORTUNISTIC quadrant), Strategic Selling (ongoing buyer committee mapping), GAP Selling (Estado Atual vs. Estado Futuro para expansion narrative), Value Selling (economic value of expansion vs. competition).
 
 **Trigger phrases:**
-- "Monta estratégia de expansão para o Bradesco — já somos fornecedores de SI"
-- "Qual é o próximo bet de expansão para a Cielo? Já temos Outsourcing rodando"
-- "Faz o diagnóstico de conta para o Safra — identifica gaps e riscos"
-- "Cria o roadmap de expansão 12–24 meses para conta MVC no setor FSI"
+- "Build the expansion strategy for Bradesco — we're already an SI supplier"
+- "What is the next expansion bet for Cielo? We already have Outsourcing running"
+- "Do the account diagnosis for Safra — identify gaps and risks"
+- "Create the 12–24 month expansion roadmap for an MVC account in the FSI sector"
 - "Identifica riscos de perda na conta HapVida — contrato renova em 6 meses"
 
 **Content specification:**
@@ -948,10 +948,10 @@ This plan succeeds when:
 
 | Skill | Core Job | Distinct From |
 |-------|----------|---------------|
-| `microsoft-consulting-icp` | Quem é meu cliente ideal por tier × oferta? | `abx-strategy` (generic B2B), `product-strategy` (product ICP) |
-| `consulting-gtm-designer` | Como vendo minha oferta por tier com expansão? | `abx-strategy` (signal-driven, not services), `product-strategy` (PLG/SLG) |
+| `microsoft-consulting-icp` | Who is my ideal client by tier × offer? | `abx-strategy` (generic B2B), `product-strategy` (product ICP) |
+| `consulting-gtm-designer` | How do I sell my offer by tier with expansion? | `abx-strategy` (signal-driven, not services), `product-strategy` (PLG/SLG) |
 | `presales-qualifier` | Vale a pena investir pre-sales neste deal? | `abx-strategy` PURE (generic), `mckinsey-strategist` (strategy, not sales) |
 | `consulting-pursuit-governance` | Como governo um pursuit ativo? | `presales-qualifier` (qualification), `consulting-gtm-designer` (GTM design) |
-| `executive-account-briefing` | Como me preparo para uma reunião C-level? | `storytelling-expert` (narrative only), `executive-resume-writer` (resume) |
+| `executive-account-briefing` | How do I prepare for a C-level meeting? | `storytelling-expert` (narrative only), `executive-resume-writer` (resume) |
 | `microsoft-cosell-strategy` | Como maximizo a co-venda com Microsoft? | `consulting-gtm-designer` (GTM design), `abx-strategy` (no Microsoft context) |
 | `consulting-account-expansion` | Como expando revenue em contas existentes? | `consulting-gtm-designer` (new logos/GTM design), `abx-strategy` (no services context) |

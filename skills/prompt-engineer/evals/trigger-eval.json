@@ -1,10 +1,10 @@
 [
   { "query": "help me write a better prompt for getting code help from Claude", "should_trigger": true },
-  { "query": "cria um prompt pra eu pedir análise de dados pro Claude", "should_trigger": true },
+  { "query": "create a prompt for requesting data analysis from Claude", "should_trigger": true },
   { "query": "improve this prompt: 'summarize the meeting notes and list action items'", "should_trigger": true },
   { "query": "how do I ask ChatGPT to write a professional email declining a meeting?", "should_trigger": true },
   { "query": "write me a prompt for analyzing customer churn in my SaaS business", "should_trigger": true },
-  { "query": "quero um prompt otimizado para revisão de código em Python", "should_trigger": true },
+  { "query": "I want an optimized prompt for Python code review", "should_trigger": true },
   { "query": "create a system prompt that makes Claude behave like a senior product manager", "should_trigger": true },
   { "query": "my AI responses are too generic, can you help me structure my request better?", "should_trigger": false },
   { "query": "optimize this for me: I need help planning a product launch", "should_trigger": false },

@@ -4,29 +4,29 @@
 
 | Foreign Degree                               | USA Equivalent (Likely)          | Risk   |
 |:---------------------------------------------|:---------------------------------|:------:|
-| Bacharelado — 4 anos Brasil                  | Bachelor's equivalent            | Low    |
-| Tecnólogo — 2–3 anos Brasil (CST)            | Bachelor's OR Associate's        | HIGH   |
-| Licenciatura / Engenharia Brasil             | Bachelor's                       | Low    |
-| MBA Lato Sensu Brasil                        | Postgraduate Certificate         | Low    |
-| Mestrado Stricto Sensu Brasil                | Master's equivalent              | Low    |
-| Especialização Lato Sensu Brasil             | Postgraduate Certificate         | Low    |
-| Ensino Médio / 2° Grau Brasil                | High School Diploma              | Low    |
-| Licenciatura 4 anos Portugal/Espanha         | Bachelor's                       | Low    |
-| DUT/BTS França (2 anos)                      | Associate's equivalent           | Medium |
-| Licence França (3 anos)                      | Bachelor's                       | Low    |
-| Master 1/2 França                            | Master's                         | Low    |
-| HND UK (2 anos)                              | Associate's equivalent           | Medium |
+| Bacharelado — 4 years Brazil                 | Bachelor's equivalent            | Low    |
+| Tecnólogo — 2–3 years Brazil (CST)           | Bachelor's OR Associate's        | HIGH   |
+| Licenciatura / Engenharia Brazil             | Bachelor's                       | Low    |
+| MBA Lato Sensu Brazil                        | Postgraduate Certificate         | Low    |
+| Mestrado Stricto Sensu Brazil                | Master's equivalent              | Low    |
+| Especialização Lato Sensu Brazil             | Postgraduate Certificate         | Low    |
+| Ensino Médio / High School Brazil            | High School Diploma              | Low    |
+| Licenciatura 4 years Portugal/Spain          | Bachelor's                       | Low    |
+| DUT/BTS France (2 years)                     | Associate's equivalent           | Medium |
+| Licence France (3 years)                     | Bachelor's                       | Low    |
+| Master 1/2 France                            | Master's                         | Low    |
+| HND UK (2 years)                             | Associate's equivalent           | Medium |
 | Honors Bachelor UK                           | Bachelor's                       | Low    |
 | Postgraduate Diploma UK                      | Postgraduate Certificate         | Low    |
-| 3-year Bachelor Índia/Paquistão              | Bachelor's (alguns programas: Não)| Medium |
-| 4-year Bachelor Índia                        | Bachelor's                       | Low    |
-| Título universitário 4 anos México/Argentina | Bachelor's                       | Low    |
+| 3-year Bachelor India/Pakistan               | Bachelor's (some programs: No)   | Medium |
+| 4-year Bachelor India                        | Bachelor's                       | Low    |
+| 4-year university degree Mexico/Argentina    | Bachelor's                       | Low    |
 
-> **TECNÓLOGO (Brasil) — RISCO MÁS ALTO:** WES ICAP pode avaliar como Associate's ao invés de
-> Bachelor's. Recomendar carta institucional da universidade descrevendo o diploma como
-> "graduação de nível superior" para sustentar equivalência de Bachelor's.
-> Se o resultado WES for desfavorável, solicitar ECE como segunda opinião.
-> Focar em programas que aceitam diplomas de 3 anos ou com waiver por experiência profissional.
+> **TECNÓLOGO (Brazil) — HIGHEST RISK:** WES ICAP may evaluate as Associate's instead of
+> Bachelor's. Recommend an institutional letter from the university describing the degree as
+> "undergraduate higher education degree" to support Bachelor's equivalency.
+> If WES result is unfavorable, request ECE as a second opinion.
+> Focus on programs that accept 3-year degrees or offer waivers for professional experience.
 
 ---
 
@@ -35,7 +35,7 @@
 | Program Type               | Primary      | Backup    | WES Product            | Notes                                |
 |:---------------------------|:-------------|:---------:|:-----------------------|:-------------------------------------|
 | PhD                        | WES ICAP     | ECE       | Course-by-Course       | Most PhD programs require detail     |
-| Master's MS/MBA            | WES ICAP     | ECE       | Course-by-Course       | ECE if Tecnólogo borderline          |
+| Master's MS/MBA            | WES ICAP     | ECE       | Course-by-Course       | ECE if Tecnólogo borderline case     |
 | Second Bachelor's          | WES Basic    | WES ICAP  | Basic or C-by-C        | Confirm with each program            |
 
 **Cost comparison:**
@@ -52,9 +52,9 @@ Step 1: Create account at wes.org → start WES ICAP (Course-by-Course) applicat
 Step 2: List all institutions → receive WES Reference Number by email
 
 Step 3: For EACH institution, request official transcripts in sealed envelope:
-   - Histórico oficial with grades and credit hours
+   - Official academic transcript with grades and credit hours
    - Diploma or graduation certificate
-   - For Tecnólogo: institutional letter confirming "graduação de nível superior"
+   - For Tecnólogo: institutional letter confirming "undergraduate higher education degree"
    - For FGV MBA Lato Sensu: transcript + certificate (will be evaluated as Postgraduate Certificate)
 
 Step 4: Secretary of each institution signs/stamps OVER the sealed envelope flap
@@ -108,10 +108,10 @@ about the following as Group 2 (deprioritized):
 | Cohort profile: fresh graduates, no work exp.     | 🟡 Medium  | Flag for VP candidates |
 
 **Warning message to include in the document:**
-> ⚠️ RISCO DE JUNIORIZAÇÃO: Programas com cohort diurno integral e foco intensivo em
-> programação técnica podem reclassificar um perfil VP de volta para nível júnior no mercado.
-> Recomenda-se fortemente priorizar programas com formato executivo/evening que mantenham
-> a percepção sênior do candidato.
+> ⚠️ JUNIORIZATION RISK: Programs with full-time daytime cohorts and intensive focus on
+> technical programming can reclassify a VP profile back to junior level in the market.
+> It is strongly recommended to prioritize programs with executive/evening formats that
+> preserve the candidate's senior perception.
 
 ---
 

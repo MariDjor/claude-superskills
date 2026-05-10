@@ -42,7 +42,7 @@
     },
     {
       "id": 4,
-      "prompt": "Preciso traduzir este pptx pro ingles incluindo as notas do apresentador: ~/talks/keynote.pptx",
+      "prompt": "I need to translate this pptx to English including the presenter notes: ~/talks/keynote.pptx",
       "expected_output": "Extracts both slide text and speaker notes, translates both in parallel, validates that notes were translated, displays notes count in summary",
       "assertions": [
         {"text": "Extracts speaker notes from all slides that have them", "weight": 2},
@@ -80,8 +80,8 @@
     },
     {
       "id": 7,
-      "prompt": "Translate quarterly_review.pptx from English to Portuguese. When asked about the output filename, type a custom name: 'Revisão Trimestral Q1 2026'",
-      "expected_output": "Shows 3-option filename menu; on option 3, prompts for custom name; normalizes 'Revisão Trimestral Q1 2026' → 'Revisão_Trimestral_Q1_2026.pptx'; confirms before proceeding; saves with that name",
+      "prompt": "Translate quarterly_review.pptx from English to Portuguese. When asked about the output filename, type a custom name: 'Revisao Trimestral Q1 2026'",
+      "expected_output": "Shows 3-option filename menu; on option 3, prompts for custom name; normalizes 'Revisao Trimestral Q1 2026' → 'Revisao_Trimestral_Q1_2026.pptx'; confirms before proceeding; saves with that name",
       "assertions": [
         {"text": "Shows the 3-option filename menu after Step 1 confirmation", "weight": 2},
         {"text": "Option 3 prompts the user to enter a custom filename", "weight": 2},

@@ -17,7 +17,7 @@ Transform audio recordings into professional Markdown documentation with **intel
   - User-provided prompts → automatically improved → user chooses version
   - No prompt → analyzes transcript → suggests format → generates structured prompt
 - **📊 Progress Indicators** - Visual progress bars (tqdm) and spinners (rich)
-- **📁 Timestamp Filenames** - `transcript-YYYYMMDD-HHMMSS.md` + `ata-YYYYMMDD-HHMMSS.md`
+- **📁 Timestamp Filenames** - `transcript-YYYYMMDD-HHMMSS.md` + `summary-YYYYMMDD-HHMMSS.md`
 - **🧹 Auto-Cleanup** - Removes temporary `metadata.json` and `transcription.json`
 - **🎨 Rich Terminal UI** - Beautiful formatted output with panels and colors
 
@@ -123,7 +123,7 @@ copilot> convert audio file to text with subtitles: interview.wav
 ### Batch Processing
 
 ```bash
-copilot> transcreva estes áudios: recordings/*.mp3
+copilot> transcribe these audio files: recordings/*.mp3
 ```
 
 **Processes all MP3 files in the directory.**
@@ -133,10 +133,10 @@ copilot> transcreva estes áudios: recordings/*.mp3
 Activate the skill with any of these phrases:
 
 - "transcribe audio to markdown"
-- "transcreva este áudio"
+- "transcribe this audio"
 - "convert audio file to text"
 - "extract speech from audio"
-- "áudio para texto com metadados"
+- "audio to text with metadata"
 
 ## 📋 Use Cases
 

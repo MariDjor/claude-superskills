@@ -102,7 +102,7 @@ copilot> Translate this deck from Spanish to French: ~/projects/pitch_es.pptx
 ### 4. **Emphasizing Speaker Notes**
 
 ```bash
-copilot> Preciso traduzir este pptx pro ingles incluindo as notas do apresentador: ~/talks/keynote.pptx
+copilot> I need to translate this pptx to English including the presenter notes: ~/talks/keynote.pptx
 ```
 
 **Output:**

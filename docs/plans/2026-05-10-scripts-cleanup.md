@@ -2,23 +2,23 @@
 
 > **For Claude:** REQUIRED SUB-SKILL: Use `executing-plans` to implement this plan task-by-task.
 
-**Goal:** Remover 6 scripts obsoletos (pré-v1.10.4 / duplicatas), corrigir paths errados em 3 scripts shell, e atualizar todas as referências afetadas.
+**Goal:** Remove 6 obsolete scripts (pre-v1.10.4 / duplicates), fix incorrect paths in 3 shell scripts, and update all affected references.
 
-**Architecture:** O repo passou por carve-out em v2.0.0: 46 skills foram para repos separados. O `scripts/` acumulou débito técnico — scripts com arquitetura de symlinks (proibida pelo CLAUDE.md), detectores de apenas 2/5 plataformas das 8 suportadas, e duplicatas `.js` de geradores cujos npm scripts já apontam só para `.py`. O source-of-truth de paths é `cli-installer/lib/utils/path-resolver.js`.
+**Architecture:** The repo went through a carve-out in v2.0.0: 46 skills moved to separate repos. The `scripts/` directory accumulated technical debt — scripts with symlink architecture (prohibited by CLAUDE.md), detectors covering only 2/5 of the 8 supported platforms, and `.js` duplicates of generators whose npm scripts already point only to `.py`. The path source of truth is `cli-installer/lib/utils/path-resolver.js`.
 
-**Tech Stack:** Bash, Node.js (apenas para verificação), git
+**Tech Stack:** Bash, Node.js (for verification only), git
 
 ---
 
-## Resumo das mudanças
+## Summary of Changes
 
-| Ação | Arquivos |
+| Action | Files |
 |------|---------|
-| Remover 6 scripts | `install-skills.sh`, `setup-global-skills.sh`, `check-tools.sh`, `update-main-readme.sh`, `generate-catalog.js`, `generate-skills-index.js` |
-| Corrigir paths | `local-install.sh` (2 paths errados), `uninstall.sh` (2 errados + 3 faltando) |
-| Corrigir contagem | `install.sh` (5→8 plataformas) |
-| Atualizar referência | `skills/audio-transcriber/README.md` linha 94 |
-| Registrar no histórico | `CHANGELOG.md` |
+| Remove 6 scripts | `install-skills.sh`, `setup-global-skills.sh`, `check-tools.sh`, `update-main-readme.sh`, `generate-catalog.js`, `generate-skills-index.js` |
+| Fix paths | `local-install.sh` (2 wrong paths), `uninstall.sh` (2 wrong + 3 missing) |
+| Fix count | `install.sh` (5→8 platforms) |
+| Update reference | `skills/audio-transcriber/README.md` line 94 |
+| Record in history | `CHANGELOG.md` |
 
 ---
 
@@ -32,15 +32,15 @@
 - Delete: `scripts/generate-catalog.js`
 - Delete: `scripts/generate-skills-index.js`
 
-**Justificativas:**
-- `install-skills.sh` — cria symlinks (`ln -s`); CLAUDE.md proíbe; cobre só 2/8 plataformas
-- `setup-global-skills.sh` — aponta para `$REPO/.github/skills/` e `$REPO/.claude/skills/` (gitignored); pré-v1.10.4
-- `check-tools.sh` — detecta só `gh copilot` + `claude`; `lib/detector.js` já cobre 8
-- `update-main-readme.sh` — nome mente; apenas imprime `echo` para stdout; sem referências
-- `generate-catalog.js` — duplicata da `.py`; nenhum npm script aponta para ela
-- `generate-skills-index.js` — duplicata da `.py` + lê `.github/skills/` (gitignored = output vazio)
+**Rationale:**
+- `install-skills.sh` — creates symlinks (`ln -s`); CLAUDE.md prohibits this; covers only 2/8 platforms
+- `setup-global-skills.sh` — points to `$REPO/.github/skills/` and `$REPO/.claude/skills/` (gitignored); pre-v1.10.4
+- `check-tools.sh` — detects only `gh copilot` + `claude`; `lib/detector.js` already covers 8
+- `update-main-readme.sh` — misleading name; only prints `echo` to stdout; no references
+- `generate-catalog.js` — duplicate of `.py`; no npm script points to it
+- `generate-skills-index.js` — duplicate of `.py` + reads `.github/skills/` (gitignored = empty output)
 
-**Step 1: Remover os 6 scripts**
+**Step 1: Remove the 6 scripts**
 
 ```bash
 cd /path/to/claude-superskills
@@ -52,24 +52,24 @@ git rm scripts/install-skills.sh \
        scripts/generate-skills-index.js
 ```
 
-Expected: 6 arquivos marcados como deleted no `git status`.
+Expected: 6 files marked as deleted in `git status`.
 
-**Step 2: Verificar que os scripts Python (fonte de verdade) existem**
+**Step 2: Verify that the Python scripts (source of truth) exist**
 
 ```bash
 ls scripts/generate-catalog.py scripts/generate-skills-index.py
 ```
 
-Expected: ambos listados sem erro.
+Expected: both listed without error.
 
-**Step 3: Verificar que nenhum workflow chama os scripts removidos**
+**Step 3: Verify that no workflow calls the removed scripts**
 
 ```bash
 grep -r "install-skills\|setup-global-skills\|check-tools\|update-main-readme\|generate-catalog\.js\|generate-skills-index\.js" \
   .github/workflows/ cli-installer/package.json
 ```
 
-Expected: **sem output** (nenhuma referência ativa em CI/package.json).
+Expected: **no output** (no active references in CI/package.json).
 
 ---
 
@@ -78,7 +78,7 @@ Expected: **sem output** (nenhuma referência ativa em CI/package.json).
 **Files:**
 - Modify: `scripts/local-install.sh`
 
-**Problema:** O `target_dir()` e o texto de ajuda têm dois paths divergentes do `cli-installer/lib/utils/path-resolver.js`:
+**Problem:** The `target_dir()` function and help text have two paths that diverge from `cli-installer/lib/utils/path-resolver.js`:
 
 | Plataforma | Atual em local-install.sh | Correto (path-resolver.js) |
 |------------|--------------------------|---------------------------|
@@ -121,7 +121,7 @@ Substituir por:
   Antigravity         →  ~/.gemini/antigravity/skills/
 ```
 
-**Step 3: Verificar que os outros paths estão corretos**
+**Step 3: Verify that the other paths are correct**
 
 ```bash
 grep "target_dir\|HOME\|skills" scripts/local-install.sh | grep -v "^#"
@@ -136,7 +136,7 @@ Expected: codex → `.codex/skills`, antigravity → `.gemini/antigravity/skills
 **Files:**
 - Modify: `scripts/uninstall.sh`
 
-**Source of truth** (`cli-installer/lib/utils/path-resolver.js`):
+**Source of truth** (`cli-installer/lib/utils/path-resolver.js`) — no change needed here, already in English
 ```
 copilot     → ~/.github/skills
 claude      → ~/.claude/skills
@@ -148,16 +148,16 @@ cursor      → ~/.cursor/skills
 adal        → ~/.adal/skills
 ```
 
-**Problemas no `uninstall.sh`:**
-- `~/.copilot/skills` ❌ → deve ser `~/.github/skills`
-- `~/.opencode/skills` ❌ → deve ser `~/.agent/skills`
-- Faltando: `~/.gemini/antigravity/skills`, `~/.cursor/skills`, `~/.adal/skills`
+**Issues in `uninstall.sh`:**
+- `~/.copilot/skills` ❌ → should be `~/.github/skills`
+- `~/.opencode/skills` ❌ → should be `~/.agent/skills`
+- Missing: `~/.gemini/antigravity/skills`, `~/.cursor/skills`, `~/.adal/skills`
 
-O array `platform_dirs` aparece em **dois lugares** no arquivo (funções `find_installed_skills` e `remove_skills`). Ambos precisam ser atualizados.
+The `platform_dirs` array appears in **two places** in the file (functions `find_installed_skills` and `remove_skills`). Both need to be updated.
 
-**Step 1: Atualizar `find_installed_skills()` (linha ~153-158)**
+**Step 1: Update `find_installed_skills()` (line ~153-158)**
 
-Localizar:
+Locate:
 ```bash
     local platform_dirs=(
         "$HOME/.copilot/skills"
@@ -182,9 +182,9 @@ Substituir por:
     )
 ```
 
-**Step 2: Atualizar `remove_skills()` (linha ~316-321)**
+**Step 2: Update `remove_skills()` (line ~316-321)**
 
-Localizar (mesmo padrão, segunda ocorrência):
+Locate (same pattern, second occurrence):
 ```bash
     local platform_dirs=(
         "$HOME/.copilot/skills"
@@ -195,11 +195,11 @@ Localizar (mesmo padrão, segunda ocorrência):
     )
 ```
 
-Aplicar a mesma substituição do Step 1.
+Apply the same replacement from Step 1.
 
-**Step 3: Atualizar o texto de ajuda (linhas ~103-107)**
+**Step 3: Update the help text (lines ~103-107)**
 
-Localizar:
+Locate:
 ```
     • Installed skills in ~/.copilot/skills/
     • Installed skills in ~/.claude/skills/
@@ -226,7 +226,7 @@ Substituir por:
 grep -n "copilot\|opencode\|agent\|cursor\|adal\|antigravity\|github" scripts/uninstall.sh
 ```
 
-Expected: sem `~/.copilot/skills`, sem `~/.opencode/skills`; presença de `~/.github/skills`, `~/.agent/skills`, `~/.cursor/skills`, `~/.adal/skills`, `~/.gemini/antigravity/skills`.
+Expected: no `~/.copilot/skills`, no `~/.opencode/skills`; presence of `~/.github/skills`, `~/.agent/skills`, `~/.cursor/skills`, `~/.adal/skills`, `~/.gemini/antigravity/skills`.
 
 ---
 
@@ -235,7 +235,7 @@ Expected: sem `~/.copilot/skills`, sem `~/.opencode/skills`; presença de `~/.gi
 **Files:**
 - Modify: `scripts/install.sh`
 
-**Problema:** Linha 443 diz `Detected ${installed_count}/5 AI CLI tools`. O repo suporta 8 plataformas. A função `detect_ai_tools()` (linha 284) detecta apenas 5 (Copilot, Claude, Codex, OpenCode, Gemini) — faltam Antigravity, Cursor, AdaL.
+**Problem:** Line 443 says `Detected ${installed_count}/5 AI CLI tools`. The repo supports 8 platforms. The `detect_ai_tools()` function (line 284) detects only 5 (Copilot, Claude, Codex, OpenCode, Gemini) — Antigravity, Cursor, AdaL are missing.
 
 **Step 1: Corrigir a string de contagem (linha 443)**
 
@@ -249,9 +249,9 @@ Substituir por:
         print_info "Detected ${installed_count}/8 AI CLI tools on your system"
 ```
 
-**Step 2: Adicionar detecção de Antigravity na `detect_ai_tools()` (após linha ~334)**
+**Step 2: Add Antigravity detection to `detect_ai_tools()` (after line ~334)**
 
-Localizar o bloco de Gemini CLI (que termina com um `fi`) e adicionar logo após:
+Locate the Gemini CLI block (ending with `fi`) and add right after:
 
 ```bash
     # Antigravity
@@ -280,21 +280,21 @@ Localizar o bloco de Gemini CLI (que termina com um `fi`) e adicionar logo após
     fi
 ```
 
-**Step 3: Adicionar labels para as 3 novas plataformas no `display_name` (linha ~357)**
+**Step 3: Add labels for the 3 new platforms in `display_name` (line ~357)**
 
-Localizar:
+Locate:
 ```bash
             gemini) display_name="Gemini CLI" ;;
 ```
 
-Adicionar após:
+Add after:
 ```bash
             antigravity) display_name="Antigravity" ;;
             cursor) display_name="Cursor IDE" ;;
             adal) display_name="AdaL CLI" ;;
 ```
 
-**Step 4: Verificar detecção**
+**Step 4: Verify detection**
 
 ```bash
 bash -n scripts/install.sh && echo "syntax OK"
@@ -305,16 +305,16 @@ Expected: `syntax OK`; linhas com `8`, `antigravity`, `cursor`, `adal` presentes
 
 ---
 
-## Task 5: Corrigir referência em `audio-transcriber/README.md`
+## Task 5: Fix reference in `audio-transcriber/README.md`
 
 **Files:**
 - Modify: `skills/audio-transcriber/README.md` (linha 94)
 
-**Problema:** Linha 94 instrui usar `./scripts/install-skills.sh $(pwd)` (script removido na Task 1, que criava symlinks).
+**Problem:** Line 94 instructs using `./scripts/install-skills.sh $(pwd)` (script removed in Task 1, which created symlinks).
 
-**Step 1: Atualizar a linha**
+**Step 1: Update the line**
 
-Localizar:
+Locate:
 ```
 ./scripts/install-skills.sh $(pwd)
 ```
@@ -324,13 +324,13 @@ Substituir por:
 ./scripts/local-install.sh
 ```
 
-**Step 2: Verificar contexto ao redor para garantir que instrução faz sentido**
+**Step 2: Verify surrounding context to ensure the instruction makes sense**
 
 ```bash
 sed -n '88,100p' skills/audio-transcriber/README.md
 ```
 
-Expected: Parágrafo de instalação global que agora referencia `local-install.sh` sem argumentos (o script detecta platforms automaticamente).
+Expected: Global installation paragraph now referencing `local-install.sh` without arguments (the script detects platforms automatically).
 
 ---
 
@@ -339,9 +339,9 @@ Expected: Parágrafo de instalação global que agora referencia `local-install.
 **Files:**
 - Modify: `CHANGELOG.md`
 
-**Step 1: Adicionar entrada no topo do CHANGELOG (após o cabeçalho, antes do primeiro `## [`)**
+**Step 1: Add entry at the top of CHANGELOG (after the header, before the first `## [`)**
 
-Inserir:
+Insert:
 
 ```markdown
 ## [2.0.1] - 2026-05-10
@@ -361,28 +361,28 @@ Inserir:
 - **`skills/audio-transcriber/README.md`** — replaced reference to removed `install-skills.sh` with `local-install.sh`
 ```
 
-**Step 2: Verificar que a entrada foi inserida corretamente**
+**Step 2: Verify that the entry was inserted correctly**
 
 ```bash
 head -40 CHANGELOG.md
 ```
 
-Expected: entrada `[2.0.1]` visível no topo.
+Expected: `[2.0.1]` entry visible at the top.
 
 ---
 
 ## Task 7: Commit
 
-**Step 1: Verificar estado do git**
+**Step 1: Check git state**
 
 ```bash
 git status
 git diff --stat
 ```
 
-Expected: 6 deletions, modificações em `local-install.sh`, `uninstall.sh`, `install.sh`, `audio-transcriber/README.md`, `CHANGELOG.md`.
+Expected: 6 deletions, modifications in `local-install.sh`, `uninstall.sh`, `install.sh`, `audio-transcriber/README.md`, `CHANGELOG.md`.
 
-**Step 2: Stage e commit**
+**Step 2: Stage and commit**
 
 ```bash
 git add scripts/local-install.sh \
@@ -399,24 +399,24 @@ git rm scripts/install-skills.sh \
 git commit -m "chore: remove 6 obsolete scripts, fix platform paths in shell installers"
 ```
 
-**Step 3: Verificar que scripts removidos não existem mais**
+**Step 3: Verify that removed scripts no longer exist**
 
 ```bash
 ls scripts/ | sort
 ```
 
-Expected: 17 arquivos; ausência de `install-skills.sh`, `setup-global-skills.sh`, `check-tools.sh`, `update-main-readme.sh`, `generate-catalog.js`, `generate-skills-index.js`.
+Expected: 17 files; absence of `install-skills.sh`, `setup-global-skills.sh`, `check-tools.sh`, `update-main-readme.sh`, `generate-catalog.js`, `generate-skills-index.js`.
 
 ---
 
-## Critérios de Conclusão
+## Completion Criteria
 
-- [ ] `scripts/` contém exatamente 17 arquivos
+- [ ] `scripts/` contains exactly 17 files
 - [ ] `bash -n scripts/local-install.sh` → syntax OK
 - [ ] `bash -n scripts/uninstall.sh` → syntax OK
 - [ ] `bash -n scripts/install.sh` → syntax OK
 - [ ] `grep "vendor_imports\|\.copilot/skills\|\.opencode/skills" scripts/local-install.sh scripts/uninstall.sh` → sem output
 - [ ] `grep "install-skills" skills/audio-transcriber/README.md` → sem output
 - [ ] `grep "install-skills\|setup-global-skills\|check-tools\|update-main-readme\|generate-catalog\.js\|generate-skills-index\.js" .github/workflows/ cli-installer/package.json` → sem output
-- [ ] CHANGELOG.md contém entrada `[2.0.1]`
-- [ ] `git log --oneline -1` mostra commit de limpeza
+- [ ] CHANGELOG.md contains `[2.0.1]` entry
+- [ ] `git log --oneline -1` shows cleanup commit

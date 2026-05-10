@@ -294,17 +294,17 @@ def generate_summary(segments, max_paragraphs=5):
 **Output file naming:**
 
 ```bash
-# v1.1.0: Use timestamp para evitar sobrescrever
+# v1.1.0: Use timestamp to avoid overwriting
 TIMESTAMP=$(date +%Y%m%d-%H%M%S)
 TRANSCRIPT_FILE="transcript-${TIMESTAMP}.md"
-ATA_FILE="ata-${TIMESTAMP}.md"
+SUMMARY_FILE="summary-${TIMESTAMP}.md"
 
 echo "$TRANSCRIPT_CONTENT" > "$TRANSCRIPT_FILE"
-echo "✅ Transcript salvo: $TRANSCRIPT_FILE"
+echo "✅ Transcript saved: $TRANSCRIPT_FILE"
 
-if [[ -n "$ATA_CONTENT" ]]; then
-    echo "$ATA_CONTENT" > "$ATA_FILE"
-    echo "✅ Ata salva: $ATA_FILE"
+if [[ -n "$SUMMARY_CONTENT" ]]; then
+    echo "$SUMMARY_CONTENT" > "$SUMMARY_FILE"
+    echo "✅ Summary saved: $SUMMARY_FILE"
 fi
 ```
 
@@ -315,7 +315,7 @@ fi
 
 1. **Display user's prompt:**
    ```
-   📝 Prompt fornecido pelo usuário:
+   📝 User-provided prompt:
    ┌──────────────────────────────────┐
    │ [User's prompt preview]          │
    └──────────────────────────────────┘
@@ -323,21 +323,21 @@ fi
 
 2. **Automatically improve with prompt-engineer (if available):**
    ```bash
-   🔧 Melhorando prompt com prompt-engineer...
-   [Invokes: gh copilot -p "melhore este prompt: {user_prompt}"]
+   🔧 Improving prompt with prompt-engineer...
+   [Invokes: gh copilot -p "improve this prompt: {user_prompt}"]
    ```
 
 3. **Show both versions:**
    ```
-   ✨ Versão melhorada:
+   ✨ Improved version:
    ┌──────────────────────────────────┐
-   │ Role: Você é um documentador...  │
-   │ Instructions: Transforme...      │
+   │ Role: You are a documentarian... │
+   │ Instructions: Transform...       │
    │ Steps: 1) ... 2) ...             │
    │ End Goal: ...                    │
    └──────────────────────────────────┘
 
-   📝 Versão original:
+   📝 Original version:
    ┌──────────────────────────────────┐
    │ [User's original prompt]         │
    └──────────────────────────────────┘
@@ -345,7 +345,7 @@ fi
 
 4. **Ask which to use:**
    ```bash
-   💡 Usar versão melhorada? [s/n] (default: s):
+   💡 Use improved version? [y/n] (default: y):
    ```
 
 5. **Process with selected prompt:**
@@ -361,15 +361,15 @@ Once prompt is finalized:
 from rich.progress import Progress, SpinnerColumn, TextColumn
 
 def process_with_llm(transcript, prompt, cli_tool='claude'):
-    full_prompt = f"{prompt}\n\n---\n\nTranscrição:\n\n{transcript}"
-    
+    full_prompt = f"{prompt}\n\n---\n\nTranscription:\n\n{transcript}"
+
     with Progress(
         SpinnerColumn(),
         TextColumn("[progress.description]{task.description}"),
         transient=True
     ) as progress:
         progress.add_task(
-            description=f"🤖 Processando com {cli_tool}...",
+            description=f"🤖 Processing with {cli_tool}...",
             total=None
         )
         
@@ -397,9 +397,9 @@ def process_with_llm(transcript, prompt, cli_tool='claude'):
 
 **Progress output:**
 ```
-🤖 Processando com claude... ⠋
+🤖 Processing with claude... ⠋
 [After completion:]
-✅ Ata gerada com sucesso!
+✅ Summary generated successfully!
 ```
 
 
@@ -407,29 +407,29 @@ def process_with_llm(transcript, prompt, cli_tool='claude'):
 
 **Success (both files):**
 ```bash
-💾 Salvando arquivos...
+💾 Saving files...
 
-✅ Arquivos criados:
-  - transcript-20260203-023045.md  (transcript puro)
-  - ata-20260203-023045.md         (processado com LLM)
+✅ Files created:
+  - transcript-20260203-023045.md  (raw transcript)
+  - summary-20260203-023045.md     (processed with LLM)
 
-🧹 Removidos arquivos temporários: metadata.json, transcription.json
+🧹 Removed temporary files: metadata.json, transcription.json
 
-✅ Concluído! Tempo total: 3m 45s
+✅ Done! Total time: 3m 45s
 ```
 
 **Transcript only (user declined LLM):**
 ```bash
-💾 Salvando arquivos...
+💾 Saving files...
 
-✅ Arquivo criado:
+✅ File created:
   - transcript-20260203-023045.md
 
-ℹ️  Ata não gerada (processamento LLM recusado pelo usuário)
+ℹ️  Summary not generated (LLM processing declined by user)
 
-🧹 Removidos arquivos temporários: metadata.json, transcription.json
+🧹 Removed temporary files: metadata.json, transcription.json
 
-✅ Concluído!
+✅ Done!
 ```
 
 
@@ -527,7 +527,7 @@ copilot> transcribe audio to markdown: meeting-2026-02-02.mp3
 
 **User Input:**
 ```bash
-copilot> transcreva estes áudios: recordings/*.mp3
+copilot> transcribe these audio files: recordings/*.mp3
 ```
 
 **Skill Output:**

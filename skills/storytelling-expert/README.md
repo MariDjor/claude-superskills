@@ -1,66 +1,62 @@
 # 📖 Storytelling Expert
 
-Transforma ideias, apresentações, discursos de vendas ou dados em histórias altamente engajadoras e persuasivas utilizando frameworks de narrativa de elite.
+Transforms ideas, presentations, sales pitches, or data into highly engaging and persuasive stories using elite narrative frameworks.
 
-## 🎯 Objetivo
+## 🎯 Objective
 
-Ajudar usuários a comunicar suas mensagens com máximo impacto psicológico e emocional, aplicando automaticamente o framework de storytelling ideal para cada situação.
+Help users communicate their messages with maximum psychological and emotional impact, automatically applying the ideal storytelling framework for each situation.
 
-## 🚀 Como Usar
+## 🚀 How to Use
 
-### Instalação
-
-Se você já clonou o repositório `claude-superskills`, basta navegar até o diretório e executar:
+### Installation
 
 ```bash
-npx claude-superskills install --local skills/storytelling-expert
+npx claude-superskills install storytelling-expert
 ```
 
-Ou adicione manualmente ao seu arquivo de configuração do CLI.
-
-### Comandos de Exemplo
+### Example Commands
 
 ```bash
-copilot> crie uma narrativa para: lançamento de produto B2B
-copilot> melhore essa história: [colar texto]
-copilot> pitch de vendas: software de gestão para pequenas empresas
-copilot> discurso motivacional: equipe desmotivada após fusão
+claude> create a narrative for: B2B product launch
+claude> improve this story: [paste text]
+claude> sales pitch: management software for small businesses
+claude> motivational speech: demotivated team after merger
 ```
 
-## 🧠 Frameworks Suportados
+## 🧠 Supported Frameworks
 
-O skill analisa seu pedido e seleciona automaticamente um destes 8 frameworks:
+The skill analyzes your request and automatically selects one of these 8 frameworks:
 
-1.  **StoryBrand Method** (Foco no cliente como herói)
-2.  **Golden Circle** (Começa com o Porquê)
-3.  **South Park Framework** (Conectivos de causalidade)
-4.  **Pixar Formula** (Estrutura clássica de animação)
-5.  **Challenger Sale** (Vendas complexas e ensino)
-6.  **Minto Pyramid Principle** (Comunicação executiva direta)
-7.  **Hero's Journey** (Jornada do Herói / Monomito)
-8.  **In Medias Res** (Começa no meio da ação)
+1.  **StoryBrand Method** (Customer as hero)
+2.  **Golden Circle** (Starts with Why)
+3.  **South Park Framework** (Causality connectors)
+4.  **Pixar Formula** (Classic animation structure)
+5.  **Challenger Sale** (Complex sales and teaching)
+6.  **Minto Pyramid Principle** (Direct executive communication)
+7.  **Hero's Journey** (Classic monomyth arc)
+8.  **In Medias Res** (Starts in the middle of the action)
 
-## 📝 Exemplo de Saída
+## 📝 Output Example
 
-**Input:** "Preciso convencer meu chefe a investir em IA."
+**Input:** "I need to convince my boss to invest in AI."
 
-**Skill (Aplica Minto Pyramid):**
+**Skill (Applies Minto Pyramid):**
 
-**CONCLUSÃO PRINCIPAL:**
-Devemos investir R$ 50k em ferramentas de IA agora para economizar R$ 200k anuais em automação.
+**MAIN CONCLUSION:**
+We should invest $50k in AI tools now to save $200k annually through automation.
 
-**ARGUMENTO 1:**
-Nossa equipe gasta 30% do tempo em tarefas repetitivas que a IA resolve em segundos.
+**ARGUMENT 1:**
+Our team spends 30% of their time on repetitive tasks that AI resolves in seconds.
 
-**ARGUMENTO 2:**
-Nossos concorrentes já adotaram e estão entregando projetos 2x mais rápido.
+**ARGUMENT 2:**
+Our competitors have already adopted it and are delivering projects 2x faster.
 
-**PRÓXIMOS PASSOS:**
-Aprovar o piloto de 3 meses com a ferramenta X.
+**NEXT STEPS:**
+Approve the 3-month pilot with tool X.
 
 ---
 
-**Licença:** MIT
+**License:** MIT
 
 ---
 

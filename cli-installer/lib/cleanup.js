@@ -24,44 +24,44 @@ function clearPartialInstalls() {
 }
 
 /**
- * Reverte instalações parciais em caso de cancelamento
+ * Reverts partial installs in case of cancellation
  * @returns {Promise<void>}
  */
 async function revertPartialInstalls() {
   if (partialInstalls.length === 0) return;
-  
-  console.log(chalk.cyan('\n🧹 Limpando instalações parciais...\n'));
-  
+
+  console.log(chalk.cyan('\n🧹 Cleaning up partial installs...\n'));
+
   let removed = 0;
   let failed = 0;
-  
+
   for (const installPath of partialInstalls) {
     try {
       if (await fs.pathExists(installPath)) {
         // Check if it's a symlink
         const stats = await fs.lstat(installPath);
-        
+
         if (stats.isSymbolicLink()) {
           await fs.unlink(installPath);
         } else {
           await fs.remove(installPath);
         }
-        
-        console.log(chalk.green(`  ✓ Removido: ${installPath}`));
+
+        console.log(chalk.green(`  ✓ Removed: ${installPath}`));
         removed++;
       }
     } catch (err) {
-      console.log(chalk.red(`  ✗ Erro ao remover ${installPath}: ${err.message}`));
+      console.log(chalk.red(`  ✗ Error removing ${installPath}: ${err.message}`));
       failed++;
     }
   }
-  
+
   if (removed > 0) {
-    console.log(chalk.green(`\n✅ Cleanup concluído (${removed} removidos).\n`));
+    console.log(chalk.green(`\n✅ Cleanup complete (${removed} removed).\n`));
   }
-  
+
   if (failed > 0) {
-    console.log(chalk.yellow(`⚠️  ${failed} itens falharam ao remover.\n`));
+    console.log(chalk.yellow(`⚠️  ${failed} items failed to remove.\n`));
   }
   
   clearPartialInstalls();

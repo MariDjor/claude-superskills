@@ -186,5 +186,5 @@ fi
 echo ""
 echo "🚀 Ready to use! Try:"
 echo "  copilot> transcribe audio to markdown: myfile.mp3"
-echo "  claude> transcreva este áudio: myfile.mp3"
+echo "  claude> transcribe this audio: myfile.mp3"
 echo ""

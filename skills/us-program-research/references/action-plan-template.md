@@ -1,266 +1,266 @@
-# ACTION_PLAN.md — Template Completo
+# ACTION_PLAN.md — Complete Template
 
-Salvar como: `{NOME_CANDIDATO}_US_PROGRAM_ACTION_PLAN.md`
+Save as: `{CANDIDATE_NAME}_US_PROGRAM_ACTION_PLAN.md`
 
 ---
 
 ```markdown
-# {TIPO_PROGRAMA} USA — Plano de Ação e Progresso
+# {PROGRAM_TYPE} USA — Action Plan and Progress
 
-**Candidato:** {NOME} | {email} | {telefone}
-**Destino:** {cidade, estado, EUA}
-**Foco:** {campo de estudo} — {tipo de programa}
-**GPA estimado:** {GPA}/4.0 (faixa {min}–{max}; conversão de {nota}/{máximo}; provisório até WES)
-**Última atualização:** {data}
-**Requisitos (GMAT/TOEFL/WES):** validar no ciclo oficial de cada programa antes de submeter.
-
----
-
-## Status Geral
-
-| Fase                                         |       Status       | Prazo Estimado      |
-|:---------------------------------------------|:------------------:|:-------------------:|
-| 1 — Fundação (WES/ECE + documentos)          | 🔴 Não iniciado    | Imediato            |
-| 2 — Testes e Materiais (TOEFL, CV, SOP)      | 🔴 Não iniciado    | {ANO}               |
-| 3 — Pesquisa e Contato com Programas         | 🔴 Não iniciado    | {ANO}               |
-| 4 — Submissão das Aplicações                 | 🔴 Não iniciado    | Q1/Q2 {ANO+1}       |
-
-> 🔴 Não iniciado | 🟡 Em andamento | 🟢 Concluído | ⛔ Bloqueado
+**Candidate:** {NAME} | {email} | {phone}
+**Destination:** {city, state, USA}
+**Focus:** {field of study} — {program type}
+**Estimated GPA:** {GPA}/4.0 (range {min}–{max}; conversion of {grade}/{max}; provisional until WES)
+**Last updated:** {date}
+**Requirements (GMAT/TOEFL/WES):** validate against each program's official cycle before submitting.
 
 ---
 
-## 🚨 Próximas Ações Prioritárias
+## Overall Status
 
-| Prazo        | Ação                                                                    | Escopo           |
-|:-------------|:------------------------------------------------------------------------|:-----------------|
-| **Imediato** | Iniciar avaliação de credenciais (WES ICAP em wes.org)                  | Validação Geral  |
-| **Imediato** | Solicitar documentos das instituições de origem para envio ao WES       | {INSTITUIÇÕES}   |
-| {DATA}       | Agendar {TESTE} — meta: {SCORE_ALVO}+ iBT                              | Todos programas  |
-| Q1 {ANO}     | Escrever Personal Statement / SOP / Research Proposal                   | Todos programas  |
-| Q1 {ANO}     | Submeter aplicações — ingresso em {SEMESTRE} {ANO+1}                    | Todos do Top 5   |
+| Phase                                              |       Status         | Estimated Deadline |
+|:---------------------------------------------------|:--------------------:|:------------------:|
+| 1 — Foundation (WES/ECE + documents)               | 🔴 Not started       | Immediate          |
+| 2 — Tests and Materials (TOEFL, CV, SOP)           | 🔴 Not started       | {YEAR}             |
+| 3 — Research and Program Contact                   | 🔴 Not started       | {YEAR}             |
+| 4 — Application Submission                         | 🔴 Not started       | Q1/Q2 {YEAR+1}     |
 
----
-
-## Fase 1 — Fundação (Avaliação de Credenciais)
-
-### WES ICAP — Passo a Passo
-
-[8 passos detalhados adaptados às instituições do candidato]
-[Cenários A e B de resultado]
-
-[Para PhD: template de email de contato com advisor, lista de advisors alvo]
+> 🔴 Not started | 🟡 In progress | 🟢 Completed | ⛔ Blocked
 
 ---
 
-## Fase 2 — Testes e Materiais
+## 🚨 Next Priority Actions
 
-### Requisitos de TOEFL / IELTS por Programa
+| Deadline     | Action                                                                    | Scope            |
+|:-------------|:--------------------------------------------------------------------------|:-----------------|
+| **Immediate**| Start credential evaluation (WES ICAP at wes.org)                        | General Validation|
+| **Immediate**| Request documents from originating institutions for WES submission        | {INSTITUTIONS}   |
+| {DATE}       | Schedule {TEST} — target: {TARGET_SCORE}+ iBT                           | All programs     |
+| Q1 {YEAR}    | Write Personal Statement / SOP / Research Proposal                        | All programs     |
+| Q1 {YEAR}    | Submit applications — entry in {SEMESTER} {YEAR+1}                       | All Top 5        |
 
-| Escola             | Programa        | Teste aceito       | Mínimo iBT | Observação                           |
+---
+
+## Phase 1 — Foundation (Credential Evaluation)
+
+### WES ICAP — Step by Step
+
+[8 detailed steps adapted to candidate's institutions]
+[Scenarios A and B for evaluation result]
+
+[For PhD: advisor contact email template, list of target advisors]
+
+---
+
+## Phase 2 — Tests and Materials
+
+### TOEFL / IELTS Requirements by Program
+
+| School             | Program         | Accepted Test      | Min iBT    | Notes                                |
 |:-------------------|:----------------|:-------------------|:----------:|:-------------------------------------|
-| {escola}           | {programa}      | TOEFL / IELTS      |    {N}     | {obs}                                |
+| {school}           | {program}       | TOEFL / IELTS      |    {N}     | {notes}                              |
 
-### Requisitos de GMAT / GRE por Programa
+### GMAT / GRE Requirements by Program
 
-| Escola             | Programa        | GMAT/GRE           | Waiver?    | Condições do Waiver                  |
+| School             | Program         | GMAT/GRE           | Waiver?    | Waiver Conditions                    |
 |:-------------------|:----------------|:-------------------|:----------:|:-------------------------------------|
-| {escola}           | {programa}      | {status}           | {sim/não}  | {condições}                          |
+| {school}           | {program}       | {status}           | {yes/no}   | {conditions}                         |
 
 ---
 
-## Fase 3 — Pesquisa e Contato com Programas
+## Phase 3 — Research and Program Contact
 
-### Grupo 1 — {Formato Principal}
+### Group 1 — {Main Format}
 
-| Escola             | Programa   | Email Admissions               | Status | Resposta |
+| School             | Program    | Admissions Email               | Status | Response |
 |:-------------------|:-----------|:-------------------------------|:------:|:--------:|
-| {escola}           | {programa} | {email}                        | 🔴     | —        |
+| {school}           | {program}  | {email}                        | 🔴     | —        |
 
-### Grupo 1.5 — Online / Brand Equity Nacional
+### Group 1.5 — Online / National Brand Equity
 
-| Escola             | Programa   | Email Admissions               | Status | Resposta |
+| School             | Program    | Admissions Email               | Status | Response |
 |:-------------------|:-----------|:-------------------------------|:------:|:--------:|
-| {escola}           | {programa} | {email}                        | 🔴     | —        |
+| {school}           | {program}  | {email}                        | 🔴     | —        |
 
-### Sites dos Programas
+### Program Websites
 
-| Escola | Programa | URL                                       |
+| School | Program  | URL                                       |
 |:-------|:---------|:------------------------------------------|
-| {esc}  | {prog}   | {url}                                     |
+| {sch}  | {prog}   | {url}                                     |
 
 ---
 
-## Fase 4 — Aplicações
+## Phase 4 — Applications
 
-### Grupo 1 — Submissão
+### Group 1 — Submission
 
-| Escola | Programa | Deadline | Status | Observação |
+| School | Program  | Deadline | Status | Notes      |
 |:-------|:---------|:--------:|:------:|:-----------|
-| {esc}  | {prog}   | {data}   | 🔴     | {obs}      |
+| {sch}  | {prog}   | {date}   | 🔴     | {notes}    |
 
-### Grupo 1.5 — Submissão
+### Group 1.5 — Submission
 
-| Escola | Programa | Deadline | Status | Observação |
+| School | Program  | Deadline | Status | Notes      |
 |:-------|:---------|:--------:|:------:|:-----------|
-| {esc}  | {prog}   | {data}   | 🔴     | {obs}      |
+| {sch}  | {prog}   | {date}   | 🔴     | {notes}    |
 
 ---
 
-## Avaliadores de Credenciais
+## Credential Evaluators
 
-| Avaliador | Recomendação     |  Custo  | Prazo          | URL     |
+| Evaluator | Recommendation   |  Cost   | Timeline       | URL     |
 |:----------|:-----------------|:-------:|:---------------|:--------|
-| WES ICAP  | ⭐ Principal      | US$ 208 | 7 dias úteis   | wes.org |
-| ECE       | Segunda opinião  | US$ 195 | 5 dias úteis   | ece.org |
+| WES ICAP  | ⭐ Primary        | US$ 208 | 7 business days| wes.org |
+| ECE       | Second opinion   | US$ 195 | 5 business days| ece.org |
 
 ---
 
-## Programas Selecionados para Inscrição
+## Programs Selected for Application
 
-### 🏆 Top 5 — Prioridade Máxima (Score ≥ 80)
+### 🏆 Top 5 — Top Priority (Score ≥ 80)
 
-| Rank      | Programa            | Grp | Score   | Custo      | Índice  | Nível    | Ação         | Destaques              |
+| Rank      | Program             | Grp | Score   | Cost       | Index   | Tier     | Action       | Highlights             |
 |:---------:|:--------------------|:---:|:-------:|:----------:|:-------:|:---------|:-------------|:-----------------------|
-| **🥇 #1** | **{programa}**      | 1.5 | **{N}** | **${N}k**  | **{N}** | 🎖️ Elite | **APLICAR** | {destaques}            |
-| **🥈 #2** | **{programa}**      |  1  | **{N}** | **${N}k**  | **{N}** | 🎖️ Elite | **APLICAR** | {destaques}            |
-| **🥉 #3** | **{programa}**      |  1  | **{N}** | **${N}k**  | **{N}** | ⭐ Top   | **APLICAR** | {destaques}            |
-| **#4**    | {programa}          |  1  |  {N}    |  ${N}k     |  {N}    | ⭐ Top   | APLICAR      | {destaques}            |
-| **#5**    | {programa}          | 1.5 |  {N}    |  ${N}k     |  {N}    | ⭐ Top   | APLICAR      | {destaques}            |
+| **🥇 #1** | **{program}**       | 1.5 | **{N}** | **${N}k**  | **{N}** | 🎖️ Elite | **APPLY**   | {highlights}           |
+| **🥈 #2** | **{program}**       |  1  | **{N}** | **${N}k**  | **{N}** | 🎖️ Elite | **APPLY**   | {highlights}           |
+| **🥉 #3** | **{program}**       |  1  | **{N}** | **${N}k**  | **{N}** | ⭐ Top   | **APPLY**   | {highlights}           |
+| **#4**    | {program}           |  1  |  {N}    |  ${N}k     |  {N}    | ⭐ Top   | APPLY        | {highlights}           |
+| **#5**    | {program}           | 1.5 |  {N}    |  ${N}k     |  {N}    | ⭐ Top   | APPLY        | {highlights}           |
 
-### ⭐ Tier 2 — Aplicar Se Budget Permitir (70–79)
+### ⭐ Tier 2 — Apply If Budget Allows (70–79)
 
-| Rank   | Programa   | Grp | Score | Custo  | Índice | Nível     | Ação                | Destaques |
+| Rank   | Program    | Grp | Score | Cost   | Index  | Tier      | Action              | Highlights |
 |:------:|:-----------|:---:|:-----:|:------:|:------:|:----------|:--------------------|:----------|
-| **#6** | {programa} |  1  |  {N}  | ${N}k  |  {N}   | 🔵 Tier 2 | SE BUDGET PERMITIR  | {dest.}   |
+| **#6** | {program}  |  1  |  {N}  | ${N}k  |  {N}   | 🔵 Tier 2 | IF BUDGET ALLOWS    | {dest.}   |
 
 ### 📊 Tier 3 — Backup (55–69)
 
-| Rank   | Programa   | Grp | Score | Custo  | Índice | Ação   | Observação |
+| Rank   | Program    | Grp | Score | Cost   | Index  | Action | Notes      |
 |:------:|:-----------|:---:|:-----:|:------:|:------:|:-------|:-----------|
-| **#9** | {programa} |  1  |  {N}  | ${N}k  |  {N}   | BACKUP | {obs}      |
+| **#9** | {program}  |  1  |  {N}  | ${N}k  |  {N}   | BACKUP | {notes}    |
 
-### ⚠️ Tier 4 — Evitar (< 55)
+### ⚠️ Tier 4 — Avoid (< 55)
 
-| Rank    | Programa   | Score | Motivo de Descarte                    |
-|:-------:|:-----------|:-----:|:--------------------------------------|
-| **#16** | {programa} |  {N}  | {red flags — reviews, custo, sem AACSB} |
+| Rank    | Program    | Score | Reason for Exclusion                      |
+|:-------:|:-----------|:-----:|:------------------------------------------|
+| **#16** | {program}  |  {N}  | {red flags — reviews, cost, no AACSB}     |
 
-### 💎 Hidden Gems Identificados
+### 💎 Hidden Gems Identified
 
-| Rank | Programa       | Score | Custo | Satisfação | Por que é Hidden Gem               |
-|:----:|:---------------|:-----:|:-----:|:----------:|:-----------------------------------|
-| {N}  | {programa}     |  {N}  | ${N}k |  {N}/10    | AACSB + custo baixo + reviews ≥8.0 |
+| Rank | Program        | Score | Cost  | Satisfaction | Why It's a Hidden Gem              |
+|:----:|:---------------|:-----:|:-----:|:------------:|:-----------------------------------|
+| {N}  | {program}      |  {N}  | ${N}k |  {N}/10      | AACSB + low cost + reviews ≥8.0    |
 
 ---
 
-## 🏆 Scorecard Adaptativo — Modelo B ({TIPO_PERFIL})
+## 🏆 Adaptive Scorecard — Model B ({PROFILE_TYPE})
 
-**Pesos utilizados:** {TIPO_PERFIL} — {justificativa baseada no perfil do candidato}
+**Weights used:** {PROFILE_TYPE} — {justification based on candidate profile}
 
-| Critério               | Peso  | Validação de Mercado                                         |
-|:-----------------------|:-----:|:-------------------------------------------------------------|
-| Brand Equity           | {N}%  | US News MBA 25% quality assessment                           |
-| Executive Readiness*   | {N}%  | Fortune EMBA C-level trajectory metric                       |
-| Flexibility            | {N}%  | Crítico para profissionais em atividade (não existe em rankings)|
-| Network Quality        | {N}%  | Fortune EMBA C-level alumni network metric                   |
-| ROI / Custo-Benefício  | {N}%  | 2024 research: 40% of master's programs have negative ROI    |
-| Student Satisfaction   | {N}%  | Niche, Reddit, GMAT Club, GradCafe 2024/2025                 |
+| Criterion              | Weight | Market Validation                                            |
+|:-----------------------|:------:|:-------------------------------------------------------------|
+| Brand Equity           | {N}%   | US News MBA 25% quality assessment                           |
+| Executive Readiness*   | {N}%   | Fortune EMBA C-level trajectory metric                       |
+| Flexibility            | {N}%   | Critical for working professionals (not in traditional rankings)|
+| Network Quality        | {N}%   | Fortune EMBA C-level alumni network metric                   |
+| ROI / Cost-Benefit     | {N}%   | 2024 research: 40% of master's programs have negative ROI    |
+| Student Satisfaction   | {N}%   | Niche, Reddit, GMAT Club, GradCafe 2024/2025                 |
 
-*{nome adaptado: "Executive Readiness" ou "Career Launch Potential" conforme perfil}
+*{adapted name: "Executive Readiness" or "Career Launch Potential" per profile}
 
-### Ranking Completo — Todos os Programas
+### Complete Ranking — All Programs
 
-| Rank | Grp | Escola     | Programa   | Brand | Exec | Flex | Net | ROI | Sat | TOTAL | Tier      |
+| Rank | Grp | School     | Program    | Brand | Exec | Flex | Net | ROI | Sat | TOTAL | Tier      |
 |:----:|:---:|:-----------|:-----------|:-----:|:----:|:----:|:---:|:---:|:---:|:-----:|:----------|
-|  1   | 1.5 | {escola}   | {programa} |  {N}  | {N}  | {N}  | {N} | {N} | {N} |  {N}  | 🏆 Top 5  |
-|  2   |  1  | {escola}   | {programa} |  {N}  | {N}  | {N}  | {N} | {N} | {N} |  {N}  | 🏆 Top 5  |
+|  1   | 1.5 | {school}   | {program}  |  {N}  | {N}  | {N}  | {N} | {N} | {N} |  {N}  | 🏆 Top 5  |
+|  2   |  1  | {school}   | {program}  |  {N}  | {N}  | {N}  | {N} | {N} | {N} |  {N}  | 🏆 Top 5  |
 
 ---
 
-## Comparativo de Currículos
+## Curriculum Comparison
 
-### Visão por Área de Conhecimento
+### Overview by Knowledge Area
 
-| Área de Conhecimento           | {Prog1} | {Prog2} | {Prog3} | {Prog4} | {Prog5} |
+| Knowledge Area                 | {Prog1} | {Prog2} | {Prog3} | {Prog4} | {Prog5} |
 |:-------------------------------|:-------:|:-------:|:-------:|:-------:|:-------:|
-| {área 1}                       | ✅ Core  | 🔵 Elet.| ❌      | ✅ Core  | 🔵 Elet.|
-| {área 2}                       | ✅ Core  | ✅ Core  | ✅ Core | 🔵 Elet.| ❌      |
-| {área 3}                       | 🔵 Elet.| ❌      | ✅ Core  | ✅ Core  | ✅ Core |
+| {area 1}                       | ✅ Core  | 🔵 Elec.| ❌      | ✅ Core  | 🔵 Elec.|
+| {area 2}                       | ✅ Core  | ✅ Core  | ✅ Core | 🔵 Elec.| ❌      |
+| {area 3}                       | 🔵 Elec.| ❌      | ✅ Core  | ✅ Core  | ✅ Core |
 
-> ✅ Core = obrigatório | 🔵 Eletiva = disponível | ❌ = não oferece
+> ✅ Core = required | 🔵 Elective = available | ❌ = not offered
 
 ---
 
-## Currículos Detalhados por Programa
+## Detailed Curricula by Program
 
-[Para cada programa do Top 5:]
+[For each Top 5 program:]
 
-### {Escola} — {Programa}
+### {School} — {Program}
 
-**Perfil:** {formato, horário, público-alvo, duração}
-**GPA mínimo:** {N}/4.0 | **GMAT:** {status} | **TOEFL:** {N}+ iBT | **Custo total:** US${N}k
+**Profile:** {format, schedule, target audience, duration}
+**Min GPA:** {N}/4.0 | **GMAT:** {status} | **TOEFL:** {N}+ iBT | **Total cost:** US${N}k
 
-#### Disciplinas Obrigatórias
+#### Required Courses
 
-| Disciplina                    | Créditos | Foco Principal                    |
+| Course                        | Credits  | Primary Focus                     |
 |:------------------------------|:--------:|:----------------------------------|
-| {disciplina}                  |    {N}   | {descrição breve do foco}         |
+| {course}                      |    {N}   | {brief description of focus}      |
 
-#### Eletivas / Trilhas
+#### Electives / Tracks
 
-| Trilha / Área      | Exemplos de Disciplinas                                         |
+| Track / Area       | Sample Courses                                                  |
 |:-------------------|:----------------------------------------------------------------|
-| {trilha}           | {disc1}, {disc2}, {disc3}                                       |
+| {track}            | {course1}, {course2}, {course3}                                 |
 
 ---
 
-## Comparativo Completo — Custo
+## Complete Cost Comparison
 
-| Grupo | Escola | Tipo    | Total in-state  | Total out-of-state | Custo/mês in-state |
+| Group | School | Type    | In-state Total  | Out-of-state Total | In-state Monthly   |
 |:------|:-------|:-------:|:---------------:|:------------------:|:------------------:|
-| {grp} | {esc}  | Pública | ~US$ {N}        | ~US$ {N}           | ~US$ {N}/mês       |
-| {grp} | {esc}  | Privada | ~US$ {N} (flat) | —                  | ~US$ {N}/mês       |
+| {grp} | {sch}  | Public  | ~US$ {N}        | ~US$ {N}           | ~US$ {N}/month     |
+| {grp} | {sch}  | Private | ~US$ {N} (flat) | —                  | ~US$ {N}/month     |
 
 ---
 
-## Comparativo de Requisitos de Admissão
+## Admissions Requirements Comparison
 
-| Requisito          | {Prog1}  | {Prog2}  | {Prog3}  | {Prog4}  | {Prog5}  |
+| Requirement        | {Prog1}  | {Prog2}  | {Prog3}  | {Prog4}  | {Prog5}  |
 |:-------------------|:--------:|:--------:|:--------:|:--------:|:--------:|
-| GMAT/GRE           | Opcional | Waivable | Não req. | Opcional | Waivable |
-| TOEFL mínimo iBT   |    80    |    90    |    79    |    80    |   Opc.   |
-| Cartas de rec.     |    2     |    2     |    3     |    2     |    2     |
-| Entrevista         |   Não    |   Sim    |   Não    |   Não    |   Sim    |
-| Taxa inscrição     |  ~$50    |  Grátis  |  ~$75    |  ~$50    |  ~$75    |
+| GMAT/GRE           | Optional | Waivable | Not req. | Optional | Waivable |
+| Min TOEFL iBT      |    80    |    90    |    79    |    80    |   Opt.   |
+| Rec. letters       |    2     |    2     |    3     |    2     |    2     |
+| Interview          |   No     |   Yes    |   No     |   No     |   Yes    |
+| App fee            |  ~$50    |  Free    |  ~$75    |  ~$50    |  ~$75    |
 | AACSB              |   ✅     |   ✅     |   ✅     |   ✅     |   ✅     |
 | STEM               |   ✅     |   ✅     |   ✅     |   ✅     |   ✅     |
 
 ---
 
-## Por Que Cada Programa
+## Why Each Program
 
-| Grupo | Escola | Justificativa personalizada                                                           |
+| Group | School | Personalized justification                                                            |
 |:------|:-------|:--------------------------------------------------------------------------------------|
-| {grp} | {esc}  | {justificativa específica ao perfil do candidato — referência explícita ao que importa} |
+| {grp} | {sch}  | {specific justification for candidate profile — explicit reference to what matters}   |
 
 ---
 
-## Inventário de Documentos
+## Document Inventory
 
-| Documento              | Arquivo                      | Status Tradução       | Enviado ao WES |
-|:-----------------------|:-----------------------------|:----------------------|:--------------:|
-| {documento}            | `{arquivo.pdf}`              | ✅ Traduzido ({ano})  | 🔴             |
-| {documento}            | `{arquivo.pdf}`              | 🔴 Não traduzido      | 🔴             |
+| Document               | File                         | Translation Status    | Sent to WES |
+|:-----------------------|:-----------------------------|:----------------------|:-----------:|
+| {document}             | `{file.pdf}`                 | ✅ Translated ({year}) | 🔴          |
+| {document}             | `{file.pdf}`                 | 🔴 Not translated     | 🔴          |
 
 ---
 
-## Notas e Decisões
+## Notes and Decisions
 
-| Data       | Nota                                                                    |
+| Date       | Note                                                                    |
 |:-----------|:------------------------------------------------------------------------|
-| {data}     | Pesquisa completa gerada pelo comando /us-program-research              |
-| {data}     | Scorecard {TIPO_PERFIL} aplicado: {N} programas avaliados               |
-| {data}     | {decisões e notas relevantes sobre o processo}                          |
+| {date}     | Complete research generated by /us-program-research command             |
+| {date}     | {PROFILE_TYPE} scorecard applied: {N} programs evaluated                |
+| {date}     | {relevant decisions and notes about the process}                        |
 ```
 
 ---
@@ -287,13 +287,13 @@ Standard emoji usage:
   🔵       = Elective / secondary
 
 Correct example:
-  |  Rank | Programa           | Custo | Score |
+  |  Rank | Program            | Cost  | Score |
   |:-----:|:-------------------|:-----:|:-----:|
   | **1** | **UT Austin MSAI** | $10k  |  89   |
   | **2** | **Rice MDS BA**    | $51k  |  87   |
 
 Wrong example (do NOT do this):
-  | # | Programa | Custo | Score |
-  |:-:|:---------|:-----:|:-----:|
+  | # | Program | Cost | Score |
+  |:-:|:--------|:----:|:-----:|
   | 1 | UT Austin MSAI | $10k | 89 |
 ```
