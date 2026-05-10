@@ -1,6 +1,6 @@
 ---
 name: deep-research
-description: This skill should be used when the user needs deep, multi-step web research with source synthesis, citations, skeptical evidence evaluation, confidence/gap analysis, optional Markdown report saving, and optional dense/frontier research using parallel agents.
+description: This skill should be used when the user needs deep, multi-step web research with source synthesis, citations, skeptical evidence evaluation, confidence/gap analysis, and optional dense/frontier research using parallel agents.
 license: MIT
 ---
 
@@ -21,7 +21,6 @@ Use this skill when:
 - Doing technical due diligence
 - Preparing decision memos with citations
 - Producing dense, high-confidence, Perplexity-like research with adversarial critique
-- Saving a comprehensive research report as Markdown
 
 ## Requirements
 
@@ -88,12 +87,9 @@ Do not hard-code one model as universally best. Use the strongest available mode
 
 ## Research Protocol
 
-1. Define objective, scope, output destination, and decomposition
+1. Define objective, scope, and decomposition
 - Restate the original research question in one sentence.
 - Identify audience, decision context, time horizon, geography/market scope, and requested output format.
-- Ask whether to save the final report as a Markdown file unless the user already specified a destination.
-- If the user wants a file and filesystem tools are available, plan to save to `research/YYYY-MM-DD-<topic-slug>.md` unless another path is requested.
-- If filesystem tools are unavailable, produce the final report as Markdown in the response and state that it was not saved.
 - Decompose the topic into 3-5 concrete sub-questions.
 - Each sub-question must cover a distinct dimension of the original question.
 - Together, the sub-questions should be sufficient to answer the main question.
@@ -127,19 +123,64 @@ Reject or down-rank sources that:
 
 Do NOT run searches sequentially. Launch one `ResearchScout` agent per sub-question or major query type simultaneously in a single block where the host platform supports subagents.
 
-Use `references/agent-topology.md` for agent assignments, role contracts, and scout prompt templates.
+| Agent | Assignment |
+|-------|------------|
+| `ResearchScout-SQ1` | Research sub-question 1 with primary-source preference |
+| `ResearchScout-SQ2` | Research sub-question 2 with primary-source preference |
+| `ResearchScout-SQ3` | Research sub-question 3 with primary-source preference |
+| `ResearchScout-Contrarian` | Find credible conflicting or critical evidence |
+| `ResearchScout-Recent` | Date-filtered search for recent developments when time-sensitive |
+
+Each agent prompt begins with:
+```
+# ResearchScout -- Targeted Web Research Agent
+Role: Execute assigned web research using WebSearch/WebFetch. Collect authoritative sources, extract claim-level evidence, identify contradictions, and return structured results.
+
+Required output:
+- Sub-question or query assignment
+- Queries attempted
+- Source inventory with URL, title, publisher, date, and relevance
+- Key claims and data points with source attribution
+- Short direct quotes only when exact wording matters
+- Evidence quality notes
+- Conflicts, gaps, and inaccessible/paywalled sources
+```
+
+Wait for all ResearchScout agents to complete. Deduplicate results by canonical URL. Then proceed to evidence ledger and triangulation.
 
 ### Dense / Frontier Agent Topology
 
-When the user requests maximum-depth research, load `references/agent-topology.md` and run the dense/frontier topology. If subagents are unavailable, simulate the same roles sequentially while preserving their output contracts.
+When the user requests maximum-depth research, run a wider parallel topology where the host platform supports subagents:
+
+| Agent | Purpose |
+|-------|---------|
+| `ResearchLead` | Normalize scope, define sub-questions, assign agents, and maintain evidence standards |
+| `ResearchScout-SQ1..SQ5` | Research one sub-question each with source traceability |
+| `PrimarySourceHunter` | Find official docs, filings, papers, regulatory pages, datasets, and primary evidence |
+| `ContrarianScout` | Find credible disagreement, failures, criticism, and negative evidence |
+| `RecencyScout` | Search for recent developments and date-sensitive updates |
+| `CitationAuditor` | Check whether claims are properly supported and sources are credible |
+| `SynthesisJudge` | Consolidate findings, resolve conflicts, and write the final report |
+
+Launch independent scout agents in one parallel batch whenever the host platform supports subagents. If subagents are unavailable, simulate the topology sequentially while preserving the same roles and output contracts.
 
 3. Build an evidence ledger
 - Deduplicate sources by canonical URL.
 - For each source, capture URL, title, publisher/author, publication or update date, source type, sub-question addressed, and relevance notes.
 - Extract specific claims, data points, methodologies, and limitations.
-- Mark claim status as `confirmed`, `contested`, `weak`, or `inferred`.
-- Use `references/evidence-ledger.md` for status definitions, validation rules, and matrix templates.
+- Mark claim status:
+  - `confirmed`: supported by strong evidence or multiple credible independent sources
+  - `contested`: credible sources disagree
+  - `weak`: only one weak or indirect source supports it
+  - `inferred`: reasoned conclusion based on evidence, not directly stated by sources
 - Use short direct quotes only when wording materially affects interpretation.
+
+Evidence ledger fields:
+- Claim
+- Status
+- Source(s)
+- Source quality
+- Notes / limitations
 
 4. Validate, triangulate, and challenge
 - Cross-check key claims with at least 2 independent credible sources where possible.
@@ -154,7 +195,6 @@ When the user requests maximum-depth research, load `references/agent-topology.m
 - Cite every non-obvious factual claim inline.
 - Separate confirmed facts, interpretations, recommendations, and unresolved gaps.
 - In dense/frontier mode, include critique/rebuttal notes from `ContrarianScout` and `CitationAuditor`.
-- If the user approved Markdown saving, write the final report to the agreed `.md` path and mention the saved path in the final response.
 
 ## Output Formats
 
@@ -204,32 +244,6 @@ Every substantive report must close with `Confidence & Gaps`:
 - Missing or inaccessible information
 - Recommended follow-up research
 
-## Markdown Report Saving
-
-At the start of a research task, ask:
-
-```
-Do you want me to save the final research report as a Markdown file?
-Default path: research/YYYY-MM-DD-<topic-slug>.md
-```
-
-Rules:
-- Do not save a file unless the user explicitly agrees or requested a file upfront.
-- Use lowercase kebab-case for `<topic-slug>`.
-- Create the destination folder if needed and filesystem tools are available.
-- Save only the final polished report, not raw agent notes.
-- Include source URLs in the saved report.
-- If saving fails, return the report in the response and state the failure plainly.
-
-## Comprehensive Report Template
-
-Use `references/report-template.md` for dense/frontier research and for any research saved to Markdown.
-
-Load this reference only when:
-- The user asks to save the research as Markdown
-- Dense/frontier mode is active
-- The user asks for a comprehensive research report
-
 ## Quality Bar
 
 - Evidence before conclusions
@@ -238,7 +252,6 @@ Load this reference only when:
 - No uncited critical claims
 - Claim status visible for material claims
 - Dense/frontier outputs include model/tooling limitations
-- Saved Markdown reports follow the comprehensive report template unless the user requests a different structure
 
 ## Time & Cost
 
@@ -276,7 +289,6 @@ Load this reference only when:
 | Strong sources disagree | Different methods, dates, jurisdictions, or definitions | Present both claims, explain credibility factors, and lower confidence if unresolved |
 | Too many low-quality sources | Query is attracting SEO/marketing content | Add primary-source, filetype, site, institution, or regulatory terms to query |
 | Frontier model unavailable | Host platform lacks requested model/tooling | Use native mode or strongest available model and disclose limitation |
-| Markdown save fails | Filesystem unavailable, path invalid, or permission denied | Return the report in the response and state that saving failed |
 
 ## Example Usage
 
@@ -284,4 +296,3 @@ Load this reference only when:
 2. "Use deep-research to summarize regulatory updates from the last 12 months."
 3. "Use deep-research to produce a source-backed buy-vs-build memo."
 4. "Use dense deep-research with a frontier model to produce a Perplexity-like evidence report."
-5. "Use dense deep-research and save the final report as Markdown."

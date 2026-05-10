@@ -227,7 +227,7 @@ Important:
 ### 🔬 Research & Analysis
 | Skill | Version | Purpose |
 |-------|---------|---------|
-| **deep-research** | v2.2.0 | Dense multi-step research workflow with sub-question decomposition, parallel agents, frontier-model recommendation, Markdown report saving, evidence ledger, citations, and confidence/gap analysis |
+| **deep-research** | v2.2.0 | Dense multi-step research workflow with sub-question decomposition, parallel agents, frontier-model recommendation, evidence ledger, citations, and confidence/gap analysis |
 | **us-program-research** | v2.0.0 | Structured US academic program research, ranking, and application action-plan generation |
 | **webpage-reader** | v1.0.0 | Extract clean Markdown from any URL using the Defuddle CLI. Supports metadata-only mode, batch URLs, and saving output to file |
 

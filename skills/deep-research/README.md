@@ -1,6 +1,6 @@
 # deep-research
 
-Multi-step research skill using native web tools (WebSearch/WebFetch) to decompose complex questions, gather authoritative sources, synthesize claim-level evidence, cite findings, save Markdown reports when requested, and report confidence/gaps. It runs without external API keys by default and includes an optional dense/frontier mode for maximum-depth research.
+Multi-step research skill using native web tools (WebSearch/WebFetch) to decompose complex questions, gather authoritative sources, synthesize claim-level evidence, cite findings, and report confidence/gaps. It runs without external API keys by default and includes an optional dense/frontier mode for maximum-depth research.
 
 ## When to use
 
@@ -9,7 +9,6 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - Produce a structured report with cited evidence.
 - Answer complex questions that require web searches.
 - Run dense, Perplexity-like research with parallel agents, frontier-model recommendation, adversarial critique, and citation audit.
-- Save a polished research report as a Markdown file.
 
 ## What is included
 
@@ -19,13 +18,9 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - Sub-question decomposition into 3-5 concrete research threads
 - Evidence ledger with source quality notes and claim status
 - Required confidence/gaps section
-- Optional Markdown report saving with a comprehensive report template
 - Skeptical conflict handling for contradictory sources
 - `evals/evals.json` — realistic test cases with assertions for trigger accuracy and workflow correctness
 - `evals/trigger-eval.json` — trigger and non-trigger examples for description optimization
-- `references/report-template.md` — comprehensive Markdown report template loaded only for dense/frontier reports or saved research outputs
-- `references/agent-topology.md` — parallel agent roles, dense/frontier topology, and role output contracts
-- `references/evidence-ledger.md` — claim status definitions, source quality levels, validation rules, and evidence matrix templates
 
 ## Typical invocation
 
@@ -34,7 +29,6 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - "Research pricing models for SaaS developer tools."
 - "Synthesize the latest findings on AI agent evaluation frameworks."
 - "Use dense deep-research with a frontier model to create a Perplexity-like evidence report."
-- "Use dense deep-research on AI coding agents and save the final report as Markdown."
 
 ## Operating modes
 
@@ -45,7 +39,6 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - Decomposes complex topics into 3-5 sub-questions.
 - Runs parallel `ResearchScout` agents where supported.
 - Produces citations, evidence ledger, and confidence/gaps.
-- Asks whether to save the final report as Markdown.
 
 ### Dense / frontier research
 
@@ -53,7 +46,6 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - Recommends the strongest available model or model class for the task.
 - Adds specialized research roles such as `PrimarySourceHunter`, `ContrarianScout`, `RecencyScout`, `CitationAuditor`, and `SynthesisJudge`.
 - Falls back to native mode if frontier tooling or subagents are unavailable.
-- Uses a comprehensive report template when saving or producing a dense final report.
 
 ## What's New in v2.2
 
@@ -62,7 +54,6 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - **Evidence ledger** -- Claims are tracked with source metadata, source quality, and evidence status
 - **Skeptical synthesis** -- Conflicts and weak evidence are surfaced instead of smoothed over
 - **Confidence & gaps** -- Reports close with confidence level, source disagreements, and missing coverage
-- **Markdown report saving** -- Asks whether to save the final report to `research/YYYY-MM-DD-<topic-slug>.md`
 
 ## What's New in v2.0
 

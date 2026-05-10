@@ -1,6 +1,6 @@
 {
   "version": "1.0.0",
-  "generated": "2026-05-10T19:59:10.714135Z",
+  "generated": "2026-05-10T19:52:52.836516Z",
   "skills": [
     {
       "name": "agent-skill-discovery",
@@ -104,7 +104,7 @@
     {
       "name": "deep-research",
       "version": "2.2.0",
-      "description": "This skill should be used when the user needs deep, multi-step web research with source synthesis, citations, skeptical evidence evaluation, confidence/gap analysis, optional Markdown report saving, and optional dense/frontier research using parallel agents.",
+      "description": "This skill should be used when the user needs deep, multi-step web research with source synthesis, citations, skeptical evidence evaluation, confidence/gap analysis, and optional dense/frontier research using parallel agents.",
       "category": "research",
       "tags": [
         "research",
