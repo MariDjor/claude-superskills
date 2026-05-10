@@ -127,64 +127,19 @@ Reject or down-rank sources that:
 
 Do NOT run searches sequentially. Launch one `ResearchScout` agent per sub-question or major query type simultaneously in a single block where the host platform supports subagents.
 
-| Agent | Assignment |
-|-------|------------|
-| `ResearchScout-SQ1` | Research sub-question 1 with primary-source preference |
-| `ResearchScout-SQ2` | Research sub-question 2 with primary-source preference |
-| `ResearchScout-SQ3` | Research sub-question 3 with primary-source preference |
-| `ResearchScout-Contrarian` | Find credible conflicting or critical evidence |
-| `ResearchScout-Recent` | Date-filtered search for recent developments when time-sensitive |
-
-Each agent prompt begins with:
-```
-# ResearchScout -- Targeted Web Research Agent
-Role: Execute assigned web research using WebSearch/WebFetch. Collect authoritative sources, extract claim-level evidence, identify contradictions, and return structured results.
-
-Required output:
-- Sub-question or query assignment
-- Queries attempted
-- Source inventory with URL, title, publisher, date, and relevance
-- Key claims and data points with source attribution
-- Short direct quotes only when exact wording matters
-- Evidence quality notes
-- Conflicts, gaps, and inaccessible/paywalled sources
-```
-
-Wait for all ResearchScout agents to complete. Deduplicate results by canonical URL. Then proceed to evidence ledger and triangulation.
+Use `references/agent-topology.md` for agent assignments, role contracts, and scout prompt templates.
 
 ### Dense / Frontier Agent Topology
 
-When the user requests maximum-depth research, run a wider parallel topology where the host platform supports subagents:
-
-| Agent | Purpose |
-|-------|---------|
-| `ResearchLead` | Normalize scope, define sub-questions, assign agents, and maintain evidence standards |
-| `ResearchScout-SQ1..SQ5` | Research one sub-question each with source traceability |
-| `PrimarySourceHunter` | Find official docs, filings, papers, regulatory pages, datasets, and primary evidence |
-| `ContrarianScout` | Find credible disagreement, failures, criticism, and negative evidence |
-| `RecencyScout` | Search for recent developments and date-sensitive updates |
-| `CitationAuditor` | Check whether claims are properly supported and sources are credible |
-| `SynthesisJudge` | Consolidate findings, resolve conflicts, and write the final report |
-
-Launch independent scout agents in one parallel batch whenever the host platform supports subagents. If subagents are unavailable, simulate the topology sequentially while preserving the same roles and output contracts.
+When the user requests maximum-depth research, load `references/agent-topology.md` and run the dense/frontier topology. If subagents are unavailable, simulate the same roles sequentially while preserving their output contracts.
 
 3. Build an evidence ledger
 - Deduplicate sources by canonical URL.
 - For each source, capture URL, title, publisher/author, publication or update date, source type, sub-question addressed, and relevance notes.
 - Extract specific claims, data points, methodologies, and limitations.
-- Mark claim status:
-  - `confirmed`: supported by strong evidence or multiple credible independent sources
-  - `contested`: credible sources disagree
-  - `weak`: only one weak or indirect source supports it
-  - `inferred`: reasoned conclusion based on evidence, not directly stated by sources
+- Mark claim status as `confirmed`, `contested`, `weak`, or `inferred`.
+- Use `references/evidence-ledger.md` for status definitions, validation rules, and matrix templates.
 - Use short direct quotes only when wording materially affects interpretation.
-
-Evidence ledger fields:
-- Claim
-- Status
-- Source(s)
-- Source quality
-- Notes / limitations
 
 4. Validate, triangulate, and challenge
 - Cross-check key claims with at least 2 independent credible sources where possible.

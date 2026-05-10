@@ -24,6 +24,8 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - `evals/evals.json` — realistic test cases with assertions for trigger accuracy and workflow correctness
 - `evals/trigger-eval.json` — trigger and non-trigger examples for description optimization
 - `references/report-template.md` — comprehensive Markdown report template loaded only for dense/frontier reports or saved research outputs
+- `references/agent-topology.md` — parallel agent roles, dense/frontier topology, and role output contracts
+- `references/evidence-ledger.md` — claim status definitions, source quality levels, validation rules, and evidence matrix templates
 
 ## Typical invocation
 
