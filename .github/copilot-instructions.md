@@ -498,3 +498,9 @@ All skills follow the zero-config philosophy and work universally across project
 - [Agent Skills Standard](https://agentskills.io)
 - [Anthropic Prompt Engineering](https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering)
 - [Anthropic Agents & Tools](https://docs.anthropic.com/en/docs/agents-and-tools)
+
+## graphify
+
+Before answering architecture or codebase questions, read `graphify-out/GRAPH_REPORT.md` if it exists.
+If `graphify-out/wiki/index.md` exists, navigate it for deep questions.
+Type `/graphify` in Copilot Chat to build or update the knowledge graph.

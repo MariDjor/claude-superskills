@@ -604,3 +604,12 @@ Dual-scope discovery: scans installed resources globally + current repository re
 
 #### agent-skill-orchestrator (v1.1.0)
 Analyzes user requirements, matches to available resources with confidence scoring (trigger 30% + semantic 25% + tools 20% + category 15% + MCP 10%), generates primary + alternative execution plans with user approval before proceeding.
+
+## graphify
+
+This project has a graphify knowledge graph at graphify-out/.
+
+Rules:
+- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
+- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
