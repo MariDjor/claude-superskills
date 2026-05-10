@@ -1,4 +1,4 @@
-# 🤖 Claude Superskills v2.0.1
+# 🤖 Claude Superskills v2.0.2
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
@@ -140,7 +140,7 @@ npx claude-superskills
 The installer will generate a zip like:
 
 ```text
-~/.claude-superskills/plugin-output/claude-superskills-v2.0.1.zip
+~/.claude-superskills/plugin-output/claude-superskills-v2.0.2.zip
 ```
 
 Then update Cowork manually:

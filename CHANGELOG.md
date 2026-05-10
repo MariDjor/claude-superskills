@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.2] - 2026-05-10
+
+### Fixed
+- Remove dangerous fallback in `uninstallManagedSkills()` that could delete skills from other packages when managed skills list was empty
+- Delete dead code `lib/commands/uninstall.js` (was never called, had wrong platform paths)
+
+### Added
+- Nuclear uninstall option (`--nuclear` flag and interactive menu choice) with type-to-confirm safety gate — removes ALL skills from ALL platforms across all packages
+
+---
+
 ## [2.0.1] - 2026-05-10
 
 ### Removed
