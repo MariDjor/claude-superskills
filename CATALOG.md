@@ -1,7 +1,7 @@
 # 📚 Claude Superskills Catalog
 
-**Generated:** 2026-05-08T08:39:13.122816Z  
-**Total Skills:** 18  
+**Generated:** 2026-05-10T19:52:57.562540Z
+**Total Skills:** 18
 **Platforms:** GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, AdaL CLI
 
 ---
@@ -14,7 +14,7 @@
 | **agent-skill-orchestrator** | 2.1.0 | orchestration | orchestration, planning, strategy | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **audio-transcriber** | 2.1.0 | content | audio, transcription, whisper | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **brainstorming** | 2.0.0 | planning | brainstorming, design, requirements | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
-| **deep-research** | 2.1.0 | research | research, search, analysis | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
+| **deep-research** | 2.2.0 | research | research, search, analysis | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **document-converter** | 1.0.0 | content | document-conversion, pdf, office | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **executing-plans** | 2.0.0 | planning | planning, execution, checkpoints | safe | GitHub Copilot CLI Claude Code OpenAI Codex OpenCode Gemini CLI Antigravity Cursor IDE AdaL CLI |
 | **grill-me** | 1.0.0 | Planning | planning, stress-test, socratic | Low | All 8 |
@@ -113,8 +113,8 @@
 
 ### Research
 
-- **deep-research** (v2.1.0)
-  - Description: This skill should be used when the user needs deep, multi-step research using native web tools (WebS...
+- **deep-research** (v2.2.0)
+  - Description: This skill should be used when the user needs deep, multi-step web research with source synthesis, c...
   - Tags: research, search, analysis, synthesis, citations
 
 - **us-program-research** (v2.0.0)

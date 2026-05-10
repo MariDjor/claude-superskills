@@ -1,6 +1,6 @@
 {
   "skill_name": "deep-research",
-  "description": "Triggers for multi-step deep research using native web tools",
+  "description": "Triggers for multi-step deep web research with source synthesis, citations, skeptical evaluation, confidence/gap analysis, and optional dense/frontier research",
   "queries": [
     {"id": 1, "query": "Research the competitive landscape for B2B project management software", "should_trigger": true},
     {"id": 2, "query": "Do a deep dive into the current state of EU AI regulation", "should_trigger": true},
@@ -12,6 +12,10 @@
     {"id": 8, "query": "Multi-source research on emerging supply chain technologies", "should_trigger": true},
     {"id": 9, "query": "Research how different companies have approached pricing strategy for APIs", "should_trigger": true},
     {"id": 10, "query": "Do a thorough investigation into customer success best practices for SaaS", "should_trigger": true},
+    {"id": 21, "query": "Deep research and compare the evidence for remote work productivity claims, including source disagreements", "should_trigger": true},
+    {"id": 22, "query": "Build a cited research brief on AI coding agents with confidence levels and gaps", "should_trigger": true},
+    {"id": 23, "query": "Use dense deep-research with a frontier model to produce a Perplexity-like evidence report", "should_trigger": true},
+    {"id": 24, "query": "Run maximum-depth research with parallel agents and a citation audit on enterprise RAG platforms", "should_trigger": true},
     {"id": 11, "query": "Write a Python script to scrape this website", "should_trigger": false},
     {"id": 12, "query": "Summarize this YouTube video I'll share", "should_trigger": false},
     {"id": 13, "query": "Help me write a cover letter for a data analyst role", "should_trigger": false},
@@ -21,6 +25,8 @@
     {"id": 17, "query": "Write a blog post about machine learning", "should_trigger": false},
     {"id": 18, "query": "Explain how neural networks work conceptually", "should_trigger": false},
     {"id": 19, "query": "Create a resume for a software engineering role", "should_trigger": false},
-    {"id": 20, "query": "Help me prepare for my upcoming presentation", "should_trigger": false}
+    {"id": 20, "query": "Help me prepare for my upcoming presentation", "should_trigger": false},
+    {"id": 25, "query": "Give me a quick answer: what is RAG?", "should_trigger": false},
+    {"id": 26, "query": "Rewrite this paragraph with citations I already have", "should_trigger": false}
   ]
 }
