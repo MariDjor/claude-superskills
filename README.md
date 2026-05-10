@@ -2,7 +2,7 @@
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
-![Version](https://img.shields.io/badge/version-2.0.1-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.2-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Skills](https://img.shields.io/badge/skills-18-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platforms-8-orange.svg)
@@ -402,7 +402,7 @@ MIT - See [LICENSE](./LICENSE) for details.
 
 **Built with ❤️ by [Eric Andrade](https://github.com/ericgandrade)**
 
-*Version 2.0.1 | May 2026*
+*Version 2.0.2 | May 2026*
 
 ## 🎁 Get Started
 
@@ -423,12 +423,11 @@ See [detailed comparison](docs/bundles/bundles.md#-bundle-comparison).
 - **[Skills Development](docs/references/skills-development.md)** - Advanced creation
 - **[Changelog](CHANGELOG.md)** - Version history
 
-## Related Packages
-
-Need skills beyond the core 18? Install focused packages:
+## Part of the Superskills Family
 
 | Package | Skills | Focus | Install |
 |---------|--------|-------|---------|
+| **claude-superskills** | 18 | Core: orchestration, planning, research & content | `npx claude-superskills` |
 | [obsidian-superskills](https://github.com/ericgandrade/obsidian-superskills) | 6 | Obsidian knowledge management | `npx obsidian-superskills` |
 | [career-superskills](https://github.com/ericgandrade/career-superskills) | 20 | Job search & career development | `npx career-superskills` |
 | [product-superskills](https://github.com/ericgandrade/product-superskills) | 8 | Product management & GTM strategy | `npx product-superskills` |
