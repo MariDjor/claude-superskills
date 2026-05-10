@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.1] - 2026-05-10
+
+### Removed
+- **`scripts/install-skills.sh`** — deprecated symlink-based installer (2 platforms only); replaced by `local-install.sh`
+- **`scripts/setup-global-skills.sh`** — pointed to in-repo platform dirs gitignored since v1.10.4
+- **`scripts/check-tools.sh`** — detected only 2/8 platforms; superseded by `cli-installer/lib/detector.js`
+- **`scripts/update-main-readme.sh`** — only printed a snippet to stdout, no actual file modification
+- **`scripts/generate-catalog.js`** — duplicate of `generate-catalog.py`; no npm script referenced it
+- **`scripts/generate-skills-index.js`** — duplicate of `generate-skills-index.py` + read from `.github/skills/` (gitignored)
+
+### Fixed
+- **`scripts/local-install.sh`** — corrected Codex path (`~/.codex/vendor_imports/…` → `~/.codex/skills`) and Antigravity path (`~/.agent/skills` → `~/.gemini/antigravity/skills`)
+- **`scripts/uninstall.sh`** — corrected Copilot path (`~/.copilot/skills` → `~/.github/skills`), OpenCode path (`~/.opencode/skills` → `~/.agent/skills`), added missing Antigravity/Cursor/AdaL platform dirs (now covers all 8)
+- **`scripts/install.sh`** — updated platform count from 5→8; added Antigravity, Cursor, AdaL detection to `detect_ai_tools()`
+- **`skills/audio-transcriber/README.md`** — replaced reference to removed `install-skills.sh` with `local-install.sh`
+- **`.claude-plugin/plugin.json`** — corrected description from "63 skills" to "18 skills"
+
+---
+
 ## [2.0.0] - 2026-05-08
 
 ### Breaking Changes

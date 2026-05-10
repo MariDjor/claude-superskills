@@ -1,8 +1,8 @@
-# 🤖 Claude Superskills v2.0.0
+# 🤖 Claude Superskills v2.0.1
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.1-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Skills](https://img.shields.io/badge/skills-18-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platforms-8-orange.svg)
@@ -140,7 +140,7 @@ npx claude-superskills
 The installer will generate a zip like:
 
 ```text
-~/.claude-superskills/plugin-output/claude-superskills-v1.21.8.zip
+~/.claude-superskills/plugin-output/claude-superskills-v2.0.1.zip
 ```
 
 Then update Cowork manually:
@@ -160,26 +160,34 @@ Important:
 
 ---
 
-### Once installed — all 64 skills under the `claude-superskills:` namespace
+### Once installed — all 18 skills under the `claude-superskills:` namespace
 
 ```
 /claude-superskills:skill-creator
-/claude-superskills:deep-research
-/claude-superskills:brainstorming
 /claude-superskills:prompt-engineer
-/claude-superskills:mckinsey-strategist
+/claude-superskills:brainstorming
 /claude-superskills:writing-plans
 /claude-superskills:executing-plans
+/claude-superskills:grill-me
+/claude-superskills:mckinsey-strategist
+/claude-superskills:deep-research
+/claude-superskills:us-program-research
+/claude-superskills:webpage-reader
+/claude-superskills:senior-solution-architect
 /claude-superskills:agent-skill-discovery
 /claude-superskills:agent-skill-orchestrator
-... (46 more)
+/claude-superskills:youtube-summarizer
+/claude-superskills:audio-transcriber
+/claude-superskills:pptx-translator
+/claude-superskills:document-converter
+/claude-superskills:storytelling-expert
 ```
 
 > **npm install still works** for GitHub Copilot, Cursor IDE, Gemini CLI, and 5 other platforms. The plugin format is Claude Code-specific.
 
 ## ✨ Features
 
-- **64 Universal Skills** - Work on all platforms
+- **18 Universal Skills** - Work on all platforms
 - **Zero-Config Install** - Run once, works everywhere
 - **Curated Bundles** - Install exactly what you need
 - **Smart Search** - Find skills by keyword
@@ -189,30 +197,6 @@ Important:
 - **Short Flags** - `-a`, `-y`, `-q`
 
 ## 📦 Available Skills
-
-### 💼 Career & Professional Growth
-| Skill | Version | Purpose |
-|-------|---------|---------|
-| **resume-ats-optimizer** | v2.1.0 | Optimize resumes for Applicant Tracking Systems |
-| **resume-bullet-writer** | v2.1.0 | Transform weak bullets into achievement-focused statements |
-| **resume-tailor** | v2.1.0 | Customize resume for specific job postings |
-| **resume-formatter** | v2.1.0 | Ensure ATS-friendly formatting and clean scannable layouts |
-| **resume-quantifier** | v2.1.0 | Add metrics and quantifiable results to resume bullets |
-| **resume-section-builder** | v2.1.0 | Create targeted resume sections for different experience levels |
-| **resume-version-manager** | v2.1.0 | Track and manage multiple resume versions during a job search |
-| **job-description-analyzer** | v2.1.0 | Analyze job postings and calculate match scores |
-| **interview-prep-generator** | v2.1.0 | Generate STAR stories and practice questions |
-| **linkedin-profile-optimizer** | v2.1.0 | Optimize LinkedIn profile for recruiter searchability |
-| **salary-negotiation-prep** | v2.1.0 | Research market rates and build negotiation strategy |
-| **tech-resume-optimizer** | v2.1.0 | Optimize resumes for technical and PM roles |
-| **executive-resume-writer** | v2.1.0 | Create C-suite and VP-level resumes emphasizing strategic leadership |
-| **cover-letter-generator** | v2.1.0 | Create personalized cover letters from resume and job description |
-| **career-changer-translator** | v2.1.0 | Translate skills from one industry to another |
-| **creative-portfolio-resume** | v2.1.0 | Balance visual design with ATS compatibility for creative roles |
-| **academic-cv-builder** | v2.1.0 | Build and format CVs for academic positions |
-| **offer-comparison-analyzer** | v2.1.0 | Compare multiple job offers with total compensation analysis |
-| **portfolio-case-study-writer** | v2.1.0 | Transform resume bullets into detailed portfolio case studies |
-| **reference-list-builder** | v2.1.0 | Format professional references and prepare reference materials |
 
 ### 🔍 Discovery & Orchestration
 | Skill | Version | Purpose |
@@ -239,65 +223,22 @@ Important:
 | Skill | Version | Purpose |
 |-------|---------|---------|
 | **senior-solution-architect** | v2.1.0 | Unified authority for C4 modeling, ADRs, and system reviews |
-| **product-architecture** | v2.0.0 | Define scalable product architecture and modules |
-
-### 🚀 Startup & Venture
-| Skill | Version | Purpose |
-|-------|---------|---------|
-| **startup-growth-strategist** | v2.0.0 | Integrated authority for market sizing, unit economics, and GTM |
-| **abx-strategy** | v2.1.0 | Build Account-Based Everything (ABX) GTM strategies |
-
-### 📈 Product Management & Strategy
-| Skill | Version | Purpose |
-|-------|---------|---------|
-| **product-operating-model** | v2.0.0 | Index and entry point for the Modern Product Operating Model |
-| **product-strategy** | v2.0.0 | Build product strategy defining where to play and how to win |
-| **product-discovery** | v2.0.0 | Run continuous discovery using OSTs, interviews, and assumption testing |
-| **product-architecture** | v2.0.0 | Convert discovery opportunities into roadmaps and solution briefs |
-| **product-delivery** | v2.0.0 | Ship, measure, and learn with staged rollouts and metrics hierarchies |
-| **product-leadership** | v2.0.0 | Operate as Director or CPO managing portfolios and org design |
-| **ai-native-product** | v2.0.0 | Build AI-native products with agency-control tradeoffs and eval strategies |
 
 ### 🔬 Research & Analysis
 | Skill | Version | Purpose |
 |-------|---------|---------|
 | **deep-research** | v2.1.0 | Multi-step research workflow with citations using native web tools (no Google API required) |
 | **us-program-research** | v2.0.0 | Structured US academic program research, ranking, and application action-plan generation |
+| **webpage-reader** | v1.0.0 | Extract clean Markdown from any URL using the Defuddle CLI. Supports metadata-only mode, batch URLs, and saving output to file |
 
 ### 📝 Content Processing
 | Skill | Version | Purpose |
 |-------|---------|---------|
 | **youtube-summarizer** | v2.1.0 | Extract YouTube transcripts and generate comprehensive summaries |
 | **audio-transcriber** | v2.1.0 | Transform audio recordings into professional Markdown documentation |
-| **docling-converter** | v2.1.0 | Convert PDF/Office/image documents to Markdown/JSON/HTML with optional OCR |
+| **pptx-translator** | v2.8.0 | Translate PowerPoint presentations between languages with batched parallel translation, group shape support, and per-slide self-validation |
 | **document-converter** | v1.0.0 | Convert Office documents to PDF, perform PDF operations (merge, split, rotate, encrypt, OCR) using local free tools — LibreOffice, ghostscript, pdftk, tesseract, imagemagick |
-| **pptx-translator** | v2.8.0 | Translate PowerPoint presentations between languages with batched parallel translation (3 slides/batch), AI-native language classification, group shape support, per-slide self-validation, and interactive output filename choice (original + lang suffix, AI-translated name, or custom) |
 | **storytelling-expert** | v2.0.0 | Transform ideas into engaging narratives using 8 elite storytelling frameworks |
-| **webpage-reader** | v1.0.0 | Extract clean Markdown from any URL using the Defuddle CLI. Supports metadata-only mode, batch URLs, and saving output to file |
-| **mermaid-diagram** | v1.0.0 | Generate Mermaid diagram syntax from plain-language descriptions — flowchart, sequence, class, state, ER, mindmap, Gantt, and 5 more types |
-| **excalidraw-diagram** | v1.0.0 | Create hand-drawn style diagrams in Excalidraw JSON format — architecture sketches, concept maps, user flows, C4 context, org charts |
-
-### 🗒️ Obsidian Knowledge Management
-| Skill | Version | Purpose |
-|-------|---------|-------|
-| **obsidian-markdown** | v1.0.0 | Master Obsidian Flavored Markdown — wikilinks, embeds, callouts, frontmatter properties, block IDs, and all Obsidian-specific syntax extensions |
-| **obsidian-links** | v1.0.0 | Create, validate, repair, and analyze wikilinks in Obsidian vaults. Broken link detection, orphan discovery, auto-linking, and MOC builder |
-| **obsidian-frontmatter** | v1.0.0 | Create, validate, standardize, and repair YAML frontmatter properties — tags, aliases, dates, custom fields — for Dataview-compatible notes |
-| **obsidian-automation** | v1.0.0 | Automate Obsidian vault tasks using the CLI, shell scripts, and Local REST API — batch note creation, bulk updates, and vault maintenance |
-| **obsidian-note-builder** | v1.0.0 | Build complete, knowledge-graph-ready Obsidian notes from raw content with entity extraction, auto-wikilinks, and Zettelkasten atomicity |
-| **obsidian-canvas** | v1.0.0 | Create freeform visual workspaces using Obsidian Canvas — hub-and-spoke, Kanban, and dashboard layouts as ready-to-save `.canvas` files |
-
-### 🎨 UI/UX Design
-| Skill | Version | Purpose |
-|-------|---------|---------|
-| **ui-ux-pro-max** | v1.0.0 | Comprehensive design intelligence: 50+ styles, 161 color palettes, 57 font pairings, UX guidelines, and stack-specific best practices across React, Next.js, Vue, Svelte, Angular, Astro, Flutter, SwiftUI, and more |
-| **design** | v1.0.0 | Full design suite: logo generation (55 styles, Gemini AI), corporate identity (50 deliverables), HTML presentations, banner design (22 styles), icon design (15 styles SVG), social photo generation |
-| **design-system** | v1.0.0 | Create and maintain design systems with three-layer token architecture (primitive, semantic, component), CSS variables, spacing/typography scales, and component specifications |
-| **brand** | v1.0.0 | Brand identity guidance: brand voice, visual identity standards, messaging frameworks, asset management, consistency reviews, color palette management, and typography specifications |
-| **ui-styling** | v1.0.0 | UI styling with shadcn/ui, Tailwind CSS, responsive layouts, accessible components, dark mode, canvas-based visual designs, and consistent cross-platform styling |
-| **slides** | v1.0.0 | Strategic HTML presentations with Chart.js data visualizations, design tokens, responsive layouts, copywriting formulas (AIDA, PAS), and contextual slide strategies |
-| **banner-design** | v1.0.0 | Design banners in any of 22 styles (minimalist, gradient, glassmorphism, neon, retro, etc.) for social media, advertising, web heroes, and print across all major platforms |
-| **ava-web** | v1.0.0 | Generate Avanade-branded websites, landing pages, and web components in HTML, Tailwind, React, or Next.js with orange gradient hero, wave SVG dividers, and official Ava design tokens |
 
 ## 🎯 Curated Bundles
 
@@ -311,20 +252,11 @@ npx claude-superskills --bundle content -y
 # Planning & Execution
 npx claude-superskills --bundle planning -y
 
-# Product Management & Strategy
-npx claude-superskills --bundle product -y
-
-# Career & Professional Growth
-npx claude-superskills --bundle career -y
-
 # Research & Analysis
 npx claude-superskills --bundle research -y
 
-# Skill Developer (for creating custom skills)
-npx claude-superskills --bundle developer -y
-
-# Obsidian Knowledge Management
-npx claude-superskills --bundle obsidian -y
+# Discovery & Orchestration
+npx claude-superskills --bundle orchestration -y
 
 # All Skills (complete collection)
 npx claude-superskills --bundle all -y
@@ -470,21 +402,18 @@ MIT - See [LICENSE](./LICENSE) for details.
 
 **Built with ❤️ by [Eric Andrade](https://github.com/ericgandrade)**
 
-*Version 1.23.0 | April 2026*
+*Version 2.0.1 | May 2026*
 
 ## 🎁 Get Started
 
 Choose a bundle that fits your workflow:
 
-- **[Essential](docs/bundles/bundles.md#-essential-bundle)** - skill-creator, prompt-engineer
-- **[Content](docs/bundles/bundles.md#-content-creation-bundle)** - youtube-summarizer, audio-transcriber, docling-converter, document-converter, pptx-translator, ava-pptx, ava-web, storytelling-expert
-- **[Planning](docs/bundles/bundles.md#-planning--execution-bundle)** - brainstorming, writing-plans, executing-plans, mckinsey-strategist
-- **[Product](docs/bundles/bundles.md#-product--strategy-bundle)** - abx-strategy, ai-native-product, product-strategy, and more
-- **[Career](docs/bundles/bundles.md#-career--professional-growth-bundle)** - resume-ats-optimizer, interview-prep, salary-negotiation, and more
-- **[Research](docs/bundles/bundles.md#-research--analysis-bundle)** - deep-research, us-program-research + discovery
-- **[Obsidian](docs/bundles/bundles.md#-obsidian-knowledge-management-bundle)** - obsidian-markdown, links, frontmatter, automation, note-builder, canvas
-- **[Developer](docs/bundles/bundles.md#-developer-bundle)** - skill-creator for power users
-- **[All](docs/bundles/bundles.md#-all-skills-bundle)** - Complete toolkit
+- **[Essential](docs/bundles/bundles.md#-essential-bundle)** - skill-creator, prompt-engineer, agent-skill-discovery, agent-skill-orchestrator
+- **[Planning](docs/bundles/bundles.md#-planning--execution-bundle)** - brainstorming, writing-plans, executing-plans, grill-me, mckinsey-strategist, agent-skill-orchestrator
+- **[Research](docs/bundles/bundles.md#-research--analysis-bundle)** - deep-research, us-program-research, agent-skill-discovery, prompt-engineer
+- **[Content](docs/bundles/bundles.md#-content-creation-bundle)** - youtube-summarizer, audio-transcriber, pptx-translator, document-converter, storytelling-expert
+- **[Orchestration](docs/bundles/bundles.md#-orchestration-bundle)** - agent-skill-discovery, agent-skill-orchestrator
+- **[All](docs/bundles/bundles.md#-all-skills-bundle)** - Complete 18-skill toolkit
 
 See [detailed comparison](docs/bundles/bundles.md#-bundle-comparison).
 

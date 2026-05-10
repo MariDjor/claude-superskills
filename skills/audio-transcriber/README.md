@@ -88,10 +88,10 @@ gh extension install github/gh-copilot
 
 #### 4. Install Skill
 
-**Global installation (auto-updates with git pull):**
+**Global installation:**
 ```bash
 cd /path/to/claude-superskills
-./scripts/install-skills.sh $(pwd)
+./scripts/local-install.sh
 ```
 
 **Repository only:**

@@ -333,7 +333,36 @@ detect_ai_tools() {
         tools+=("gemini:not_installed:-")
         verbose "Not found: Gemini CLI"
     fi
-    
+
+    # Antigravity
+    if command -v antigravity &> /dev/null || command -v agy &> /dev/null \
+       || [[ -d "$HOME/.gemini/antigravity/skills" ]]; then
+        tools+=("antigravity:installed:unknown")
+        verbose "Found: Antigravity"
+    else
+        tools+=("antigravity:not_installed:-")
+        verbose "Not found: Antigravity"
+    fi
+
+    # Cursor IDE
+    if command -v cursor &> /dev/null || [[ -d "/Applications/Cursor.app" ]] \
+       || [[ -d "$HOME/.cursor/skills" ]]; then
+        tools+=("cursor:installed:unknown")
+        verbose "Found: Cursor IDE"
+    else
+        tools+=("cursor:not_installed:-")
+        verbose "Not found: Cursor IDE"
+    fi
+
+    # AdaL CLI
+    if command -v adal &> /dev/null || [[ -d "$HOME/.adal/skills" ]]; then
+        tools+=("adal:installed:unknown")
+        verbose "Found: AdaL CLI"
+    else
+        tools+=("adal:not_installed:-")
+        verbose "Not found: AdaL CLI"
+    fi
+
     # Return as newline-delimited
     printf "%s\n" "${tools[@]}"
 }
@@ -359,6 +388,9 @@ display_tools_table() {
             codex) display_name="Codex" ;;
             opencode) display_name="OpenCode" ;;
             gemini) display_name="Gemini CLI" ;;
+            antigravity) display_name="Antigravity" ;;
+            cursor) display_name="Cursor IDE" ;;
+            adal) display_name="AdaL CLI" ;;
         esac
         
         local status_icon=""
@@ -440,7 +472,7 @@ show_post_install() {
     done
     
     if [[ $installed_count -gt 0 ]]; then
-        print_info "Detected ${installed_count}/5 AI CLI tools on your system"
+        print_info "Detected ${installed_count}/8 AI CLI tools on your system"
         echo "   Skills will be installed for detected platforms"
     else
         print_warning "No AI CLI tools detected"

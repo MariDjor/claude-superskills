@@ -67,10 +67,10 @@ ${BOLD}OPTIONS:${NC}
 ${BOLD}INSTALL PATHS:${NC}
   GitHub Copilot CLI  →  ~/.github/skills/
   Claude Code         →  ~/.claude/skills/
-  OpenAI Codex        →  ~/.codex/vendor_imports/skills/skills/.curated/
+  OpenAI Codex        →  ~/.codex/skills/
   OpenCode            →  ~/.agent/skills/
   Gemini CLI          →  ~/.gemini/skills/
-  Antigravity         →  ~/.agent/skills/
+  Antigravity         →  ~/.gemini/antigravity/skills/
   Cursor IDE          →  ~/.cursor/skills/
   AdaL CLI            →  ~/.adal/skills/
 
@@ -185,10 +185,10 @@ target_dir() {
   case $1 in
     copilot)     echo "$HOME/.github/skills" ;;
     claude)      echo "$HOME/.claude/skills" ;;
-    codex)       echo "$HOME/.codex/vendor_imports/skills/skills/.curated" ;;
+    codex)       echo "$HOME/.codex/skills" ;;
     opencode)    echo "$HOME/.agent/skills" ;;
     gemini)      echo "$HOME/.gemini/skills" ;;
-    antigravity) echo "$HOME/.agent/skills" ;;
+    antigravity) echo "$HOME/.gemini/antigravity/skills" ;;
     cursor)      echo "$HOME/.cursor/skills" ;;
     adal)        echo "$HOME/.adal/skills" ;;
   esac

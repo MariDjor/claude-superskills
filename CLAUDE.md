@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **claude-superskills** is a reusable AI skills library for **8 AI platforms**: GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI. Skills are Markdown-based workflow specifications (`SKILL.md`) that teach AI agents how to perform specific tasks.
 
-- **npm package**: `claude-superskills` (v2.0.0) — `npx claude-superskills` — **18 skills**
+- **npm package**: `claude-superskills` (v2.0.1) — `npx claude-superskills` — **18 skills**
 - **Claude Code plugin**: `claude --plugin-dir ./claude-superskills` — native plugin, no npm needed
 - **GitHub**: `https://github.com/ericgandrade/claude-superskills`
 - **Old package** `cli-ai-skills` is deprecated, redirects to this one
@@ -135,19 +135,15 @@ claude-superskills/
 │   ├── install.sh                 # curl-based one-liner installer (remote)
 │   ├── uninstall.sh               # curl-based one-liner uninstaller (remote)
 │   ├── local-install.sh           # Local installer — no npm/Node required
-│   ├── install-skills.sh          # Low-level skill copy helper
-│   ├── setup-global-skills.sh     # Sets up global skill dirs
 │   ├── verify-version-sync.sh     # Checks all 5 version files are in sync
-│   ├── check-tools.sh             # Detects installed AI CLI tools
-│   ├── update-main-readme.sh      # Auto-updates README badges/footer
 │   ├── validate-workflows.sh      # Validates GitHub Actions workflow files
 │   ├── validate-skill-yaml.sh
 │   ├── validate-skill-content.sh
 │   ├── create-skill.sh
+│   ├── check-doc-consistency.sh   # Validates doc totals/version badges against actual counts
 │   ├── generate-catalog.py        # Python: generates CATALOG.md
-│   ├── generate-catalog.js        # JS: alternative catalog generator
 │   ├── generate-skills-index.py   # Python: generates skills index
-│   ├── generate-skills-index.js   # JS: alternative index generator
+│   ├── optimize-all-skills.sh     # Runs eval readiness check across all skills
 │   ├── package-plugin.sh          # Generates plugin-output/claude-superskills-vX.Y.Z.zip for Claude Desktop
 │   └── pre-publish-check.sh
 │
@@ -461,7 +457,7 @@ Skills that interact with project structure should include a discovery phase tha
 
 ## Version Management
 
-The package version is defined in `cli-installer/package.json` (currently **v2.0.0**).
+The package version is defined in `cli-installer/package.json` (currently **v2.0.1**).
 `.claude-plugin/plugin.json` `"version"` must always match `package.json` exactly.
 
 - `cli-installer/package.json` — source of truth for npm version

@@ -100,11 +100,14 @@ ${BOLD}EXAMPLES:${NC}
 
 ${BOLD}WHAT GETS REMOVED:${NC}
     • npm global package (claude-superskills)
-    • Installed skills in ~/.copilot/skills/
+    • Installed skills in ~/.github/skills/
     • Installed skills in ~/.claude/skills/
     • Installed skills in ~/.codex/skills/
-    • Installed skills in ~/.opencode/skills/
+    • Installed skills in ~/.agent/skills/
     • Installed skills in ~/.gemini/skills/
+    • Installed skills in ~/.gemini/antigravity/skills/
+    • Installed skills in ~/.cursor/skills/
+    • Installed skills in ~/.adal/skills/
     • (with --purge) Empty platform directories
 
 EOF
@@ -151,11 +154,14 @@ check_package_installed() {
 # Find installed skills in platform directories
 find_installed_skills() {
     local platform_dirs=(
-        "$HOME/.copilot/skills"
+        "$HOME/.github/skills"
         "$HOME/.claude/skills"
         "$HOME/.codex/skills"
-        "$HOME/.opencode/skills"
+        "$HOME/.agent/skills"
         "$HOME/.gemini/skills"
+        "$HOME/.gemini/antigravity/skills"
+        "$HOME/.cursor/skills"
+        "$HOME/.adal/skills"
     )
     
     local found_skills=()
@@ -314,11 +320,14 @@ cleanup_empty_dirs() {
     print_step "Cleaning up empty directories"
     
     local platform_dirs=(
-        "$HOME/.copilot/skills"
+        "$HOME/.github/skills"
         "$HOME/.claude/skills"
         "$HOME/.codex/skills"
-        "$HOME/.opencode/skills"
+        "$HOME/.agent/skills"
         "$HOME/.gemini/skills"
+        "$HOME/.gemini/antigravity/skills"
+        "$HOME/.cursor/skills"
+        "$HOME/.adal/skills"
     )
     
     for dir in "${platform_dirs[@]}"; do
