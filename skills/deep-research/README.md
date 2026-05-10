@@ -23,6 +23,7 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - Skeptical conflict handling for contradictory sources
 - `evals/evals.json` — realistic test cases with assertions for trigger accuracy and workflow correctness
 - `evals/trigger-eval.json` — trigger and non-trigger examples for description optimization
+- `references/report-template.md` — comprehensive Markdown report template loaded only for dense/frontier reports or saved research outputs
 
 ## Typical invocation
 
