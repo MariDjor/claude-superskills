@@ -85,7 +85,39 @@ Fallback: <native mode or next best model>.
 
 Do not hard-code one model as universally best. Use the strongest available model/tooling path and disclose limitations.
 
+## Research Modes
+
+Before starting, present the user with three modes:
+
+```
+Which research mode do you want?
+
+  [1] Standard    — 12–15 sources · 1.500–3.000 words · findings by sub-question · single Confidence & Gaps block
+  [2] Verbose     — 20–30 sources · 4.000–6.000 words · per-source deep-dives · per-sub-question confidence · Devil's Advocate section · Appendices
+  [3] Exhaustive  — 40–60+ sources · 8.000+ words · full dense/frontier agent topology · block quotes allowed · stakeholder map · chronology · multiple critique rounds
+```
+
+If the user does not specify, default to **Standard**.
+
+| Parameter | Standard | Verbose | Exhaustive |
+|-----------|----------|---------|------------|
+| Minimum sources | 12–15 | 20–30 | 40–60+ |
+| Word target | 1.500–3.000 | 4.000–6.000 | 8.000+ |
+| Per-source deep-dive | No | Yes (material sources) | Yes (all major sources) |
+| Per-sub-question confidence | No | Yes | Yes |
+| Block quotes | Short only | Allowed when exact wording matters | Allowed |
+| Devil's Advocate / Steelman | No | Yes | Yes |
+| Background / Context section | Brief | Full (2–4 paragraphs) | Full + chronology |
+| Stakeholder / Actor map | No | When applicable | Always |
+| Methodology section | No | Yes | Yes |
+| Appendices (query log, rejected sources, paywalls) | No | Yes | Yes |
+| Executive Summary | No | Yes (200–300 words at top) | Yes (300–500 words at top) |
+| Agent topology | Native | Native + ContrarianScout | Full dense/frontier topology |
+| Critique rounds | 1 | 1–2 | 2–3 adversarial rounds |
+
 ## Research Protocol
+
+0. Present mode options and confirm with the user before proceeding.
 
 1. Define objective, scope, and decomposition
 - Restate the original research question in one sentence.
@@ -119,21 +151,41 @@ Reject or down-rank sources that:
 - Are mostly promotional unless the research question is about vendor positioning
 - Conflict with stronger primary evidence
 
+### Agent Status Notifications
+
+For every agent, emit three status lines in this exact format:
+
+```
+⟳  <Agent Name> — <what it is doing>
+✅  <Agent Name> — Done · <N> sources collected · <key finding in one sentence>
+```
+
+Example:
+```
+⟳  🔍 Scout Alpha — Scanning primary sources for sub-question 1...
+✅  🔍 Scout Alpha — Done · 8 sources collected · Three vendors dominate with >60% market share combined.
+
+⟳  ⚔️ Devil's Advocate — Searching for contradictions and critical evidence...
+✅  ⚔️ Devil's Advocate — Done · 4 sources collected · Two analyst reports dispute the market share figures.
+```
+
+Emit the `⟳` line immediately before launching each agent. Emit the `✅` line immediately after the agent returns results.
+
 ### Parallel Query Execution
 
-Do NOT run searches sequentially. Launch one `ResearchScout` agent per sub-question or major query type simultaneously in a single block where the host platform supports subagents.
+Do NOT run searches sequentially. Launch one agent per sub-question or major query type simultaneously in a single block where the host platform supports subagents.
 
-| Agent | Assignment |
-|-------|------------|
-| `ResearchScout-SQ1` | Research sub-question 1 with primary-source preference |
-| `ResearchScout-SQ2` | Research sub-question 2 with primary-source preference |
-| `ResearchScout-SQ3` | Research sub-question 3 with primary-source preference |
-| `ResearchScout-Contrarian` | Find credible conflicting or critical evidence |
-| `ResearchScout-Recent` | Date-filtered search for recent developments when time-sensitive |
+| Agent | Role | Assignment |
+|-------|------|------------|
+| 🔍 Scout Alpha | Primary researcher | Sub-question 1 with primary-source preference |
+| 🔍 Scout Beta | Primary researcher | Sub-question 2 with primary-source preference |
+| 🔍 Scout Gamma | Primary researcher | Sub-question 3 with primary-source preference |
+| ⚔️ Devil's Advocate | Contrarian researcher | Find credible conflicting or critical evidence |
+| 📡 Trend Watcher | Recency researcher | Date-filtered search for recent developments when time-sensitive |
 
 Each agent prompt begins with:
 ```
-# ResearchScout -- Targeted Web Research Agent
+# <Agent Name> — Deep Research Agent
 Role: Execute assigned web research using WebSearch/WebFetch. Collect authoritative sources, extract claim-level evidence, identify contradictions, and return structured results.
 
 Required output:
@@ -141,28 +193,51 @@ Required output:
 - Queries attempted
 - Source inventory with URL, title, publisher, date, and relevance
 - Key claims and data points with source attribution
-- Short direct quotes only when exact wording matters
+- Quote directly when the exact wording is material — definitions, methodologies, thresholds, or claims where paraphrasing would change the meaning. Avoid decorative quotes that add length without adding precision. (block quotes allowed in Verbose/Exhaustive mode)
 - Evidence quality notes
 - Conflicts, gaps, and inaccessible/paywalled sources
 ```
 
-Wait for all ResearchScout agents to complete. Deduplicate results by canonical URL. Then proceed to evidence ledger and triangulation.
+Wait for all agents to complete. Emit a summary banner before deduplication:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  All agents finished · Deduplicating results...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
+
+Then deduplicate results by canonical URL and proceed to evidence ledger and triangulation.
 
 ### Dense / Frontier Agent Topology
 
 When the user requests maximum-depth research, run a wider parallel topology where the host platform supports subagents:
 
-| Agent | Purpose |
-|-------|---------|
-| `ResearchLead` | Normalize scope, define sub-questions, assign agents, and maintain evidence standards |
-| `ResearchScout-SQ1..SQ5` | Research one sub-question each with source traceability |
-| `PrimarySourceHunter` | Find official docs, filings, papers, regulatory pages, datasets, and primary evidence |
-| `ContrarianScout` | Find credible disagreement, failures, criticism, and negative evidence |
-| `RecencyScout` | Search for recent developments and date-sensitive updates |
-| `CitationAuditor` | Check whether claims are properly supported and sources are credible |
-| `SynthesisJudge` | Consolidate findings, resolve conflicts, and write the final report |
+| Agent | Role | Purpose |
+|-------|------|---------|
+| 🧭 Research Lead | Coordinator | Normalize scope, define sub-questions, assign agents, and maintain evidence standards |
+| 🔍 Scout Alpha–Epsilon | Primary researchers | Research one sub-question each with source traceability |
+| 🏛️ Source Hunter | Primary-source specialist | Find official docs, filings, papers, regulatory pages, datasets, and primary evidence |
+| ⚔️ Devil's Advocate | Contrarian researcher | Find credible disagreement, failures, criticism, and negative evidence |
+| 📡 Trend Watcher | Recency researcher | Search for recent developments and date-sensitive updates |
+| 🔬 Citation Auditor | Fact-checker | Check whether claims are properly supported and sources are credible |
+| ⚖️ Synthesis Judge | Synthesizer | Consolidate findings, resolve conflicts, and write the final report |
 
 Launch independent scout agents in one parallel batch whenever the host platform supports subagents. If subagents are unavailable, simulate the topology sequentially while preserving the same roles and output contracts.
+
+After all dense/frontier agents complete, emit:
+
+```
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  All agents finished
+  🔍 Scouts Alpha–Epsilon  ✅
+  🏛️ Source Hunter         ✅
+  ⚔️ Devil's Advocate      ✅
+  📡 Trend Watcher         ✅
+  🔬 Citation Auditor      ✅
+  ⚖️ Synthesis Judge       ✅
+  Proceeding to final synthesis...
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+```
 
 3. Build an evidence ledger
 - Deduplicate sources by canonical URL.
@@ -173,7 +248,7 @@ Launch independent scout agents in one parallel batch whenever the host platform
   - `contested`: credible sources disagree
   - `weak`: only one weak or indirect source supports it
   - `inferred`: reasoned conclusion based on evidence, not directly stated by sources
-- Use short direct quotes only when wording materially affects interpretation.
+- Quote directly when the exact wording is material — definitions, methodologies, thresholds, or claims where paraphrasing would change the meaning. Avoid decorative quotes that add length without adding precision.
 
 Evidence ledger fields:
 - Claim
@@ -181,6 +256,26 @@ Evidence ledger fields:
 - Source(s)
 - Source quality
 - Notes / limitations
+
+### Source Deep-Dive (Verbose and Exhaustive modes only)
+
+For every source that directly supports a main conclusion, produce a deep-dive paragraph after the evidence ledger. Only cover material sources — those whose removal would weaken or change a key finding.
+
+```
+### Source Deep-Dive: "<Title>" — <Publisher>
+
+- **Type:** <primary | scholarly | analyst report | news | blog>
+- **Date:** <publication or last-update date>
+- **Methodology:** <how data was collected — survey, benchmark, interview, literature review, etc.>
+- **Sample size:** <N respondents / data points / cases, if applicable>
+- **Geographic scope:** <regions covered — flag gaps>
+- **Potential conflict of interest:** <funding, ownership, vendor affiliation, or "none identified">
+- **Independence:** <peer-reviewed, externally validated, or self-published>
+- **Key contribution:** <what this source adds that no other source provides>
+- **Limitations:** <gaps, recency issues, methodology weaknesses, self-reported data, etc.>
+```
+
+In Exhaustive mode, apply deep-dives to all sources with high or medium source quality, not only the material ones.
 
 4. Validate, triangulate, and challenge
 - Cross-check key claims with at least 2 independent credible sources where possible.
@@ -194,16 +289,47 @@ Evidence ledger fields:
 - Structure findings by sub-question unless the user requested another format.
 - Cite every non-obvious factual claim inline.
 - Separate confirmed facts, interpretations, recommendations, and unresolved gaps.
-- In dense/frontier mode, include critique/rebuttal notes from `ContrarianScout` and `CitationAuditor`.
+- In dense/frontier mode, include critique/rebuttal notes from ⚔️ Devil's Advocate and 🔬 Citation Auditor.
+
+### Sub-question Expansion (Verbose and Exhaustive modes only)
+
+For each sub-question, use this four-layer structure before stating the conclusion:
+
+```
+### Sub-question N: <question text>
+
+**Evidence supporting the main claim:**
+- <claim> [source]
+- <claim> [source, source]
+
+**Counter-evidence:**
+- <conflicting claim or data point> [source] — methodology: <brief description>
+
+**Methodology critique:**
+- <weakness or gap in the supporting evidence>
+- <independence issue, sample size concern, recency problem, etc.>
+
+**Conflicting interpretations:**
+- <interpretation A> — supported by sources X, Y
+- <interpretation B> — supported by source Z; contested / weak evidence
+
+**Sub-question conclusion:**
+<1–3 sentence conclusion with explicit confidence level>
+Confidence: <high | medium | low> — <one-line reason>
+```
+
+In Standard mode, state the conclusion directly without the four-layer breakdown. In Exhaustive mode, expand each layer with additional quotes and source references.
 
 ## Output Formats
 
 Choose one based on request:
 
 Default structure for non-trivial research:
+
+**Standard mode:**
 - Objective
 - Scope and assumptions
-- Recommended model/tooling path, when dense/frontier mode is used
+- Methodology
 - Sub-questions
 - Findings by sub-question
 - Evidence matrix
@@ -211,6 +337,46 @@ Default structure for non-trivial research:
 - Recommendations or implications, when requested
 - Confidence & gaps
 - Sources
+
+**Verbose and Exhaustive modes — additional sections:**
+- Executive Summary (200–300 words) ← top of report, before everything else
+- Background / Context (2–4 paragraphs before findings)
+- Stakeholder / Actor map (when applicable)
+- Timeline / Chronology (for time-sensitive topics)
+- Devil's Advocate (steelman of the opposing position)
+- Source deep-dives (after evidence ledger)
+- Per-sub-question confidence scores
+- Appendices (query log, rejected sources, paywalled sources)
+
+### Methodology Section (mandatory in all modes)
+
+Include a **Methodology** section before any findings. It must document:
+
+```
+## Methodology
+
+**Research period:** <month and year>
+**Mode:** <Standard | Verbose | Exhaustive>
+
+**Queries used:**
+- <exact query string>
+- <exact query string>
+
+**Queries discarded:** <query> (<reason: too broad, SEO-heavy, off-scope, etc.>)
+
+**Sources attempted but inaccessible:**
+- <Source name> (<reason: paywall | login required | timeout | 404>) — <what was used instead, if anything>
+
+**Filters applied:**
+- <e.g. Sources older than N years excluded unless foundational>
+- <e.g. Marketing pages used only for vendor positioning claims>
+
+**Known limitations before synthesis:**
+- <e.g. No access to paid analyst reports>
+- <e.g. Limited peer-reviewed literature on this topic>
+```
+
+Omit any field that does not apply. Never fabricate inaccessible sources — only list ones actually attempted.
 
 ### 1) Executive Brief
 - Objective
@@ -238,11 +404,45 @@ Default structure for non-trivial research:
 
 Every substantive report must close with `Confidence & Gaps`:
 - Overall confidence: high / medium / low
+- Per-sub-question confidence (Verbose and Exhaustive only — aggregate from sub-question conclusions)
 - Strongest evidence
 - Weakest evidence
 - Known disagreements across sources
 - Missing or inaccessible information
 - Recommended follow-up research
+
+### Additional Sections (Verbose and Exhaustive modes)
+
+**Executive Summary** — 200–300 words at the very top of the report, before Methodology. Must cover: research question, top 3–5 findings, overall confidence level, and biggest gap or risk. Written so the reader can stop here and still understand the core answer.
+
+**Background / Context** — 2–4 paragraphs before findings. Covers: why this topic matters, relevant history, key definitions, and the current state of the field. Gives the reader enough context to evaluate the findings without prior domain knowledge.
+
+**Stakeholder / Actor map** — when the topic involves multiple parties (competitors, regulators, buyers, vendors). List each actor, their role, their interests, and their relevance to the research question. Include in Verbose and Exhaustive when applicable.
+
+**Timeline / Chronology** — for time-sensitive topics (regulatory changes, product evolution, market shifts). A dated list of key events relevant to the research question, ordered chronologically. Include in Verbose and Exhaustive when the time dimension affects interpretation.
+
+**Devil's Advocate** — a steelman section arguing the strongest case *against* the main conclusions. Written as a self-contained argument, not a list of caveats. Forces the report to confront its weakest points directly. Include in Verbose and Exhaustive always.
+
+**Appendices** — at the end of the report, after Sources:
+```
+## Appendices
+
+### A — Full Query Log
+| Query | Agent | Results | Outcome |
+|-------|-------|---------|---------|
+| <query string> | 🔍 Scout Alpha | 12 results | 4 sources used |
+| <query string> | ⚔️ Devil's Advocate | 8 results | 2 sources used |
+
+### B — Rejected Sources
+| Source | URL | Reason for rejection |
+|--------|-----|----------------------|
+| <title> | <url> | Promotional content, no methodology |
+
+### C — Paywalled / Inaccessible Sources
+| Source | URL | What was available |
+|--------|-----|--------------------|
+| <title> | <url> | Abstract only / login required |
+```
 
 ## Quality Bar
 

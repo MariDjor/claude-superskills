@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.6] - 2026-05-10
+
+### Changed
+- `deep-research` upgraded to v2.3.0 with Standard/Verbose/Exhaustive research modes, friendly agent names with live status notifications, mandatory Methodology section, per-source deep-dives, four-layer sub-question expansion, Executive Summary, Background/Context, Stakeholder map, Timeline, Devil's Advocate, and Appendices sections
+
 ## [2.0.5] - 2026-05-11
 
 ### Added

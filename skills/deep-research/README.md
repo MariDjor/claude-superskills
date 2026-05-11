@@ -47,6 +47,16 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 - Adds specialized research roles such as `PrimarySourceHunter`, `ContrarianScout`, `RecencyScout`, `CitationAuditor`, and `SynthesisJudge`.
 - Falls back to native mode if frontier tooling or subagents are unavailable.
 
+## What's New in v2.3
+
+- **Research modes** — Standard / Verbose / Exhaustive dial with source quotas, word targets, and section requirements per mode
+- **Friendly agent names** — Scouts renamed (🔍 Scout Alpha/Beta/Gamma, ⚔️ Devil's Advocate, 📡 Trend Watcher, 🏛️ Source Hunter, 🔬 Citation Auditor, ⚖️ Synthesis Judge) with live status notifications on launch and completion
+- **Methodology section** — Mandatory audit trail: queries used/discarded, inaccessible sources, filters applied, known limitations
+- **Source deep-dives** — Per-source analysis in Verbose/Exhaustive: methodology, sample size, geo scope, conflict of interest, independence
+- **Sub-question expansion** — Four-layer structure per sub-question: supporting evidence → counter-evidence → methodology critique → conflicting interpretations → conclusion with individual confidence score
+- **New report sections** — Executive Summary, Background/Context, Stakeholder map, Timeline/Chronology, Devil's Advocate, Appendices (query log, rejected sources, paywalled sources)
+- **Purpose-based quote rule** — Replaced length restriction with intent-based guideline: quote when exact wording is material, not by character count
+
 ## What's New in v2.2
 
 - **Dense / Frontier Mode** -- Maximum-depth research path with model recommendation, wider parallel topology, critique, rebuttal, and citation audit
@@ -68,7 +78,7 @@ Multi-step research skill using native web tools (WebSearch/WebFetch) to decompo
 
 | Field | Value |
 |-------|-------|
-| Version | 2.2.0 |
+| Version | 2.3.0 |
 | Author | Eric Andrade |
 | Created | 2026-02-20 |
 | Updated | 2026-05-10 |
