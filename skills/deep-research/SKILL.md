@@ -119,6 +119,34 @@ If the user does not specify, default to **Standard**.
 
 0. Present mode options and confirm with the user before proceeding.
 
+0.5. Create and present a Research Plan
+
+Before launching any agents, produce a structured research plan and show it to the user. Proceed unless they want changes.
+
+```markdown
+## Research Plan: [Topic]
+
+**Core Question:** [one sentence — what exactly needs answering]
+**Decision Context:** [how results will be used: strategy, due diligence, comparison, etc.]
+**Scope:** [geography, time horizon, industry, technology boundaries]
+
+### Research Dimensions
+1. [Dimension] — [what to find and why it matters]
+2. [Dimension] — [what to find and why it matters]
+3. [Dimension] — [what to find and why it matters]
+...
+
+### Source Strategy
+- Primary: [official docs, filings, government data, company pages]
+- Secondary: [analyst reports, established media, expert orgs]
+- Validation: [how conflicting claims will be resolved]
+
+### Known Unknowns
+- [What we know we don't know yet — data that may be hard to find]
+```
+
+Show the plan and wait for user confirmation before proceeding.
+
 1. Define objective, scope, and decomposition
 - Restate the original research question in one sentence.
 - Identify audience, decision context, time horizon, geography/market scope, and requested output format.
@@ -206,7 +234,36 @@ Wait for all agents to complete. Emit a summary banner before deduplication:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
-Then deduplicate results by canonical URL and proceed to evidence ledger and triangulation.
+Then deduplicate results by canonical URL and run a Gap Analysis before proceeding to the evidence ledger.
+
+### Gap Analysis & Iteration Check
+
+After each agent batch, reason explicitly about findings vs needs before moving to synthesis:
+
+```markdown
+### Gap Analysis — Iteration [N]
+
+**Coverage so far:** [summary of dimensions addressed and confidence level per dimension]
+
+**Gaps identified:**
+- [ ] [Missing data point] — needed because [reason]
+- [ ] [Conflicting claims unresolved] — need [source type] to adjudicate
+- [ ] [Shallow coverage] — [dimension] needs deeper investigation
+
+**Decision:** [Stop — all dimensions sufficient] / [Continue — targeted follow-up on gaps above]
+```
+
+#### Stop Criteria
+
+Stop iterating when **any** of these conditions are met:
+
+1. **Sufficient coverage** — all research dimensions have confirmed or contested (not weak) evidence
+2. **Diminishing returns** — last iteration added less than 10% new distinct information
+3. **Maximum iterations reached** — Standard: 1 follow-up, Verbose: 2, Exhaustive: 3
+4. **Source saturation** — same sources appearing repeatedly across independent searches
+5. **Time budget exceeded** — stop and synthesize with what's available, note gaps explicitly
+
+If continuing, launch a targeted follow-up agent batch scoped only to the identified gaps. Emit status notifications for each follow-up agent using the same format.
 
 ### Dense / Frontier Agent Topology
 
@@ -284,6 +341,28 @@ In Exhaustive mode, apply deep-dives to all sources with high or medium source q
 - Surface contradictions explicitly instead of smoothing them over.
 - When sources conflict, explain which source is more credible and why using recency, methodology, primary-source status, independence, and domain expertise.
 - If evidence is thin, say so plainly and lower confidence.
+
+4.5. Self-critique (three passes before synthesis)
+
+Run all three passes before generating any output. Do not skip passes even under time pressure.
+
+**Pass 1 — Factual Accuracy**
+- Does every factual claim have a cited source?
+- Are data points (numbers, dates, percentages) verified against the original source?
+- Are there claims that seem too good, too bad, or too convenient to be true?
+- Mark any unverified claims `[UNVERIFIED]` — do not include them in final conclusions.
+
+**Pass 2 — Completeness**
+- Does the research answer the core question stated in the Research Plan?
+- Are all dimensions from the Research Plan addressed?
+- Are there obvious follow-up questions a domain expert would immediately ask?
+- Are the Known Unknowns from the plan still unresolved — and if so, are they disclosed?
+
+**Pass 3 — Coherence & Bias**
+- Is the narrative logically structured and free of internal contradictions?
+- Are there hidden biases in source selection (e.g. over-relying on one vendor, geography, or viewpoint)?
+- Are opposing viewpoints fairly represented?
+- Is confidence language accurate — are there places where the text sounds more certain than evidence warrants?
 
 5. Synthesize output
 - Structure findings by sub-question unless the user requested another format.

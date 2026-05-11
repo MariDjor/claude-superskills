@@ -67,6 +67,14 @@ Use this template for dense/frontier research and for any research saved to Mark
 - <Recommendation or implication tied to evidence>
 - <Recommendation or implication tied to evidence>
 
+## Limitations & Caveats
+
+- <Known data gaps — dimensions that could not be fully researched>
+- <Source quality issues — areas where only weak or secondary sources were available>
+- <Geographic or temporal limitations — scope boundaries that may affect generalizability>
+- <Access restrictions — paywalled, proprietary, or inaccessible data that would strengthen findings>
+- <Areas where expert verification is recommended before acting on findings>
+
 ## Confidence & Gaps
 
 - Overall confidence: high / medium / low
