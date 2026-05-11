@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **claude-superskills** is a reusable AI skills library for **8 AI platforms**: GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI. Skills are Markdown-based workflow specifications (`SKILL.md`) that teach AI agents how to perform specific tasks.
 
-- **npm package**: `claude-superskills` (v2.0.6) — `npx claude-superskills` — **18 skills**
+- **npm package**: `claude-superskills` (v2.0.7) — `npx claude-superskills` — **18 skills**
 - **Claude Code plugin**: `claude --plugin-dir ./claude-superskills` — native plugin, no npm needed
 - **GitHub**: `https://github.com/ericgandrade/claude-superskills`
 - **Old package** `cli-ai-skills` is deprecated, redirects to this one
@@ -209,7 +209,7 @@ npx claude-superskills
         → falls back to API tree walk      # api.github.com/repos/.../git/trees/{ref}
         → caches to ~/.claude-superskills/cache/{version}/skills/
     → copy skills from cache → platform dirs
-        copilot     → ~/.github/skills/
+        copilot     → ~/.copilot/skills/
         claude      → ~/.claude/skills/
         codex       → ~/.codex/skills/ (CLI + App — single path, no duplicates)
         opencode    → ~/.agent/skills/
@@ -457,7 +457,7 @@ Skills that interact with project structure should include a discovery phase tha
 
 ## Version Management
 
-The package version is defined in `cli-installer/package.json` (currently **v2.0.6**).
+The package version is defined in `cli-installer/package.json` (currently **v2.0.7**).
 `.claude-plugin/plugin.json` `"version"` must always match `package.json` exactly.
 
 - `cli-installer/package.json` — source of truth for npm version
@@ -548,7 +548,7 @@ async function install(cacheDir, skills = null, quiet = false, targetDirOverride
 
 | File | Platform | Install target |
 |------|----------|----------------|
-| `copilot.js` | GitHub Copilot CLI | `~/.github/skills/` |
+| `copilot.js` | GitHub Copilot CLI | `~/.copilot/skills/` |
 | `claude.js` | Claude Code | `~/.claude/skills/` |
 | `codex.js` | OpenAI Codex (CLI + App) | `~/.codex/skills/` |
 | `opencode.js` | OpenCode | `~/.agent/skills/` |

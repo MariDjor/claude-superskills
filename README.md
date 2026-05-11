@@ -1,8 +1,8 @@
-# 🤖 Claude Superskills v2.0.6
+# 🤖 Claude Superskills v2.0.7
 
 Scale AI-assisted engineering with a reusable skill platform that turns ad-hoc prompting into standardized, high-impact workflows. Install once and deliver consistent planning, research, orchestration, and content automation across your entire multi-tool AI stack.
 
-![Version](https://img.shields.io/badge/version-2.0.6-blue.svg)
+![Version](https://img.shields.io/badge/version-2.0.7-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Skills](https://img.shields.io/badge/skills-18-brightgreen.svg)
 ![Platforms](https://img.shields.io/badge/platforms-8-orange.svg)
@@ -306,7 +306,7 @@ gemini -p "design a solution for processing meeting notes and creating Jira tick
 
 ## 💻 Supported Platforms
 
-- **GitHub Copilot CLI** - Terminal AI assistant (`~/.github/skills/`)
+- **GitHub Copilot CLI** - Terminal AI assistant (`~/.copilot/skills/`)
 - **Claude Code** - Anthropic's Claude in development (`~/.claude/skills/`)
 - **OpenAI Codex** - GPT-powered coding assistant (`~/.codex/skills/`)
 - **OpenCode** - Open source AI coding assistant (`~/.agent/skills/`)
@@ -402,7 +402,7 @@ MIT - See [LICENSE](./LICENSE) for details.
 
 **Built with ❤️ by [Eric Andrade](https://github.com/ericgandrade)**
 
-*Version 2.0.6 | May 2026*
+*Version 2.0.7 | May 2026*
 
 ## 🎁 Get Started
 

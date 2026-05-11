@@ -39,7 +39,7 @@ function getUserSkillsPath(platform) {
 
   const platformDirs = {
     'codex':       path.join(home, '.codex', 'skills'),
-    'copilot':     path.join(home, '.github', 'skills'),
+    'copilot':     path.join(home, '.copilot', 'skills'),
     'claude':      path.join(home, '.claude', 'skills'),
     'opencode':    path.join(home, '.agent', 'skills'),
     'gemini':      path.join(home, '.gemini', 'skills'),

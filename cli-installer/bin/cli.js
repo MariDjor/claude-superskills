@@ -342,7 +342,8 @@ async function nuclearUninstall(quiet) {
   const home = os.homedir();
   const localDirs = getLocalProjectSkillDirs(process.cwd());
   const allPlatformDirs = [
-    { name: 'GitHub Copilot', dir: path.join(home, '.github', 'skills') },
+    { name: 'GitHub Copilot',  dir: path.join(home, '.copilot', 'skills') },
+    { name: 'GitHub Copilot (legacy)', dir: path.join(home, '.github', 'skills') },
     { name: 'Claude Code',    dir: path.join(home, '.claude', 'skills') },
     { name: 'Codex',          dir: path.join(home, '.codex', 'skills') },
     { name: 'OpenCode',       dir: path.join(home, '.agent', 'skills') },
@@ -390,7 +391,8 @@ async function runNuclearFlow(quiet) {
 
   console.log('\n' + chalk.bgRed.white.bold('  ☢️  NUCLEAR UNINSTALL — THIS CANNOT BE UNDONE  ') + '\n');
   console.log(chalk.red('  This will delete ALL skill folders from ALL AI platforms:\n'));
-  console.log(chalk.dim('    ~/.github/skills/              (GitHub Copilot)'));
+  console.log(chalk.dim('    ~/.copilot/skills/              (GitHub Copilot)'));
+  console.log(chalk.dim('    ~/.github/skills/               (GitHub Copilot — legacy, cleaned too)'));
   console.log(chalk.dim('    ~/.claude/skills/              (Claude Code)'));
   console.log(chalk.dim('    ~/.codex/skills/               (OpenAI Codex)'));
   console.log(chalk.dim('    ~/.agent/skills/               (OpenCode)'));

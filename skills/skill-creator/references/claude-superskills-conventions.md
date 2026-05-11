@@ -110,7 +110,7 @@ Skills in claude-superskills are automatically distributed to all 8 platforms vi
 | Platform | Install Path |
 |----------|-------------|
 | Claude Code | `~/.claude/skills/` |
-| GitHub Copilot | `~/.github/skills/` |
+| GitHub Copilot | `~/.copilot/skills/` |
 | Gemini CLI | `~/.gemini/skills/` |
 | OpenCode | `~/.agent/skills/` |
 | OpenAI Codex | `~/.codex/skills/` |

@@ -38,7 +38,7 @@ Installation is always global. Local repository scope is no longer supported.
 
 ## Supported Platforms
 
-- GitHub Copilot CLI: `~/.github/skills/`
+- GitHub Copilot CLI: `~/.copilot/skills/`
 - Claude Code: `~/.claude/skills/`
 - OpenAI Codex: `~/.codex/skills/`
 - OpenCode: `~/.agent/skills/`

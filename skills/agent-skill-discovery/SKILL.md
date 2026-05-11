@@ -68,9 +68,9 @@ Check for platform-specific base directories in order:
 if [ -d "$HOME/.claude/skills" ] && [ -f "$HOME/.claude/skills/agent-skill-discovery/SKILL.md" ]; then
     PLATFORM="claude"
     BASE_DIR="$HOME/.claude"
-elif [ -d "$HOME/.github/skills" ] && [ -f "$HOME/.github/skills/agent-skill-discovery/SKILL.md" ]; then
+elif [ -d "$HOME/.copilot/skills" ] && [ -f "$HOME/.copilot/skills/agent-skill-discovery/SKILL.md" ]; then
     PLATFORM="copilot"
-    BASE_DIR="$HOME/.github"
+    BASE_DIR="$HOME/.copilot"
 elif [ -d "$HOME/.gemini/skills" ] && [ -f "$HOME/.gemini/skills/agent-skill-discovery/SKILL.md" ]; then
     PLATFORM="gemini"
     BASE_DIR="$HOME/.gemini"

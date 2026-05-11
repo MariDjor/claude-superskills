@@ -6,7 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [2.0.6] - 2026-05-10
+## [2.0.7] - 2026-05-12
+
+### Fixed
+- GitHub Copilot CLI skills now install to `~/.copilot/skills/` (the correct personal skills directory) instead of the previously wrong `~/.github/skills/`. The `/skills list` command in Copilot CLI reads from `~/.copilot/skills/` — skills were silently installed to an ignored path.
+- `copilot.js` installer now auto-migrates managed skills from the old `~/.github/skills/` location on each run.
+- Nuclear uninstall now cleans both `~/.copilot/skills/` and the legacy `~/.github/skills/`.
+- Updated all documentation, skill files, and CLAUDE.md references.
+
+
 
 ### Changed
 - `deep-research` upgraded to v2.3.0 with Standard/Verbose/Exhaustive research modes, friendly agent names with live status notifications, mandatory Methodology section, per-source deep-dives, four-layer sub-question expansion, Executive Summary, Background/Context, Stakeholder map, Timeline, Devil's Advocate, and Appendices sections

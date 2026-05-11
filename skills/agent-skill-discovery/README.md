@@ -241,7 +241,7 @@ claude-superskills install agent-skill-discovery --force
 
 # Check installation
 ls ~/.claude/skills/agent-skill-discovery
-ls ~/.github/skills/agent-skill-discovery
+ls ~/.copilot/skills/agent-skill-discovery
 ```
 
 ## Related Skills
