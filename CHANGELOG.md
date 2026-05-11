@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.3] - 2026-05-10
+
+### Added
+- Upgraded `deep-research` to v2.2.0 with native and dense/frontier research modes, frontier-model recommendation, parallel agent topology, evidence ledger, confidence/gap analysis, and optional Markdown report saving.
+- Added `deep-research` reference files for report templates, agent topology, and evidence ledger guidance.
+
+
 ## [2.0.2] - 2026-05-10
 
 ### Fixed
