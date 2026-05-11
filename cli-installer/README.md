@@ -1,6 +1,6 @@
 # claude-superskills v2.0.6
 
-Universal installer for the `claude-superskills` library. Install 18 focused AI skills across GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI from one command.
+Universal installer for the `claude-superskills` library. Install 18 reusable AI skills across GitHub Copilot CLI, Claude Code, OpenAI Codex, OpenCode, Gemini CLI, Antigravity, Cursor IDE, and AdaL CLI from one command.
 
 If Claude Desktop is detected, the installer can also generate a Claude Cowork plugin zip for manual upload.
 
