@@ -52,6 +52,35 @@ async function confirmCancel() {
  * Ask user to choose install scope: global (~/.<platform>/skills/) or local (./<platform>/skills/).
  * @returns {Promise<'global'|'local'>}
  */
+/**
+ * Ask user to choose the main action: install skills or nuke.
+ * @returns {Promise<'install'|'nuke'>}
+ */
+async function promptAction() {
+  const { action } = await inquirer.prompt([{
+    type: 'list',
+    name: 'action',
+    message: 'What would you like to do?',
+    choices: [
+      {
+        name: 'Install / Update skills',
+        value: 'install'
+      },
+      new inquirer.Separator(),
+      {
+        name: chalk.red('☢️  Nuke   — Remove ALL skills from ALL platforms'),
+        value: 'nuke'
+      }
+    ],
+    default: 'install'
+  }]);
+  return action;
+}
+
+/**
+ * Ask user to choose install scope: global (~/.<platform>/skills/) or local (./<platform>/skills/).
+ * @returns {Promise<'global'|'local'>}
+ */
 async function promptScope() {
   const cwd = process.cwd();
   const { scope } = await inquirer.prompt([{
@@ -188,4 +217,4 @@ async function promptPlatforms(detected, options = {}) {
   return answers.platforms;
 }
 
-module.exports = { promptPlatforms, promptScope, setupEscapeHandler, confirmCancel };
+module.exports = { promptPlatforms, promptScope, promptAction, setupEscapeHandler, confirmCancel };

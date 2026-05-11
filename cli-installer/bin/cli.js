@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { detectTools, getInstallInstructions } = require('../lib/detector');
-const { promptPlatforms, promptScope, setupEscapeHandler } = require('../lib/interactive');
+const { promptPlatforms, promptScope, promptAction, setupEscapeHandler } = require('../lib/interactive');
 const { setupCleanupHandler } = require('../lib/cleanup');
 const { installCopilotSkills } = require('../lib/copilot');
 const { installClaudeSkills } = require('../lib/claude');
@@ -914,6 +914,14 @@ async function main() {
     if (!hasAny) {
       console.log(getInstallInstructions());
       process.exit(1);
+    }
+
+    if (!skipPrompt) {
+      const action = await promptAction();
+      if (action === 'nuke') {
+        await runNuclearFlow(quiet);
+        return;
+      }
     }
 
     let scope = scopeFlag;

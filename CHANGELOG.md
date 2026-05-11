@@ -6,6 +6,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [2.0.8] - 2026-05-11
+
+### Added
+- ☢️ Nuke option added to the main installer screen — available as a top-level action ("What would you like to do?") alongside "Install / Update skills", so users can trigger a full nuclear uninstall directly from `npx claude-superskills` without needing to know the `uninstall --nuclear` command
+
 ## [2.0.7] - 2026-05-12
 
 ### Fixed
