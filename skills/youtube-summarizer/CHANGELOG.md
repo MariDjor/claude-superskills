@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [2.0.0] - 2026-08-23 (fork: MariDjor)
+
+### 🐛 Fixed
+
+- **Broken transcript extraction against `youtube-transcript-api` >=1.0**
+  - **Issue:** `extract-transcript.py` and the inline snippets in `SKILL.md` called `YouTubeTranscriptApi.get_transcript()` / `.list_transcripts()` as classmethods. Library versions >=1.0 removed those in favor of an instance-based API (`YouTubeTranscriptApi().fetch()` / `.list()`), so any environment with a current install hit `AttributeError: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'` and failed immediately.
+  - **Solution:** Detect which API shape is installed (`hasattr(YouTubeTranscriptApi, "get_transcript")`) and call the matching form. Applied in `extract-transcript.py` and documented in `SKILL.md` Step 0/2/3.
+
+### ✨ Added
+
+- **Timestamps preserved end-to-end.** Previous extraction collapsed the transcript into a single `" ".join(...)` string, discarding each segment's start time irrecoverably. `extract-transcript.py` now emits `[MM:SS|Ns] text` per line by default (`--plain` restores the old stripped-text behavior).
+- **Two-part output structure.** Step 5 now produces (1) a chronological walkthrough of the video, in order, with a clickable `&t=Ns` timestamp on every section header and sub-topic, and (2) a thematic summary that regroups the same content by idea — with its own per-point timestamps — so themes the source revisits at widely separated points aren't silently merged into one undated blob.
+- Step 4 added: explicit topic-boundary and recurring-theme identification pass over the timed transcript before writing prose, plus sponsor-break detection so ad reads don't read as a confusing content gap.
+
+### 🔧 Changed
+
+- Bumped major version to 2.0.0 given the output structure and extraction format both changed.
+
+---
+
 ## [1.2.1] - 2026-02-04
 
 ### 🐛 Fixed
